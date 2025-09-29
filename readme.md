@@ -2,9 +2,9 @@
 
 ![Engine Logo](./resources/media/LogoA.png)
 
-SimpleEntEngine is a flexible multimedia engine that bridges the power of C++ with the simplicity of Lua scripting. Built on top of SDL2, it provides a robust foundation for creating games, interactive applications, and various media projects.
-
 ## Overview
+
+SimpleEntEngine is a flexible multimedia engine that bridges the power of C++ with the simplicity of Lua scripting. Built on top of SDL2, it provides a robust foundation for creating games, interactive applications, and various media projects.
 
 ## Features
 - **Entity-Component-System (ECS) Architecture** – flexible and scalable structure for game and media projects.
