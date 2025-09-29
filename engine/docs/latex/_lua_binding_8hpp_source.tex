@@ -1,0 +1,356 @@
+\doxysection{Lua\+Binding.\+hpp}
+\hypertarget{_lua_binding_8hpp_source}{}\label{_lua_binding_8hpp_source}\index{src/Binding/LuaBinding.hpp@{src/Binding/LuaBinding.hpp}}
+\mbox{\hyperlink{_lua_binding_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ LUABINDING\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ LUABINDING\_HPP}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../AnimationManager/AnimationManager.hpp"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_animation_component_8hpp}{../Components/AnimationComponent.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_box_collider_component_8hpp}{../Components/BoxColliderComponent.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_rigid_body_component_8hpp}{../Components/RigidBodyComponent.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_object_component_8hpp}{../Components/ObjectComponent.hpp}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sprite_component_8hpp}{../Components/SpriteComponent.hpp}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_property_component_8hpp}{../Components/PropertyComponent.hpp}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_component_8hpp}{../Components/TextComponent.hpp}}"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_8hpp}{../Game/Game.hpp}}"{}}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga46dafa0229a52f6f9021f007d09c3be4}{ChangeAnimation}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keyword}{const}\ std::string\ \&\ animationId)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{auto}\&\ animation\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_animation_component}{AnimationComponent}}>();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{auto}\&\ sprite\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_sprite_component}{SpriteComponent}}>();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{struct_animation_data}{AnimationData}}\ animationData;}
+\DoxyCodeLine{00047\ \ \ \ \ animationData\ =\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a1693428d5ef119e9e31adc438f49075f}{animationManager}}-\/>GetAnimation(}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ animationId);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ sprite.textureId\ =\ animationData.textureId;}
+\DoxyCodeLine{00051\ \ \ \ \ sprite.width\ =\ animationData.width;}
+\DoxyCodeLine{00052\ \ \ \ \ sprite.height\ =\ animationData.height;}
+\DoxyCodeLine{00053\ \ \ \ \ sprite.srcRect.x\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ sprite.srcRect.y\ =\ 0;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ animation.\mbox{\hyperlink{struct_animation_component_a307af1a2894a53cf6322d0c5429bb0fb}{currentFrame}}\ =\ 1;}
+\DoxyCodeLine{00057\ \ \ \ \ animation.frameSpeedRate\ =\ animationData.frameSpeedRate;}
+\DoxyCodeLine{00058\ \ \ \ \ animation.numFrames\ =\ animationData.numFrames;}
+\DoxyCodeLine{00059\ \ \ \ \ animation.isLoop\ =\ animationData.isLoop;}
+\DoxyCodeLine{00060\ \ \ \ \ animation.startTime\ =\ SDL\_GetTicks();}
+\DoxyCodeLine{00061\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga49d206d11c14cd5e9d2cd76a99dcd86e}{FlipSprite}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{bool}\ flip)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{auto}\&\ sprite\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_sprite_component}{SpriteComponent}}>();}
+\DoxyCodeLine{00072\ \ \ \ \ sprite.flip\ =\ flip;}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \textcolor{comment}{//\ Input\ Control\ Functions}}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___lua_binding_ga7cf2dbae811bc561406092ede766e73c}{IsActionActivated}}(\textcolor{keyword}{const}\ std::string\&\ action)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a12ed49dbe5d7b4140716679f9ba28f49}{controllerManager}}-\/>IsActionActivated(action);}
+\DoxyCodeLine{00085\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ Audio\ System\ Functions}}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_gacbf5bb1c76064965f75abe1c303c821f}{PlaySound}}(\textcolor{keyword}{const}\ std::string\&\ soundId)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_audio_system}{AudioSystem}}\&\ audioSystem\ =\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_ab9ec8204418df1ecb54b9522fc7fac0a}{registry}}-\/>}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ GetSystem<AudioSystem>();}
+\DoxyCodeLine{00097\ \ \ \ \ audioSystem.\mbox{\hyperlink{class_audio_system_a2539dad63f94c5933ec47329c6350bb4}{PlaySoundEffect}}(soundId,\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().assetManager);}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ RigidBody\ Component\ Functions}}
+\DoxyCodeLine{00108\ std::tuple<int,\ int>\ \mbox{\hyperlink{group___lua_binding_ga033b5709f127c7eb81a2267ec4240dfa}{GetVelocity}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ rigidbody\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(rigidbody.velocity.x),}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(rigidbody.velocity.y)}
+\DoxyCodeLine{00114\ \ \ \ \ \};}
+\DoxyCodeLine{00115\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga73fdadfa2b2fc6ad1b14bda590c0116d}{SetVelocity}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>())\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ rigidbody\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ rigidbody.\mbox{\hyperlink{struct_rigid_body_component_a82aff71832ac9f8a492f5c577ed2387a}{velocity}}.x\ =\ x;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ rigidbody.velocity.y\ =\ y;}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga72ad34359414e291411c6753b664f8a5}{AddForce}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{auto}\&\ rigidbody\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00143\ \ \ \ \ rigidbody.sumForces\ +=\ glm::vec2(x,\ y);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ Transform\ Component\ Functions}}
+\DoxyCodeLine{00155\ std::pair<float,\ float>\ \mbox{\hyperlink{group___lua_binding_gab0b021e0481248e011b86c0b81009d9c}{GetPosition}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>())\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ transform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ transform.position.x,\ transform.position.y\ \};}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0.0f,\ 0.0f\ \};}
+\DoxyCodeLine{00161\ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00171\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_gad328bf319ed8ea68611bca61dc80a060}{SetPosition}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>())\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ transform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ transform.\mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}.x\ =\ x;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ transform.position.y\ =\ y;}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00186\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group___lua_binding_gaa73bcccc4c16c0e9682490083552c1c0}{GetRotation}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>())\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ transform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ transform.\mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}};}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00192\ \}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00201\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_gaf5f1dcc720a8b0c10b705c2778cf5fb2}{SetRotation}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{double}\ rot)\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>())\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ transform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ transform.\mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}}\ =\ rot;}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00215\ std::pair<double,\ double>\ \mbox{\hyperlink{group___lua_binding_ga645114e8079e25c68f46454598075adf}{Get3DRotation}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>())\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ \textcolor{keywordtype}{object}\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>();}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \textcolor{keywordtype}{object}.xRot,\ \textcolor{keywordtype}{object}.yRot\ \};}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0.0,\ 0.0\ \};}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00231\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga9995c4a03bc65b7f9941b725266e48af}{Set3DRotation}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{double}\ rotX,\ \textcolor{keywordtype}{double}\ rotY)\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>())\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ \textcolor{keywordtype}{object}\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>();}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}.\mbox{\hyperlink{struct_object_component_af33c6264f890211570bb60a57af78668}{xRot}}\ =\ rotX;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}.yRot\ =\ rotY;}
+\DoxyCodeLine{00236\ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00246\ std::tuple<int,\ int>\ \mbox{\hyperlink{group___lua_binding_ga455fa6d0cf6e43b4fb5f288765f4f5ca}{GetSize}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ sprite\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_sprite_component}{SpriteComponent}}>();}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ transform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ sprite.width\ *\ transform.scale.x;}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ sprite.\mbox{\hyperlink{struct_sprite_component_a62ae7c4b06bd296958b8311c48e93138}{height}}\ *\ transform.scale.y;}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ width,\ height\ \};}
+\DoxyCodeLine{00254\ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00263\ std::tuple<int,\ int>\ \mbox{\hyperlink{group___lua_binding_ga31e03968f7cb55f0479003921805dee7}{GetBox}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ box\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ box.\mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}};}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ box.height;}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ width,\ height\ \};}
+\DoxyCodeLine{00270\ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \textcolor{comment}{//\ Property\ Component\ Functions}}
+\DoxyCodeLine{00280\ std::string\ \mbox{\hyperlink{group___lua_binding_ga68acc7b6c940ed11a12b3dc31d0dde40}{GetTag}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_property_component}{PropertyComponent}}>())\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_property_component}{PropertyComponent}}>().tag;}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{00285\ \}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00294\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga5026e0d953f45994d3bd44868898c59d}{SetTag}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_property_component}{PropertyComponent}}>())\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ \textcolor{keyword}{property}\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_property_component}{PropertyComponent}}>();}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keyword}{property}.\mbox{\hyperlink{struct_property_component_a2917f301a4d4d1a6fba45810bba0d054}{tag}}\ =\ tag;}
+\DoxyCodeLine{00298\ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00309\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga437b9cb45e35a8dcd05ad68d85f4452c}{SetRigid}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{bool}\ dynamic,\ \textcolor{keywordtype}{bool}\ solid)\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>())\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ \textcolor{keyword}{property}\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keyword}{property}.isDynamic\ =\ dynamic;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keyword}{property}.isSolid\ =\ solid;}
+\DoxyCodeLine{00314\ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \}}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \textcolor{comment}{//\ Text\ Component\ Functions}}
+\DoxyCodeLine{00325\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga3f1f652e57f228a21cee84a0e314914d}{SetText}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ std::string\ newText)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_text_component}{TextComponent}}>())\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ text\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_text_component}{TextComponent}}>();}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ text.\mbox{\hyperlink{struct_text_component_a27e11647d96a9dc3c5a90fea62bfc5c1}{text}}\ =\ newText;}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ Scene\ Management\ Functions}}
+\DoxyCodeLine{00339\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_gaf130241c8cda51a8423544807f5b871a}{GoToScene}}(\textcolor{keyword}{const}\ std::string\&\ sceneName)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a7a5fecf4173a685208f485e95eeda913}{sceneManager}}-\/>SetNextScene(sceneName);}
+\DoxyCodeLine{00341\ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a7a5fecf4173a685208f485e95eeda913}{sceneManager}}-\/>StopScene();}
+\DoxyCodeLine{00342\ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00350\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_gaccb9de13773dbf3dd91b965725876bc2}{LoadReplica}}(\textcolor{keyword}{const}\ std::string\&\ entityName)\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a7a5fecf4173a685208f485e95eeda913}{sceneManager}}-\/>AddToScene(entityName,}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().registry,\ -\/1.0f,\ -\/1.0f);}
+\DoxyCodeLine{00353\ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00364\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga3ab54f345cd8e91ef49fad797898b4fb}{LoadReplicaXY}}(\textcolor{keyword}{const}\ std::string\&\ entityName,}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a7a5fecf4173a685208f485e95eeda913}{sceneManager}}-\/>AddToScene(entityName,}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().registry,\ x,\ y);}
+\DoxyCodeLine{00368\ \}}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00377\ \mbox{\hyperlink{class_entity}{Entity}}\ \mbox{\hyperlink{group___lua_binding_gad24b1412711ac5aa4ca7c4cae13387a3}{GetEntityData}}(\textcolor{keyword}{const}\ std::string\&\ entity)\ \{}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_a7a5fecf4173a685208f485e95eeda913}{sceneManager}}-\/>GetFromScene(entity);}
+\DoxyCodeLine{00379\ \}}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00387\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga98999c1aa464f49eae5fea7710ca1f30}{DeleteEntity}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_ab9ec8204418df1ecb54b9522fc7fac0a}{registry}}-\/>KillEntity(entity);}
+\DoxyCodeLine{00389\ \}}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \textcolor{comment}{//\ Collision\ Management\ Functions}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00401\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___lua_binding_ga123221c3a810b777be1f56829088944a}{LeftCollision}}(\mbox{\hyperlink{class_entity}{Entity}}\ e,\ \mbox{\hyperlink{class_entity}{Entity}}\ other)\ \{}
+\DoxyCodeLine{00402\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ eCollider\ =\ e.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ eTransform\ =\ e.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ oCollider\ =\ other.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ oTransform\ =\ other.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{keywordtype}{float}\ eX\ =\ eTransform.previousPosition.x;}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keywordtype}{float}\ eY\ =\ eTransform.previousPosition.y;}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordtype}{float}\ eH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(eCollider.height);}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keywordtype}{float}\ oX\ =\ oTransform.previousPosition.x;}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keywordtype}{float}\ oY\ =\ oTransform.previousPosition.y;}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordtype}{float}\ oH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(oCollider.height);}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{comment}{//\ Left\ side\ collides\ with\ Other}}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ oY\ <\ eY\ +\ eH\ \&\&}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ oY\ +\ oH\ >\ eY\ \&\&}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ oX\ <\ eX}
+\DoxyCodeLine{00421\ \ \ \ \ );}
+\DoxyCodeLine{00422\ \}}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00432\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___lua_binding_ga06b2a7089036b0529fd50f72f372e5f1}{RightCollision}}(\mbox{\hyperlink{class_entity}{Entity}}\ e,\ \mbox{\hyperlink{class_entity}{Entity}}\ other)\ \{}
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ eCollider\ =\ e.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ eTransform\ =\ e.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ oCollider\ =\ other.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ oTransform\ =\ other.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordtype}{float}\ eX\ =\ eTransform.previousPosition.x;}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordtype}{float}\ eY\ =\ eTransform.previousPosition.y;}
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordtype}{float}\ eH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(eCollider.height);}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordtype}{float}\ oX\ =\ oTransform.previousPosition.x;}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{float}\ oY\ =\ oTransform.previousPosition.y;}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordtype}{float}\ oH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(oCollider.height);}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{comment}{//\ Right\ side\ collides\ with\ Other}}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ oY\ <\ eY\ +\ eH\ \&\&}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ oY\ +\ oH\ >\ eY\ \&\&}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ oX\ >\ eX}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00453\ \}}
+\DoxyCodeLine{00462\ std::string\ \mbox{\hyperlink{group___lua_binding_ga0f277b7cdce73c933fcd0f3ad8119d3e}{GetDirCollision}}(\mbox{\hyperlink{class_entity}{Entity}}\ a,\ \mbox{\hyperlink{class_entity}{Entity}}\ b)\ \{}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aCollider\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bCollider\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aTransform\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bTransform\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aX\ =\ aTransform.previousPosition.x;}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aY\ =\ aTransform.previousPosition.y;}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(aCollider.width);}
+\DoxyCodeLine{00471\ }
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bX\ =\ bTransform.\mbox{\hyperlink{struct_transform_component_a3f8f782163f507442db431de13a233fa}{previousPosition}}.x;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bY\ =\ bTransform.\mbox{\hyperlink{struct_transform_component_a3f8f782163f507442db431de13a233fa}{previousPosition}}.y;}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(bCollider.\mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}});}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lado\ superior\ de\ A\ choca\ contra\ el\ lado\ inferior\ de\ B}}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX\ +\ bW\ \&\&}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ +\ aW\ >\ bX\ \&\&}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ >\ bY}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}top"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lado\ izquierdo\ de\ A\ choca\ contra\ el\ lado\ derecho\ de\ B}}
+\DoxyCodeLine{00486\ \textcolor{comment}{/*\ \ \ \ \ \ if\ (}}
+\DoxyCodeLine{00487\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY\ +\ bH\ \&\&}}
+\DoxyCodeLine{00488\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ +\ aH\ >\ bY\ \&\&}}
+\DoxyCodeLine{00489\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ >\ bX}}
+\DoxyCodeLine{00490\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}}
+\DoxyCodeLine{00491\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}left"{};}}
+\DoxyCodeLine{00492\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00493\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lado\ inferior\ de\ A\ choca\ contra\ el\ lado\ superior\ de\ B}}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX\ +\ bW\ \&\&}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ +\ aW\ >\ bX\ \&\&}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}bottom"{}};}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lado\ derecho\ de\ A\ choca\ contra\ el\ lado\ izquierdo\ de\ B}}
+\DoxyCodeLine{00504\ \textcolor{comment}{/*\ \ \ \ \ \ if\ (}}
+\DoxyCodeLine{00505\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY\ +\ bH\ \&\&}}
+\DoxyCodeLine{00506\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ +\ aH\ >\ bY\ \&\&}}
+\DoxyCodeLine{00507\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX}}
+\DoxyCodeLine{00508\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}}
+\DoxyCodeLine{00509\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}right"{};}}
+\DoxyCodeLine{00510\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00511\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{00513\ \}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00521\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga38b6d180b938cebcf420082bb181969a}{SetSolid}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{bool}\ isSolid)\ \{}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keyword}{auto}\&\ platform\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00523\ \ \ \ \ platform.isSolid=isSolid;}
+\DoxyCodeLine{00524\ \}}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \textcolor{keywordtype}{bool}\ GetSolid(\mbox{\hyperlink{class_entity}{Entity}}\ entity)\{}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{keywordflow}{return}\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>().isSolid;}
+\DoxyCodeLine{00528\ \}}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \textcolor{keywordtype}{void}\ AddBoxExclusion(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{auto}\&\ box\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00532\ \ \ \ \ box.\mbox{\hyperlink{struct_box_collider_component_a340016bba9c121e1ce96a83d332d0601}{AddExclusion}}(tag);}
+\DoxyCodeLine{00533\ \}}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00535\ \textcolor{keywordtype}{void}\ RemoveBoxExclusion(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keyword}{auto}\&\ box\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00537\ \ \ \ \ box.\mbox{\hyperlink{struct_box_collider_component_a2ac130f496136670267a2b5677c9ce5f}{RemoveExclusion}}(tag);}
+\DoxyCodeLine{00538\ \}}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ \textcolor{keywordtype}{bool}\ IsBoxExcluded(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{keyword}{auto}\&\ box\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ box.\mbox{\hyperlink{struct_box_collider_component_a1d7c9d4780f5c651efecb46ef3fa7460}{IsExcluded}}(tag);}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00544\ \}}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \textcolor{comment}{//\ Time\ Management\ Functions}}
+\DoxyCodeLine{00553\ Uint32\ \mbox{\hyperlink{group___lua_binding_gae67435f38740f56b7ebaaaaf5d0da75d}{GetTime}}()\ \{}
+\DoxyCodeLine{00554\ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_GetTicks();}
+\DoxyCodeLine{00555\ \}}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00563\ std::pair<int,\ int>\ \mbox{\hyperlink{group___lua_binding_ga3786dcf7b5e03e0cc05a726b47ba32f8}{GetMousePosition}}()\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00565\ \ \ \ \ SDL\_GetMouseState(\&x,\ \&y);}
+\DoxyCodeLine{00566\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ x,\ y\ \};}
+\DoxyCodeLine{00567\ \}}
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00577\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___lua_binding_ga5d652435c8117bd0750a53860cbd7c22}{SetShadow}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity,\ \textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ g,\ \textcolor{keywordtype}{float}\ b)\ \{}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>())\ \{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ \textcolor{keywordtype}{object}\ =\ entity.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>();}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}.sr\ =\ r;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}.sg\ =\ g;}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}.sb\ =\ b;}
+\DoxyCodeLine{00583\ \ \ \ \ \}}
+\DoxyCodeLine{00584\ \}}
+\DoxyCodeLine{00585\ }
+\DoxyCodeLine{00586\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LUABINDING\_HPP}}
+\DoxyCodeLine{00587\ }
+\DoxyCodeLine{00588\ \ \textcolor{comment}{//\ end\ of\ LuaBinding\ group}}
+
+\end{DoxyCode}

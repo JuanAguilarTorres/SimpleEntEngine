@@ -1,0 +1,153 @@
+\doxysection{Overlap\+System.\+hpp}
+\hypertarget{_overlap_system_8hpp_source}{}\label{_overlap_system_8hpp_source}\index{src/Systems/OverlapSystem.hpp@{src/Systems/OverlapSystem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OVERLAPSYSTEM\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OVERLAPSYSTEM\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_box_collider_component_8hpp}{../Components/BoxColliderComponent.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_rigid_body_component_8hpp}{../Components/RigidBodyComponent.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_event_manager_8hpp}{../EventManager/EventManager.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collision_event_8hpp}{../Events/CollisionEvent.hpp}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum}\ Direction\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ top,\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ left,\ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ bottom,\ }
+\DoxyCodeLine{00022\ \ \ \ \ right\ \ \ }
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_overlap_system}{OverlapSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckCollision(\mbox{\hyperlink{class_entity}{Entity}}\ a,\ \mbox{\hyperlink{class_entity}{Entity}}\ b,\ Direction\ dir)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aCollider\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bCollider\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aTransform\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bTransform\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ for\ offset}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ glm::vec2\ aPos\ =\ aTransform.previousPosition\ +\ aCollider.\mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ glm::vec2\ bPos\ =\ bTransform.\mbox{\hyperlink{struct_transform_component_a3f8f782163f507442db431de13a233fa}{previousPosition}}\ +\ bCollider.\mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aX\ =\ aPos.x;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aY\ =\ aPos.y;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(aCollider.width);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(aCollider.height);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bX\ =\ bPos.x;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bY\ =\ bPos.y;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bW\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(bCollider.\mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bH\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(bCollider.\mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}});}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Top\ side\ of\ A\ colliding\ with\ bottom\ side\ of\ B}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Direction::top\ ==\ dir)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX\ +\ bW\ \&\&}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ +\ aW\ >\ bX\ \&\&}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ >\ bY}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Left\ side\ of\ A\ colliding\ with\ right\ side\ of\ B}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Direction::left\ ==\ dir)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY\ +\ bH\ \&\&}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ +\ aH\ >\ bY\ \&\&}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ >\ bX}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bottom\ side\ of\ A\ colliding\ with\ top\ side\ of\ B}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Direction::bottom\ ==\ dir)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX\ +\ bW\ \&\&}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ +\ aW\ >\ bX\ \&\&}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Right\ side\ of\ A\ colliding\ with\ left\ side\ of\ B}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Direction::right\ ==\ dir)\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ <\ bY\ +\ bH\ \&\&}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aY\ +\ aH\ >\ bY\ \&\&}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aX\ <\ bX}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ AvoidOverlap(\mbox{\hyperlink{class_entity}{Entity}}\ a,\ \mbox{\hyperlink{class_entity}{Entity}}\ b)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aCollider\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aTransform\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bCollider\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}>();}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bTransform\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bRigidbody\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ for\ offset}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ glm::vec2\ aPos\ =\ aTransform.position\ +\ aCollider.\mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ glm::vec2\ bPos\ =\ bTransform.position\ +\ bCollider.offset;}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CheckCollision(a,\ b,\ Direction::top))\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ entity\ B\ upwards}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.y\ =\ aPos.y\ -\/\ bCollider.height\ -\/\ bCollider.offset.y;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ bRigidbody.velocity.y\ =\ 0.0f;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CheckCollision(a,\ b,\ Direction::bottom))\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ entity\ B\ downwards}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.y\ =\ aPos.y\ +\ aCollider.\mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}\ -\/\ bCollider.offset.y;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ bRigidbody.velocity.y\ =\ 0.0f;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CheckCollision(a,\ b,\ Direction::left))\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ entity\ B\ to\ the\ left}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.x\ =\ aPos.x\ -\/\ bCollider.width\ -\/\ bCollider.offset.x;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ bRigidbody.velocity.x\ =\ 0.0f;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CheckCollision(a,\ b,\ Direction::right))\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ entity\ B\ to\ the\ right}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.x\ =\ aPos.x\ +\ aCollider.\mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}\ -\/\ bCollider.offset.x;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ bRigidbody.velocity.x\ =\ 0.0f;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{class_overlap_system_a995a206b157d8f209329c7a782b11c34}{OverlapSystem}}()\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<BoxColliderComponent>}}();}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<RigidBodyComponent>}}();}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_overlap_system_a927bf4d791254f1adcd87e8b563373b1}{SubscribeToCollisionEvent}}(}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<EventManager>\&\ eventManager)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ eventManager-\/>SubscribeToEvent<\mbox{\hyperlink{class_collision_event}{CollisionEvent}},\ \mbox{\hyperlink{class_overlap_system}{OverlapSystem}}>(\textcolor{keyword}{this},}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_overlap_system_ae36e367cecfe74ffe343613f60c29489}{OverlapSystem::OnCollisionEvent}});}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_overlap_system_ae36e367cecfe74ffe343613f60c29489}{OnCollisionEvent}}(\mbox{\hyperlink{class_collision_event}{CollisionEvent}}\&\ e)\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ aRigidbody\ =\ e.\mbox{\hyperlink{class_collision_event_aede62dbead2e623fa58b699809c96459}{a}}.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bRigidbody\ =\ e.\mbox{\hyperlink{class_collision_event_a93f2f6b3ce583370aa720cac03a38200}{b}}.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}>();}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aRigidbody.isSolid\ \&\&\ bRigidbody.isSolid)\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aRigidbody.mass\ >=\ bRigidbody.mass)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AvoidOverlap(e.\mbox{\hyperlink{class_collision_event_aede62dbead2e623fa58b699809c96459}{a}},\ e.\mbox{\hyperlink{class_collision_event_a93f2f6b3ce583370aa720cac03a38200}{b}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AvoidOverlap(e.\mbox{\hyperlink{class_collision_event_a93f2f6b3ce583370aa720cac03a38200}{b}},\ e.\mbox{\hyperlink{class_collision_event_aede62dbead2e623fa58b699809c96459}{a}});}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ OVERLAPSYSTEM\_HPP}}
+
+\end{DoxyCode}

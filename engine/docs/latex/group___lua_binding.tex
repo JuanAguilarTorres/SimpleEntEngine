@@ -1,0 +1,715 @@
+\doxysection{Lua Script Bindings}
+\hypertarget{group___lua_binding}{}\label{group___lua_binding}\index{Lua Script Bindings@{Lua Script Bindings}}
+
+
+Binds methods for use in Lua.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___lua_binding_ga46dafa0229a52f6f9021f007d09c3be4}{Change\+Animation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&animation\+Id)
+\begin{DoxyCompactList}\small\item\em Changes the animation of a given entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga49d206d11c14cd5e9d2cd76a99dcd86e}{Flip\+Sprite}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool flip)
+\begin{DoxyCompactList}\small\item\em Flips the sprite of a given entity horizontally. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga7cf2dbae811bc561406092ede766e73c}{Is\+Action\+Activated}} (const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Checks if a specific game key action is currently activated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gacbf5bb1c76064965f75abe1c303c821f}{Play\+Sound}} (const std\+::string \&sound\+Id)
+\begin{DoxyCompactList}\small\item\em Plays a sound effect by its identifier. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga033b5709f127c7eb81a2267ec4240dfa}{Get\+Velocity}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the velocity of an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga73fdadfa2b2fc6ad1b14bda590c0116d}{Set\+Velocity}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Sets the velocity of an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga72ad34359414e291411c6753b664f8a5}{Add\+Force}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Adds force to an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{group___lua_binding_gab0b021e0481248e011b86c0b81009d9c}{Get\+Position}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current position of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gad328bf319ed8ea68611bca61dc80a060}{Set\+Position}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Sets the position of an entity. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___lua_binding_gaa73bcccc4c16c0e9682490083552c1c0}{Get\+Rotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current rotation of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaf5f1dcc720a8b0c10b705c2778cf5fb2}{Set\+Rotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, double rot)
+\begin{DoxyCompactList}\small\item\em Sets the rotation of an entity. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{group___lua_binding_ga645114e8079e25c68f46454598075adf}{Get3\+DRotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current 3D rotation of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga9995c4a03bc65b7f9941b725266e48af}{Set3\+DRotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, double rotX, double rotY)
+\begin{DoxyCompactList}\small\item\em Sets the 3D rotation of an entity. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga455fa6d0cf6e43b4fb5f288765f4f5ca}{Get\+Size}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current size of an entity. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga31e03968f7cb55f0479003921805dee7}{Get\+Box}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current box collider of an entity. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group___lua_binding_ga68acc7b6c940ed11a12b3dc31d0dde40}{Get\+Tag}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the tag of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga5026e0d953f45994d3bd44868898c59d}{Set\+Tag}} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\begin{DoxyCompactList}\small\item\em Sets the tag of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga437b9cb45e35a8dcd05ad68d85f4452c}{Set\+Rigid}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool dynamic, bool solid)
+\begin{DoxyCompactList}\small\item\em Sets the rigid properties of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga3f1f652e57f228a21cee84a0e314914d}{Set\+Text}} (\mbox{\hyperlink{class_entity}{Entity}} entity, std\+::string new\+Text)
+\begin{DoxyCompactList}\small\item\em Sets the text content of a text component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaf130241c8cda51a8423544807f5b871a}{Go\+To\+Scene}} (const std\+::string \&scene\+Name)
+\begin{DoxyCompactList}\small\item\em Transitions to a different scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaccb9de13773dbf3dd91b965725876bc2}{Load\+Replica}} (const std\+::string \&entity\+Name)
+\begin{DoxyCompactList}\small\item\em Creates a new entity from a Fly\+Weight Factory Instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga3ab54f345cd8e91ef49fad797898b4fb}{Load\+Replica\+XY}} (const std\+::string \&entity\+Name, float x, float y)
+\begin{DoxyCompactList}\small\item\em Creates a new entity from a Fly\+Weight Factory Instance with custom coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{group___lua_binding_gad24b1412711ac5aa4ca7c4cae13387a3}{Get\+Entity\+Data}} (const std\+::string \&entity)
+\begin{DoxyCompactList}\small\item\em Gets an entity\textquotesingle{}s data from a template file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga98999c1aa464f49eae5fea7710ca1f30}{Delete\+Entity}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga123221c3a810b777be1f56829088944a}{Left\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} e, \mbox{\hyperlink{class_entity}{Entity}} other)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collision from the left. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga06b2a7089036b0529fd50f72f372e5f1}{Right\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} e, \mbox{\hyperlink{class_entity}{Entity}} other)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collision from the right. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group___lua_binding_ga0f277b7cdce73c933fcd0f3ad8119d3e}{Get\+Dir\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} a, \mbox{\hyperlink{class_entity}{Entity}} b)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collisions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga38b6d180b938cebcf420082bb181969a}{Set\+Solid}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool is\+Solid)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the game. \end{DoxyCompactList}\item 
+\Hypertarget{group___lua_binding_gadf1e21627a015a7c473cfae0dcdd2682}\label{group___lua_binding_gadf1e21627a015a7c473cfae0dcdd2682} 
+bool {\bfseries Get\+Solid} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\item 
+\Hypertarget{group___lua_binding_gaec34bd4df94dd5810514420aa4de8e05}\label{group___lua_binding_gaec34bd4df94dd5810514420aa4de8e05} 
+void {\bfseries Add\+Box\+Exclusion} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+\Hypertarget{group___lua_binding_ga42a8bd5055756b436931ccbcd0290307}\label{group___lua_binding_ga42a8bd5055756b436931ccbcd0290307} 
+void {\bfseries Remove\+Box\+Exclusion} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+\Hypertarget{group___lua_binding_gae223af89a01d3ed1a142190aaf4b904e}\label{group___lua_binding_gae223af89a01d3ed1a142190aaf4b904e} 
+bool {\bfseries Is\+Box\+Excluded} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+Uint32 \mbox{\hyperlink{group___lua_binding_gae67435f38740f56b7ebaaaaf5d0da75d}{Get\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current game time in Ticks. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga3786dcf7b5e03e0cc05a726b47ba32f8}{Get\+Mouse\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current position of the mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga5d652435c8117bd0750a53860cbd7c22}{Set\+Shadow}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float r, float g, float b)
+\begin{DoxyCompactList}\small\item\em Sets the shadow color of a 3d model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Binds methods for use in Lua. 
+
+This file contains the C++ functions that are exposed to Lua scripts, allowing Lua code to interact with the game engine\textquotesingle{}s core systems, components, and functionality. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___lua_binding_ga72ad34359414e291411c6753b664f8a5}\index{Lua Script Bindings@{Lua Script Bindings}!AddForce@{AddForce}}
+\index{AddForce@{AddForce}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{AddForce()}{AddForce()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga72ad34359414e291411c6753b664f8a5} 
+void Add\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Adds force to an entity\textquotesingle{}s rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to add \\
+\hline
+{\em x} & Velocity in the X direction \\
+\hline
+{\em y} & Velocity in the Y direction\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: add\+\_\+force(entity, x, y) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga46dafa0229a52f6f9021f007d09c3be4}\index{Lua Script Bindings@{Lua Script Bindings}!ChangeAnimation@{ChangeAnimation}}
+\index{ChangeAnimation@{ChangeAnimation}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{ChangeAnimation()}{ChangeAnimation()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga46dafa0229a52f6f9021f007d09c3be4} 
+void Change\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{const std\+::string \&}]{animation\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Changes the animation of a given entity. 
+
+Updates the entity\textquotesingle{}s animation and sprite components to reflect the specified animation ID. Resets animation parameters and applies new frame and texture data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity whose animation is being changed. \\
+\hline
+{\em animation\+Id} & The ID of the new animation to apply. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___lua_binding_ga98999c1aa464f49eae5fea7710ca1f30}\index{Lua Script Bindings@{Lua Script Bindings}!DeleteEntity@{DeleteEntity}}
+\index{DeleteEntity@{DeleteEntity}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{DeleteEntity()}{DeleteEntity()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga98999c1aa464f49eae5fea7710ca1f30} 
+void Delete\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Removes an entity from the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: delete\+\_\+\+Entity(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga49d206d11c14cd5e9d2cd76a99dcd86e}\index{Lua Script Bindings@{Lua Script Bindings}!FlipSprite@{FlipSprite}}
+\index{FlipSprite@{FlipSprite}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{FlipSprite()}{FlipSprite()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga49d206d11c14cd5e9d2cd76a99dcd86e} 
+void Flip\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{bool}]{flip}{}\end{DoxyParamCaption})}
+
+
+
+Flips the sprite of a given entity horizontally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity whose sprite is being flipped. \\
+\hline
+{\em flip} & A boolean value indicating whether to flip the sprite. {\ttfamily true} for flipped, {\ttfamily false} for normal orientation. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___lua_binding_ga645114e8079e25c68f46454598075adf}\index{Lua Script Bindings@{Lua Script Bindings}!Get3DRotation@{Get3DRotation}}
+\index{Get3DRotation@{Get3DRotation}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{Get3DRotation()}{Get3DRotation()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga645114e8079e25c68f46454598075adf} 
+std\+::pair$<$ double, double $>$ Get3\+DRotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current 3D rotation of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of doubles containing the rotation
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: x, y = get\+\_\+3\+DRotation(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga31e03968f7cb55f0479003921805dee7}\index{Lua Script Bindings@{Lua Script Bindings}!GetBox@{GetBox}}
+\index{GetBox@{GetBox}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetBox()}{GetBox()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga31e03968f7cb55f0479003921805dee7} 
+std\+::tuple$<$ int, int $>$ Get\+Box (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current box collider of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the w and h sizes
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: w, h = get\+\_\+box(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga0f277b7cdce73c933fcd0f3ad8119d3e}\index{Lua Script Bindings@{Lua Script Bindings}!GetDirCollision@{GetDirCollision}}
+\index{GetDirCollision@{GetDirCollision}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetDirCollision()}{GetDirCollision()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga0f277b7cdce73c933fcd0f3ad8119d3e} 
+std\+::string Get\+Dir\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{a}{, }\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Checks an entity\textquotesingle{}s collisions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \doxylink{class_entity}{Entity} instance \\
+\hline
+{\em entity} & Other entity that was collided \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String with the direction of the hit
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: entity = get\+\_\+dir\+\_\+collision("{}entity"{}, "{}other"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gad24b1412711ac5aa4ca7c4cae13387a3}\index{Lua Script Bindings@{Lua Script Bindings}!GetEntityData@{GetEntityData}}
+\index{GetEntityData@{GetEntityData}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetEntityData()}{GetEntityData()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gad24b1412711ac5aa4ca7c4cae13387a3} 
+\mbox{\hyperlink{class_entity}{Entity}} Get\+Entity\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets an entity\textquotesingle{}s data from a template file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Name of the entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The entity object
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: entity = get\+\_\+\+Data("{}entity"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga3786dcf7b5e03e0cc05a726b47ba32f8}\index{Lua Script Bindings@{Lua Script Bindings}!GetMousePosition@{GetMousePosition}}
+\index{GetMousePosition@{GetMousePosition}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetMousePosition()}{GetMousePosition()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga3786dcf7b5e03e0cc05a726b47ba32f8} 
+std\+::pair$<$ int, int $>$ Get\+Mouse\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current position of the mouse. 
+
+\begin{DoxyReturn}{Returns}
+A pair containing the x and y coordinates of the mouse
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: x, y = get\+\_\+mouse() 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gab0b021e0481248e011b86c0b81009d9c}\index{Lua Script Bindings@{Lua Script Bindings}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gab0b021e0481248e011b86c0b81009d9c} 
+std\+::pair$<$ float, float $>$ Get\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current position of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the x and y coordinates
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: x, y = get\+\_\+\+Position(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gaa73bcccc4c16c0e9682490083552c1c0}\index{Lua Script Bindings@{Lua Script Bindings}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetRotation()}{GetRotation()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gaa73bcccc4c16c0e9682490083552c1c0} 
+double Get\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current rotation of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A double containing the rotation
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: get\+\_\+\+Rotation(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga455fa6d0cf6e43b4fb5f288765f4f5ca}\index{Lua Script Bindings@{Lua Script Bindings}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga455fa6d0cf6e43b4fb5f288765f4f5ca} 
+std\+::tuple$<$ int, int $>$ Get\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current size of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the w and h sizes
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: w, h = get\+\_\+size(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga68acc7b6c940ed11a12b3dc31d0dde40}\index{Lua Script Bindings@{Lua Script Bindings}!GetTag@{GetTag}}
+\index{GetTag@{GetTag}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetTag()}{GetTag()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga68acc7b6c940ed11a12b3dc31d0dde40} 
+std\+::string Get\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the tag of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The entity\textquotesingle{}s tag or "{}none"{} if no tag exists
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: tag = get\+\_\+tag(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gae67435f38740f56b7ebaaaaf5d0da75d}\index{Lua Script Bindings@{Lua Script Bindings}!GetTime@{GetTime}}
+\index{GetTime@{GetTime}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetTime()}{GetTime()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gae67435f38740f56b7ebaaaaf5d0da75d} 
+Uint32 Get\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current game time in Ticks. 
+
+\begin{DoxyReturn}{Returns}
+Current time in Ticks since SDL initialization
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: time = get\+\_\+time() 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga033b5709f127c7eb81a2267ec4240dfa}\index{Lua Script Bindings@{Lua Script Bindings}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga033b5709f127c7eb81a2267ec4240dfa} 
+std\+::tuple$<$ int, int $>$ Get\+Velocity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the velocity of an entity\textquotesingle{}s rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to fetch\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: get\+\_\+velocity(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gaf130241c8cda51a8423544807f5b871a}\index{Lua Script Bindings@{Lua Script Bindings}!GoToScene@{GoToScene}}
+\index{GoToScene@{GoToScene}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{GoToScene()}{GoToScene()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gaf130241c8cda51a8423544807f5b871a} 
+void Go\+To\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{scene\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Transitions to a different scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Name} & Name of the scene to transition to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: go\+\_\+to\+\_\+scene("{}scene\+\_\+name"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga7cf2dbae811bc561406092ede766e73c}\index{Lua Script Bindings@{Lua Script Bindings}!IsActionActivated@{IsActionActivated}}
+\index{IsActionActivated@{IsActionActivated}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{IsActionActivated()}{IsActionActivated()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga7cf2dbae811bc561406092ede766e73c} 
+bool Is\+Action\+Activated (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a specific game key action is currently activated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Name of the action to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the action is activated, false otherwise
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: is\+\_\+action\+\_\+activated("{}action\+\_\+name"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga123221c3a810b777be1f56829088944a}\index{Lua Script Bindings@{Lua Script Bindings}!LeftCollision@{LeftCollision}}
+\index{LeftCollision@{LeftCollision}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{LeftCollision()}{LeftCollision()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga123221c3a810b777be1f56829088944a} 
+bool Left\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{e}{, }\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks an entity\textquotesingle{}s collision from the left. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \doxylink{class_entity}{Entity} instance \\
+\hline
+{\em entity} & Other entity that was collided \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean checking the collision
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: entity = left\+\_\+\+Collision("{}entity"{}, "{}other"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gaccb9de13773dbf3dd91b965725876bc2}\index{Lua Script Bindings@{Lua Script Bindings}!LoadReplica@{LoadReplica}}
+\index{LoadReplica@{LoadReplica}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{LoadReplica()}{LoadReplica()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gaccb9de13773dbf3dd91b965725876bc2} 
+void Load\+Replica (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entity\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new entity from a Fly\+Weight Factory Instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Name} & Name of the Fly\+Weight Factory Instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: load\+\_\+replica("{}entity\+Name"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga3ab54f345cd8e91ef49fad797898b4fb}\index{Lua Script Bindings@{Lua Script Bindings}!LoadReplicaXY@{LoadReplicaXY}}
+\index{LoadReplicaXY@{LoadReplicaXY}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{LoadReplicaXY()}{LoadReplicaXY()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga3ab54f345cd8e91ef49fad797898b4fb} 
+void Load\+Replica\+XY (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entity\+Name}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new entity from a Fly\+Weight Factory Instance with custom coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Name} & Name of the Fly\+Weight Factory Instance \\
+\hline
+{\em x,y} & coordinates\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: load\+\_\+replica\+\_\+xy("{}entity\+Name"{}, float x, float y) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gacbf5bb1c76064965f75abe1c303c821f}\index{Lua Script Bindings@{Lua Script Bindings}!PlaySound@{PlaySound}}
+\index{PlaySound@{PlaySound}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{PlaySound()}{PlaySound()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gacbf5bb1c76064965f75abe1c303c821f} 
+void Play\+Sound (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sound\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Plays a sound effect by its identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sound\+Id} & Unique identifier of the sound to play\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: play\+\_\+sfx("{}sound\+\_\+id"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga06b2a7089036b0529fd50f72f372e5f1}\index{Lua Script Bindings@{Lua Script Bindings}!RightCollision@{RightCollision}}
+\index{RightCollision@{RightCollision}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{RightCollision()}{RightCollision()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga06b2a7089036b0529fd50f72f372e5f1} 
+bool Right\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{e}{, }\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks an entity\textquotesingle{}s collision from the right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \doxylink{class_entity}{Entity} instance \\
+\hline
+{\em entity} & Other entity that was collided \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean checking the collision
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: entity = right\+\_\+\+Collision("{}entity"{}, "{}other"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga9995c4a03bc65b7f9941b725266e48af}\index{Lua Script Bindings@{Lua Script Bindings}!Set3DRotation@{Set3DRotation}}
+\index{Set3DRotation@{Set3DRotation}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{Set3DRotation()}{Set3DRotation()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga9995c4a03bc65b7f9941b725266e48af} 
+void Set3\+DRotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{double}]{rotX}{, }\item[{double}]{rotY}{}\end{DoxyParamCaption})}
+
+
+
+Sets the 3D rotation of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em rotX} & New x rotation \\
+\hline
+{\em rotY} & New y rotation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+3\+DRotation(entity, rot\+X, rot\+Y) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gad328bf319ed8ea68611bca61dc80a060}\index{Lua Script Bindings@{Lua Script Bindings}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gad328bf319ed8ea68611bca61dc80a060} 
+void Set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Sets the position of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em x} & New X coordinate \\
+\hline
+{\em y} & New Y coordinate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+\+Position(entity, x, y) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga437b9cb45e35a8dcd05ad68d85f4452c}\index{Lua Script Bindings@{Lua Script Bindings}!SetRigid@{SetRigid}}
+\index{SetRigid@{SetRigid}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetRigid()}{SetRigid()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga437b9cb45e35a8dcd05ad68d85f4452c} 
+void Set\+Rigid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{bool}]{dynamic}{, }\item[{bool}]{solid}{}\end{DoxyParamCaption})}
+
+
+
+Sets the rigid properties of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em bool} & New value for Dynamic property \\
+\hline
+{\em bool} & New value for Solid property\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+rigid(entity, bool, bool) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_gaf5f1dcc720a8b0c10b705c2778cf5fb2}\index{Lua Script Bindings@{Lua Script Bindings}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetRotation()}{SetRotation()}}
+{\footnotesize\ttfamily \label{group___lua_binding_gaf5f1dcc720a8b0c10b705c2778cf5fb2} 
+void Set\+Rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{double}]{rot}{}\end{DoxyParamCaption})}
+
+
+
+Sets the rotation of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em rot} & New rotation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+\+Rotation(entity, rot) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga5d652435c8117bd0750a53860cbd7c22}\index{Lua Script Bindings@{Lua Script Bindings}!SetShadow@{SetShadow}}
+\index{SetShadow@{SetShadow}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetShadow()}{SetShadow()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga5d652435c8117bd0750a53860cbd7c22} 
+void Set\+Shadow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{float}]{r}{, }\item[{float}]{g}{, }\item[{float}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Sets the shadow color of a 3d model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \doxylink{class_entity}{Entity} instance \\
+\hline
+{\em r} & g b Colors of the shadow\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+shadow(entity, r, g, b) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga38b6d180b938cebcf420082bb181969a}\index{Lua Script Bindings@{Lua Script Bindings}!SetSolid@{SetSolid}}
+\index{SetSolid@{SetSolid}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetSolid()}{SetSolid()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga38b6d180b938cebcf420082bb181969a} 
+void Set\+Solid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{bool}]{is\+Solid}{}\end{DoxyParamCaption})}
+
+
+
+Removes an entity from the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: delete\+\_\+\+Entity(entity) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga5026e0d953f45994d3bd44868898c59d}\index{Lua Script Bindings@{Lua Script Bindings}!SetTag@{SetTag}}
+\index{SetTag@{SetTag}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetTag()}{SetTag()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga5026e0d953f45994d3bd44868898c59d} 
+void Set\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption})}
+
+
+
+Sets the tag of an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em tag} & New tag value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+tag(entity, "{}tag\+\_\+name"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga3f1f652e57f228a21cee84a0e314914d}\index{Lua Script Bindings@{Lua Script Bindings}!SetText@{SetText}}
+\index{SetText@{SetText}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetText()}{SetText()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga3f1f652e57f228a21cee84a0e314914d} 
+void Set\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{std\+::string}]{new\+Text}{}\end{DoxyParamCaption})}
+
+
+
+Sets the text content of a text component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em new\+Text} & New text content\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+\+Text(entity, "{}new text"{}) 
+\end{DoxyNote}
+\Hypertarget{group___lua_binding_ga73fdadfa2b2fc6ad1b14bda590c0116d}\index{Lua Script Bindings@{Lua Script Bindings}!SetVelocity@{SetVelocity}}
+\index{SetVelocity@{SetVelocity}!Lua Script Bindings@{Lua Script Bindings}}
+\doxysubsubsection{\texorpdfstring{SetVelocity()}{SetVelocity()}}
+{\footnotesize\ttfamily \label{group___lua_binding_ga73fdadfa2b2fc6ad1b14bda590c0116d} 
+void Set\+Velocity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Sets the velocity of an entity\textquotesingle{}s rigid body. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to modify \\
+\hline
+{\em x} & Velocity in the X direction \\
+\hline
+{\em y} & Velocity in the Y direction\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Can be called from Lua as\+: set\+\_\+velocity(entity, x, y) 
+\end{DoxyNote}

@@ -1,0 +1,106 @@
+\doxysection{Video\+Component Struct Reference}
+\hypertarget{struct_video_component}{}\label{struct_video_component}\index{VideoComponent@{VideoComponent}}
+
+
+Represents a component that handles video playback for an entity.  
+
+
+
+
+{\ttfamily \#include $<$Video\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_video_component_ac44f88f9f39a020713bcf2033c4c9c3a}{Video\+Component}} (const std\+::string \&\mbox{\hyperlink{struct_video_component_a0c9abc2a8e3e3fb28752d378a9a037c9}{video\+Id}}="{}none"{}, int \mbox{\hyperlink{struct_video_component_a567a95182de48701771c005b945fccb4}{width}}=0, int \mbox{\hyperlink{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95}{height}}=0, int \mbox{\hyperlink{struct_video_component_a7025fc5578ee23b9264643c9a117b11a}{posX}}=0, int \mbox{\hyperlink{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04}{posY}}=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_video_component}{Video\+Component} with specified video properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_video_component_a0c9abc2a8e3e3fb28752d378a9a037c9}{video\+Id}}
+\item 
+int \mbox{\hyperlink{struct_video_component_a567a95182de48701771c005b945fccb4}{width}}
+\item 
+int \mbox{\hyperlink{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95}{height}}
+\item 
+int \mbox{\hyperlink{struct_video_component_a7025fc5578ee23b9264643c9a117b11a}{posX}}
+\item 
+int \mbox{\hyperlink{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04}{posY}}
+\item 
+int \mbox{\hyperlink{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e}{warmup\+Count}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component that handles video playback for an entity. 
+
+This component manages properties related to video playback, including the video ID, dimensions for rendering the video, position on the screen, and warmup count for the video to ensure safe playback. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_video_component_ac44f88f9f39a020713bcf2033c4c9c3a}\index{VideoComponent@{VideoComponent}!VideoComponent@{VideoComponent}}
+\index{VideoComponent@{VideoComponent}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{VideoComponent()}{VideoComponent()}}
+{\footnotesize\ttfamily \label{struct_video_component_ac44f88f9f39a020713bcf2033c4c9c3a} 
+Video\+Component\+::\+Video\+Component (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{video\+Id}{ = {\ttfamily "{}none"{}}, }\item[{int}]{width}{ = {\ttfamily 0}, }\item[{int}]{height}{ = {\ttfamily 0}, }\item[{int}]{posX}{ = {\ttfamily 0}, }\item[{int}]{posY}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_video_component}{Video\+Component} with specified video properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em video\+Id} & The ID of the video (default is "{}none"{}). \\
+\hline
+{\em width} & The width of the video display (default is 0). \\
+\hline
+{\em height} & The height of the video display (default is 0). \\
+\hline
+{\em posX} & The x-\/coordinate for positioning the video (default is 0). \\
+\hline
+{\em posY} & The y-\/coordinate for positioning the video (Should be 0). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95}\index{VideoComponent@{VideoComponent}!height@{height}}
+\index{height@{height}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95} 
+int Video\+Component\+::height}
+
+The height of the video display in pixels. \Hypertarget{struct_video_component_a7025fc5578ee23b9264643c9a117b11a}\index{VideoComponent@{VideoComponent}!posX@{posX}}
+\index{posX@{posX}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{posX}{posX}}
+{\footnotesize\ttfamily \label{struct_video_component_a7025fc5578ee23b9264643c9a117b11a} 
+int Video\+Component\+::posX}
+
+The x-\/coordinate for positioning the video on the screen. \Hypertarget{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04}\index{VideoComponent@{VideoComponent}!posY@{posY}}
+\index{posY@{posY}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{posY}{posY}}
+{\footnotesize\ttfamily \label{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04} 
+int Video\+Component\+::posY}
+
+The y-\/coordinate for positioning the video on the screen. \Hypertarget{struct_video_component_a0c9abc2a8e3e3fb28752d378a9a037c9}\index{VideoComponent@{VideoComponent}!videoId@{videoId}}
+\index{videoId@{videoId}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{videoId}{videoId}}
+{\footnotesize\ttfamily \label{struct_video_component_a0c9abc2a8e3e3fb28752d378a9a037c9} 
+std\+::string Video\+Component\+::video\+Id}
+
+The ID of the video to be played. \Hypertarget{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e}\index{VideoComponent@{VideoComponent}!warmupCount@{warmupCount}}
+\index{warmupCount@{warmupCount}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{warmupCount}{warmupCount}}
+{\footnotesize\ttfamily \label{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e} 
+int Video\+Component\+::warmup\+Count}
+
+The count for warming up the video before playback. \Hypertarget{struct_video_component_a567a95182de48701771c005b945fccb4}\index{VideoComponent@{VideoComponent}!width@{width}}
+\index{width@{width}!VideoComponent@{VideoComponent}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{struct_video_component_a567a95182de48701771c005b945fccb4} 
+int Video\+Component\+::width}
+
+The width of the video display in pixels. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_video_component_8hpp}{Video\+Component.\+hpp}}\end{DoxyCompactItemize}

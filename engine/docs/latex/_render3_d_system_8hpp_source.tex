@@ -1,0 +1,280 @@
+\doxysection{Render3\+DSystem.\+hpp}
+\hypertarget{_render3_d_system_8hpp_source}{}\label{_render3_d_system_8hpp_source}\index{src/Systems/Render3DSystem.hpp@{src/Systems/Render3DSystem.hpp}}
+\mbox{\hyperlink{_render3_d_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ RENDER3DSYSTEM\_HPP}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ RENDER3DSYSTEM\_HPP}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SDL2\_gfx/SDL2\_gfxPrimitives.h>}\ \ \textcolor{comment}{//\ Include\ SDL\_gfx\ for\ polygon\ drawing}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <glm/vec3.hpp>}\ \textcolor{comment}{//\ For\ glm::vec3}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}../Utils/colors.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}../Utils/faces.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}../AssetManager/AssetManager.hpp"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_object_component_8hpp}{../Components/ObjectComponent.hpp}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render3_d_system}{Render3DSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::vector<glm::vec3>>\ VertexArrays;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Helper\ struct\ to\ manage\ face\ rendering}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }RenderableFace\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ glm::vec3\ v1,\ v2,\ v3;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::string\ materialName;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ averageDepth;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isVisible;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ face\ normal\ to\ determine\ visibility}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ calculateVisibility()\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ two\ edge\ vectors}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ edge1\ =\ v2\ -\/\ v1;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ edge2\ =\ v3\ -\/\ v1;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ face\ normal\ using\ cross\ product}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ normal\ =\ glm::cross(edge1,\ edge2);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Simple\ view\ direction\ (For\ Backface\ Culling)}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ viewDirection(0,\ 0,\ -\/1);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Face\ is\ visible\ if\ normal\ points\ towards\ the\ camera\ (dot\ product\ >\ 0)}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::dot(normal,\ viewDirection)\ >\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ average\ depth\ for\ sorting}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ computeAverageDepth()\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ averageDepth\ =\ (v1.z\ +\ v2.z\ +\ v3.z)\ /\ 3.0f;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Depth\ sorting\ function}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ compareFaceDepth(\textcolor{keyword}{const}\ RenderableFace\&\ a,\ \textcolor{keyword}{const}\ RenderableFace\&\ b)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sort\ from\ back\ to\ front\ (furthest\ to\ nearest)}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.averageDepth\ <\ b.averageDepth;}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_a594c3635e4addafdcbdaa452d4560c42}{Render3DSystem}}()\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<ObjectComponent>}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00098\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_ac04841463a2188a1ffbf89744ece6b8a}{linesDrawing}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ glm::vec3\&\ start,\ \textcolor{keyword}{const}\ glm::vec3\&\ end)\ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ SDL\_RenderDrawLine(renderer,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(start.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(start.y),}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(end.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(end.y));}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_afe5ed4f34c97faf5992234d459e4e10a}{trianglesDrawing}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ glm::vec3\&\ v1,\ \textcolor{keyword}{const}\ glm::vec3\&\ v2,\ \textcolor{keyword}{const}\ glm::vec3\&\ v3)}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_ac04841463a2188a1ffbf89744ece6b8a}{linesDrawing}}(renderer,\ v1,\ v2);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_ac04841463a2188a1ffbf89744ece6b8a}{linesDrawing}}(renderer,\ v2,\ v3);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_ac04841463a2188a1ffbf89744ece6b8a}{linesDrawing}}(renderer,\ v3,\ v1);}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_a5c6513d909da86a7da63032da0dc3515}{drawWireframe}}(SDL\_Renderer*\ renderer,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<glm::vec3,\ std::string>>\&\ vertex,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transform_component}{TransformComponent}}\ transformC)}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ through\ vertices\ and\ draw\ triangles\ using\ lines}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vertex.size();\ i\ +=\ 3)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 2\ <\ vertex.size())\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ vertices\ (first\ element\ of\ each\ pair)}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v1\ =\ vertex[i].first;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v2\ =\ vertex[i\ +\ 1].first;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ v3\ =\ vertex[i\ +\ 2].first;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Window\ Size}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offsetX\ =\ transformC.\mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}.x;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offsetY\ =\ transformC.\mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}.y;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ renderer\ color}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_SetRenderDrawColor(renderer,\ 255,\ 0,\ 0,\ 255);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_afe5ed4f34c97faf5992234d459e4e10a}{trianglesDrawing}}(renderer,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v1\ +\ glm::vec3(offsetX,\ offsetY,\ 0),}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v2\ +\ glm::vec3(offsetX,\ offsetY,\ 0),}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v3\ +\ glm::vec3(offsetX,\ offsetY,\ 0));}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_a034904fa447cfa5a48aa84bf63073d6f}{drawModel}}(SDL\_Renderer*\ renderer,}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<glm::vec3,\ std::string>>\&\ vertex,}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{AssetManager::ObjAsset}}\&\ objAsset,}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_object_component}{ObjectComponent}}\ objectC,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transform_component}{TransformComponent}}\ transformC)}
+\DoxyCodeLine{00170\ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ std::vector<RenderableFace>\ renderFaces;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vertex.size();\ i\ +=\ 3)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 2\ <\ vertex.size())\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RenderableFace\ face;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.v1\ =\ vertex[i].first;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.v2\ =\ vertex[i\ +\ 1].first;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.v3\ =\ vertex[i\ +\ 2].first;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.computeAverageDepth();}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.isVisible\ =\ face.calculateVisibility();}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ the\ material\ name\ for\ this\ face}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face.materialName\ =\ vertex[i].second;\ \textcolor{comment}{//\ Assuming\ material\ is\ consistent\ for\ the\ face}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ renderFaces.push\_back(face);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ std::sort(renderFaces.begin(),\ renderFaces.end(),\ compareFaceDepth);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offsetX\ =\ transformC.\mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}.x;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offsetY\ =\ transformC.\mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}.y;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ glm::vec3\ lightDirection(0.0f,\ 0.0f,\ -\/1.0f);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ calculateShading\ =\ [](\textcolor{keyword}{const}\ glm::vec3\&\ normal,\ \textcolor{keyword}{const}\ glm::vec3\&\ lightDir)\ -\/>\ \textcolor{keywordtype}{float}\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ intensity\ =\ glm::dot(normal,\ glm::normalize(lightDir));}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::clamp(intensity,\ 0.5f,\ 1.0f);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ face\ :\ renderFaces)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!face.isVisible)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ edge1\ =\ face.v2\ -\/\ face.v1;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ edge2\ =\ face.v3\ -\/\ face.v1;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ normal\ =\ glm::normalize(glm::cross(edge1,\ edge2));}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ shadingIntensity\ =\ calculateShading(normal,\ lightDirection);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ the\ material\ name\ stored\ in\ the\ face}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ baseColor\ =\ \mbox{\hyperlink{class_render3_d_system_a49c34f30a59c87fc864af522997eaa3c}{getMaterialColor}}(objAsset,\ face.materialName);}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blend\ shadow\ color\ with\ material\ color\ based\ on\ shading\ intensity}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ shadowColor\ =\ glm::vec3(objectC.sr,\ objectC.sg,\ objectC.sb);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ shadedColor\ =\ baseColor\ *\ shadingIntensity\ +\ shadowColor\ *\ (1.0f\ -\/\ shadingIntensity);}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ shaded\ color\ to\ 8-\/bit\ per\ channel}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ shadedRed\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(shadedColor.r\ *\ 255);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ shadedGreen\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(shadedColor.g\ *\ 255);}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ shadedBlue\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(shadedColor.b\ *\ 255);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Point\ points[3];}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ points[0]\ =\ \{\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v1.x\ +\ offsetX),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v1.y\ +\ offsetY)\ \};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ points[1]\ =\ \{\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v2.x\ +\ offsetX),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v2.y\ +\ offsetY)\ \};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ points[2]\ =\ \{\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v3.x\ +\ offsetX),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(face.v3.y\ +\ offsetY)\ \};}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ filledTrigonRGBA(renderer,}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ points[0].x,\ points[0].y,}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ points[1].x,\ points[1].y,}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ points[2].x,\ points[2].y,}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shadedRed,\ shadedGreen,\ shadedBlue,\ 255);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00243\ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>\ \mbox{\hyperlink{class_render3_d_system_ae5da06d39946081da10ef966e711ebc2}{setupVertexArray}}(}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<glm::vec3>\&\ vertex,}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<AssetManager::Face>\&\ faces)}
+\DoxyCodeLine{00246\ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ factor\ for\ vertices}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scale\ =\ 40.0f;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ vertex\ array\ with\ material\ information}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>\ vertexArray;}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Process\ object's\ faces}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ face\ :\ faces)}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ vertex\ positions\ and\ scale}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexPosition1\ =\ vertex[face.vertexIndices[0]];}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexPosition2\ =\ vertex[face.vertexIndices[1]];}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexPosition3\ =\ vertex[face.vertexIndices[2]];}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexScaled1\ =\ glm::vec3(vertexPosition1.x\ *\ scale,\ -\/vertexPosition1.y\ *\ scale,\ vertexPosition1.z\ *\ scale);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexScaled2\ =\ glm::vec3(vertexPosition2.x\ *\ scale,\ -\/vertexPosition2.y\ *\ scale,\ vertexPosition2.z\ *\ scale);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3\ vertexScaled3\ =\ glm::vec3(vertexPosition3.x\ *\ scale,\ -\/vertexPosition3.y\ *\ scale,\ vertexPosition3.z\ *\ scale);}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ scaled\ vertices\ with\ their\ corresponding\ material\ name}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ vertexArray.push\_back(\{\ vertexScaled1,\ face.materialName\ \});}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ vertexArray.push\_back(\{\ vertexScaled2,\ face.materialName\ \});}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ vertexArray.push\_back(\{\ vertexScaled3,\ face.materialName\ \});}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vertexArray;}
+\DoxyCodeLine{00270\ \ \ \ \ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00282\ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>\ \mbox{\hyperlink{class_render3_d_system_af90a073dd1174267f2735c365c65a82f}{rotateModel}}(}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<glm::vec3,\ std::string>>\&\ baseModel,}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angleX,}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angleY)}
+\DoxyCodeLine{00286\ \ \ \ \ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ rotation\ matrix\ for\ the\ X-\/axis\ (vertical\ rotation)}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ glm::mat4\ rotationMatrixX\ =\ glm::rotate(glm::mat4(1.0f),\ angleX,\ glm::vec3(1.0f,\ 0.0f,\ 0.0f));}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ rotation\ matrix\ for\ the\ Y-\/axis\ (horizontal\ rotation)}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ glm::mat4\ rotationMatrixY\ =\ glm::rotate(glm::mat4(1.0f),\ angleY,\ glm::vec3(0.0f,\ 1.0f,\ 0.0f));}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Combine\ the\ rotation\ matrices\ (Y\ *\ X\ for\ proper\ order)}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ glm::mat4\ combinedRotationMatrix\ =\ rotationMatrixY\ *\ rotationMatrixX;}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ the\ combined\ rotation\ matrix\ to\ each\ vertex}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>\ rotatedVertexArray;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [vertex,\ materialName]\ :\ baseModel)\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ rotatedVertex\ =\ combinedRotationMatrix\ *\ glm::vec4(vertex,\ 1.0f);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ rotatedVertexArray.push\_back(\{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec3(rotatedVertex),}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ materialName}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rotatedVertexArray;}
+\DoxyCodeLine{00304\ \ \ \ \ \}}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00316\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_render3_d_system_a49c34f30a59c87fc864af522997eaa3c}{getMaterialColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{AssetManager::ObjAsset}}\&\ objAsset,\ \textcolor{keyword}{const}\ std::string\&\ materialName)\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ objAsset.Mtl.find(materialName);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ objAsset.Mtl.end())\ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ diffuse\ color\ or\ a\ default\ color}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec3(it-\/>second.Kd.r,\ it-\/>second.Kd.g,\ it-\/>second.Kd.b);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ color\ if\ material\ not\ found}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec3(1.0f,\ 1.0f,\ 1.0f);}
+\DoxyCodeLine{00324\ \ \ \ \ \}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_aa61db06114d22cfa1149ea83ad241619}{Update}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ assetManager)\ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ objectComponent\ =\ entity.GetComponent<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>();}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ transformComponent\ =\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ objectAsset\ =\ assetManager-\/>Get3dObject(objectComponent.assetId);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baseModel\ =\ \mbox{\hyperlink{class_render3_d_system_ae5da06d39946081da10ef966e711ebc2}{setupVertexArray}}(objectAsset.Vertex,\ objectAsset.Faces);}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotatedModel\ =\ \mbox{\hyperlink{class_render3_d_system_af90a073dd1174267f2735c365c65a82f}{rotateModel}}(baseModel,}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectComponent.xRot,\ objectComponent.yRot);}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pass\ the\ entire\ objectAsset\ to\ draw\ with\ material\ colors}}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_a034904fa447cfa5a48aa84bf63073d6f}{drawModel}}(renderer,\ rotatedModel,\ objectAsset,\ objectComponent,\ transformComponent);}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render3_d_system_a33619d4263872e4207387d22466b4d2b}{UpdateWireframe}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ assetManager)\ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ objectComponent\ =\ entity.GetComponent<\mbox{\hyperlink{struct_object_component}{ObjectComponent}}>();}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ transformComponent\ =\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ objectAsset\ =\ assetManager-\/>Get3dObject(objectComponent.assetId);}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>\ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baseModel\ =\ \mbox{\hyperlink{class_render3_d_system_ae5da06d39946081da10ef966e711ebc2}{setupVertexArray}}(objectAsset.Vertex,\ objectAsset.Faces);}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<glm::vec3,\ std::string>>}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotatedModel\ =\ \mbox{\hyperlink{class_render3_d_system_af90a073dd1174267f2735c365c65a82f}{rotateModel}}(baseModel,}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectComponent.xRot,\ objectComponent.yRot);}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_render3_d_system_a5c6513d909da86a7da63032da0dc3515}{drawWireframe}}(renderer,\ rotatedModel,\ transformComponent);}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ \}}
+\DoxyCodeLine{00374\ \};}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RENDER3DSYSTEM\_HPP}}
+
+\end{DoxyCode}

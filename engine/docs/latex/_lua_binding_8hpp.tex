@@ -1,0 +1,103 @@
+\doxysection{src/\+Binding/\+Lua\+Binding.hpp File Reference}
+\hypertarget{_lua_binding_8hpp}{}\label{_lua_binding_8hpp}\index{src/Binding/LuaBinding.hpp@{src/Binding/LuaBinding.hpp}}
+
+
+Provides C++ to Lua bindings for the game engine functionality.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}../\+Animation\+Manager/\+Animation\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Animation\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Box\+Collider\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Rigid\+Body\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Object\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Sprite\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Property\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Transform\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Text\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Game/\+Game.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___lua_binding_ga46dafa0229a52f6f9021f007d09c3be4}{Change\+Animation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&animation\+Id)
+\begin{DoxyCompactList}\small\item\em Changes the animation of a given entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga49d206d11c14cd5e9d2cd76a99dcd86e}{Flip\+Sprite}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool flip)
+\begin{DoxyCompactList}\small\item\em Flips the sprite of a given entity horizontally. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga7cf2dbae811bc561406092ede766e73c}{Is\+Action\+Activated}} (const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Checks if a specific game key action is currently activated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gacbf5bb1c76064965f75abe1c303c821f}{Play\+Sound}} (const std\+::string \&sound\+Id)
+\begin{DoxyCompactList}\small\item\em Plays a sound effect by its identifier. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga033b5709f127c7eb81a2267ec4240dfa}{Get\+Velocity}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the velocity of an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga73fdadfa2b2fc6ad1b14bda590c0116d}{Set\+Velocity}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Sets the velocity of an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga72ad34359414e291411c6753b664f8a5}{Add\+Force}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Adds force to an entity\textquotesingle{}s rigid body. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{group___lua_binding_gab0b021e0481248e011b86c0b81009d9c}{Get\+Position}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current position of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gad328bf319ed8ea68611bca61dc80a060}{Set\+Position}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float x, float y)
+\begin{DoxyCompactList}\small\item\em Sets the position of an entity. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___lua_binding_gaa73bcccc4c16c0e9682490083552c1c0}{Get\+Rotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current rotation of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaf5f1dcc720a8b0c10b705c2778cf5fb2}{Set\+Rotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, double rot)
+\begin{DoxyCompactList}\small\item\em Sets the rotation of an entity. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{group___lua_binding_ga645114e8079e25c68f46454598075adf}{Get3\+DRotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current 3D rotation of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga9995c4a03bc65b7f9941b725266e48af}{Set3\+DRotation}} (\mbox{\hyperlink{class_entity}{Entity}} entity, double rotX, double rotY)
+\begin{DoxyCompactList}\small\item\em Sets the 3D rotation of an entity. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga455fa6d0cf6e43b4fb5f288765f4f5ca}{Get\+Size}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current size of an entity. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga31e03968f7cb55f0479003921805dee7}{Get\+Box}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the current box collider of an entity. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group___lua_binding_ga68acc7b6c940ed11a12b3dc31d0dde40}{Get\+Tag}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Gets the tag of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga5026e0d953f45994d3bd44868898c59d}{Set\+Tag}} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\begin{DoxyCompactList}\small\item\em Sets the tag of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga437b9cb45e35a8dcd05ad68d85f4452c}{Set\+Rigid}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool dynamic, bool solid)
+\begin{DoxyCompactList}\small\item\em Sets the rigid properties of an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga3f1f652e57f228a21cee84a0e314914d}{Set\+Text}} (\mbox{\hyperlink{class_entity}{Entity}} entity, std\+::string new\+Text)
+\begin{DoxyCompactList}\small\item\em Sets the text content of a text component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaf130241c8cda51a8423544807f5b871a}{Go\+To\+Scene}} (const std\+::string \&scene\+Name)
+\begin{DoxyCompactList}\small\item\em Transitions to a different scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_gaccb9de13773dbf3dd91b965725876bc2}{Load\+Replica}} (const std\+::string \&entity\+Name)
+\begin{DoxyCompactList}\small\item\em Creates a new entity from a Fly\+Weight Factory Instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga3ab54f345cd8e91ef49fad797898b4fb}{Load\+Replica\+XY}} (const std\+::string \&entity\+Name, float x, float y)
+\begin{DoxyCompactList}\small\item\em Creates a new entity from a Fly\+Weight Factory Instance with custom coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{group___lua_binding_gad24b1412711ac5aa4ca7c4cae13387a3}{Get\+Entity\+Data}} (const std\+::string \&entity)
+\begin{DoxyCompactList}\small\item\em Gets an entity\textquotesingle{}s data from a template file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga98999c1aa464f49eae5fea7710ca1f30}{Delete\+Entity}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga123221c3a810b777be1f56829088944a}{Left\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} e, \mbox{\hyperlink{class_entity}{Entity}} other)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collision from the left. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___lua_binding_ga06b2a7089036b0529fd50f72f372e5f1}{Right\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} e, \mbox{\hyperlink{class_entity}{Entity}} other)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collision from the right. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group___lua_binding_ga0f277b7cdce73c933fcd0f3ad8119d3e}{Get\+Dir\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} a, \mbox{\hyperlink{class_entity}{Entity}} b)
+\begin{DoxyCompactList}\small\item\em Checks an entity\textquotesingle{}s collisions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga38b6d180b938cebcf420082bb181969a}{Set\+Solid}} (\mbox{\hyperlink{class_entity}{Entity}} entity, bool is\+Solid)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the game. \end{DoxyCompactList}\item 
+bool {\bfseries Get\+Solid} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\item 
+void {\bfseries Add\+Box\+Exclusion} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+void {\bfseries Remove\+Box\+Exclusion} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+bool {\bfseries Is\+Box\+Excluded} (\mbox{\hyperlink{class_entity}{Entity}} entity, const std\+::string \&tag)
+\item 
+Uint32 \mbox{\hyperlink{group___lua_binding_gae67435f38740f56b7ebaaaaf5d0da75d}{Get\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current game time in Ticks. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{group___lua_binding_ga3786dcf7b5e03e0cc05a726b47ba32f8}{Get\+Mouse\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current position of the mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___lua_binding_ga5d652435c8117bd0750a53860cbd7c22}{Set\+Shadow}} (\mbox{\hyperlink{class_entity}{Entity}} entity, float r, float g, float b)
+\begin{DoxyCompactList}\small\item\em Sets the shadow color of a 3d model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides C++ to Lua bindings for the game engine functionality. 
+
+\begin{DoxyAuthor}{Author}
+Juan Torres 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}

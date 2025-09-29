@@ -1,0 +1,404 @@
+\doxysection{Asset\+Manager Class Reference}
+\hypertarget{class_asset_manager}{}\label{class_asset_manager}\index{AssetManager@{AssetManager}}
+
+
+Asset Management system for handling game resources.  
+
+
+
+
+{\ttfamily \#include $<$Asset\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_asset_manager_1_1_face}{Face}}
+\item 
+struct \mbox{\hyperlink{struct_asset_manager_1_1_material}{Material}}
+\item 
+struct \mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{Obj\+Asset}}
+\item 
+struct \mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{Video\+Asset}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_asset_manager_a750ae7b39b633fbb6594443aa3ca704b}{Asset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_asset_manager_a9c89817cbf3516f1451c116e89f47d30}{\texorpdfstring{$\sim$}{\string~}\+Asset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_a069acc7f6b59d27b5d7cac6aed4e71f0}{Clear\+Assets}} ()
+\begin{DoxyCompactList}\small\item\em Clears all loaded assets from memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_ad909ea7e8e389bfb69f1fc9878810555}{Add\+Texture}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, const std\+::string \&texture\+Id, const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads and adds a texture to the asset manager. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_asset_manager_a0a9408d3736292bdac9fa462e050f345}{Get\+Texture}} (const std\+::string \&texture\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves a texture by its ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_ae694ffbdab1886410889911610c2270e}{Add\+Font}} (const std\+::string \&font\+Id, const std\+::string \&file\+Path, int font\+Size)
+\begin{DoxyCompactList}\small\item\em Loads and adds a font to the asset manager. \end{DoxyCompactList}\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_asset_manager_ac881286653fbb7dcf7b521ebdbb61e16}{Get\+Font}} (const std\+::string \&font\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves a font by its ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_a0e9f4c6614569d0d5c2c32cea8427ea1}{Add\+Sound\+Effect}} (const std\+::string \&sound\+Id, const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads and adds a sound effect to the asset manager. \end{DoxyCompactList}\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_asset_manager_a4f3a1183fbf941ed774e1d63ea98df9c}{Get\+Sound\+Effect}} (const std\+::string \&sound\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves a sound effect by its ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79}{Add\+Music}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads and sets the background music track. \end{DoxyCompactList}\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_asset_manager_a7d15c490deb5db696e0e7536d94ed25f}{Get\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current music track. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_asset_manager_aca7007a2e3cc8e2af1889224f37e9f1e}{Get\+Music\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current music track name (Path) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_a350282d7781b028715188de3534ee612}{Add\+Video}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, const std\+::string \&video\+Id, const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads and adds a video to the asset manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{Video\+Asset}} \mbox{\hyperlink{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268}{Get\+Video}} (const std\+::string \&video\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves a video asset by its ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_asset_manager_ac3b39a75d5dc3eb658f0d24910c89771}{Add3d\+Object}} (const std\+::string \&object\+Id, const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads and adds a 3D Object to the asset manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{Obj\+Asset}} \mbox{\hyperlink{class_asset_manager_ae13d9503a0e15c9609fda20eeec972dd}{Get3d\+Object}} (const std\+::string \&object\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves a 3D asset by its ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Asset Management system for handling game resources. 
+
+The \doxylink{class_asset_manager}{Asset\+Manager} class provides a centralized system for loading, storing, and managing different types of game assets including\+:
+\begin{DoxyItemize}
+\item Textures (SDL\+\_\+\+Texture)
+\item Fonts (TTF\+\_\+\+Font)
+\item Sound Effects (Mix\+\_\+\+Chunk)
+\item Music Tracks (Mix\+\_\+\+Chunk)
+\item Video Files (using FFmpeg)
+\end{DoxyItemize}
+
+All assets are stored in memory and can be accessed using their unique identifiers. The manager handles proper cleanup of resources when destroyed.
+
+\begin{DoxyNote}{Note}
+This class requires SDL2, SDL2\+\_\+ttf, SDL2\+\_\+mixer, and FFmpeg libraries 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_asset_manager_a750ae7b39b633fbb6594443aa3ca704b}\index{AssetManager@{AssetManager}!AssetManager@{AssetManager}}
+\index{AssetManager@{AssetManager}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AssetManager()}{AssetManager()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a750ae7b39b633fbb6594443aa3ca704b} 
+Asset\+Manager\+::\+Asset\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Initializes an empty asset manager. Outputs a debug message to console. \Hypertarget{class_asset_manager_a9c89817cbf3516f1451c116e89f47d30}\index{AssetManager@{AssetManager}!````~AssetManager@{\texorpdfstring{$\sim$}{\string~}AssetManager}}
+\index{````~AssetManager@{\texorpdfstring{$\sim$}{\string~}AssetManager}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AssetManager()}{\string~AssetManager()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a9c89817cbf3516f1451c116e89f47d30} 
+Asset\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Asset\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Calls \doxylink{class_asset_manager_a069acc7f6b59d27b5d7cac6aed4e71f0}{Clear\+Assets()} to ensure proper cleanup of all loaded resources before destruction. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_asset_manager_ac3b39a75d5dc3eb658f0d24910c89771}\index{AssetManager@{AssetManager}!Add3dObject@{Add3dObject}}
+\index{Add3dObject@{Add3dObject}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{Add3dObject()}{Add3dObject()}}
+{\footnotesize\ttfamily \label{class_asset_manager_ac3b39a75d5dc3eb658f0d24910c89771} 
+void Asset\+Manager\+::\+Add3d\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{object\+Id}{, }\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads and adds a 3D Object to the asset manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & The SDL renderer used to create the 3D object \\
+\hline
+{\em object\+Id} & Unique identifier for the object \\
+\hline
+{\em file\+Path} & Path to the object file\\
+\hline
+\end{DoxyParams}
+Creates a 3DAsset containing the necessary data for rendering.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_ae13d9503a0e15c9609fda20eeec972dd}{Get3d\+Object()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_ae694ffbdab1886410889911610c2270e}\index{AssetManager@{AssetManager}!AddFont@{AddFont}}
+\index{AddFont@{AddFont}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AddFont()}{AddFont()}}
+{\footnotesize\ttfamily \label{class_asset_manager_ae694ffbdab1886410889911610c2270e} 
+void Asset\+Manager\+::\+Add\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Id}{, }\item[{const std\+::string \&}]{file\+Path}{, }\item[{int}]{font\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Loads and adds a font to the asset manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font\+Id} & Unique identifier for the font \\
+\hline
+{\em file\+Path} & Path to the font file \\
+\hline
+{\em font\+Size} & Size of the font in points\\
+\hline
+\end{DoxyParams}
+Loads a TTF font file and stores it in the fonts map. Outputs an error message if loading fails.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_ac881286653fbb7dcf7b521ebdbb61e16}{Get\+Font()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79}\index{AssetManager@{AssetManager}!AddMusic@{AddMusic}}
+\index{AddMusic@{AddMusic}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AddMusic()}{AddMusic()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79} 
+void Asset\+Manager\+::\+Add\+Music (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads and sets the background music track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Path to the music file\\
+\hline
+\end{DoxyParams}
+Loads a music file and stores it as the current music track. Only one music track can be loaded at a time. Outputs an error message if loading fails.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a7d15c490deb5db696e0e7536d94ed25f}{Get\+Music()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a0e9f4c6614569d0d5c2c32cea8427ea1}\index{AssetManager@{AssetManager}!AddSoundEffect@{AddSoundEffect}}
+\index{AddSoundEffect@{AddSoundEffect}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AddSoundEffect()}{AddSoundEffect()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a0e9f4c6614569d0d5c2c32cea8427ea1} 
+void Asset\+Manager\+::\+Add\+Sound\+Effect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sound\+Id}{, }\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads and adds a sound effect to the asset manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sound\+Id} & Unique identifier for the sound effect \\
+\hline
+{\em file\+Path} & Path to the sound file\\
+\hline
+\end{DoxyParams}
+Loads a sound effect file and stores it in the sound\+Effects map. Outputs an error message if loading fails.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a4f3a1183fbf941ed774e1d63ea98df9c}{Get\+Sound\+Effect()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_ad909ea7e8e389bfb69f1fc9878810555}\index{AssetManager@{AssetManager}!AddTexture@{AddTexture}}
+\index{AddTexture@{AddTexture}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AddTexture()}{AddTexture()}}
+{\footnotesize\ttfamily \label{class_asset_manager_ad909ea7e8e389bfb69f1fc9878810555} 
+void Asset\+Manager\+::\+Add\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{const std\+::string \&}]{texture\+Id}{, }\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads and adds a texture to the asset manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & The SDL renderer used to create the texture \\
+\hline
+{\em texture\+Id} & Unique identifier for the texture \\
+\hline
+{\em file\+Path} & Path to the image file\\
+\hline
+\end{DoxyParams}
+Creates an SDL\+\_\+\+Texture from the specified image file and stores it in the textures map with the given ID.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a0a9408d3736292bdac9fa462e050f345}{Get\+Texture()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a350282d7781b028715188de3534ee612}\index{AssetManager@{AssetManager}!AddVideo@{AddVideo}}
+\index{AddVideo@{AddVideo}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{AddVideo()}{AddVideo()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a350282d7781b028715188de3534ee612} 
+void Asset\+Manager\+::\+Add\+Video (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{const std\+::string \&}]{video\+Id}{, }\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads and adds a video to the asset manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & The SDL renderer used to create the video texture \\
+\hline
+{\em video\+Id} & Unique identifier for the video \\
+\hline
+{\em file\+Path} & Path to the video file\\
+\hline
+\end{DoxyParams}
+Creates a \doxylink{struct_asset_manager_1_1_video_asset}{Video\+Asset} containing the necessary FFmpeg contexts and SDL texture for video playback. The video asset is stored in the videos map. Outputs error messages if any step of the loading process fails.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268}{Get\+Video()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a069acc7f6b59d27b5d7cac6aed4e71f0}\index{AssetManager@{AssetManager}!ClearAssets@{ClearAssets}}
+\index{ClearAssets@{ClearAssets}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{ClearAssets()}{ClearAssets()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a069acc7f6b59d27b5d7cac6aed4e71f0} 
+void Asset\+Manager\+::\+Clear\+Assets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears all loaded assets from memory. 
+
+Properly frees all resources currently managed\+:
+\begin{DoxyItemize}
+\item Destroys all textures
+\item Closes all fonts
+\item Frees all sound effects
+\item Frees the music track if one is loaded
+\item Cleans up video resources including FFmpeg contexts 
+\end{DoxyItemize}\Hypertarget{class_asset_manager_ae13d9503a0e15c9609fda20eeec972dd}\index{AssetManager@{AssetManager}!Get3dObject@{Get3dObject}}
+\index{Get3dObject@{Get3dObject}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{Get3dObject()}{Get3dObject()}}
+{\footnotesize\ttfamily \label{class_asset_manager_ae13d9503a0e15c9609fda20eeec972dd} 
+\mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{Asset\+Manager\+::\+Obj\+Asset}} Asset\+Manager\+::\+Get3d\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{object\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a 3D asset by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & The unique identifier for the Object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_asset_manager_1_1_obj_asset}{Obj\+Asset} Structure containing the 3D asset
+\end{DoxyReturn}
+Returns an empty \doxylink{struct_asset_manager_1_1_obj_asset}{Obj\+Asset} if the ID is not found.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_ac3b39a75d5dc3eb658f0d24910c89771}{Add3d\+Object()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_ac881286653fbb7dcf7b521ebdbb61e16}\index{AssetManager@{AssetManager}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily \label{class_asset_manager_ac881286653fbb7dcf7b521ebdbb61e16} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} Asset\+Manager\+::\+Get\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a font by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font\+Id} & The unique identifier for the font \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Pointer to the requested font
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_ae694ffbdab1886410889911610c2270e}{Add\+Font()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a7d15c490deb5db696e0e7536d94ed25f}\index{AssetManager@{AssetManager}!GetMusic@{GetMusic}}
+\index{GetMusic@{GetMusic}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetMusic()}{GetMusic()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a7d15c490deb5db696e0e7536d94ed25f} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} Asset\+Manager\+::\+Get\+Music (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current music track. 
+
+\begin{DoxyReturn}{Returns}
+Mix\+\_\+\+Chunk\texorpdfstring{$\ast$}{*} Pointer to the current music track
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79}{Add\+Music()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_aca7007a2e3cc8e2af1889224f37e9f1e}\index{AssetManager@{AssetManager}!GetMusicName@{GetMusicName}}
+\index{GetMusicName@{GetMusicName}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetMusicName()}{GetMusicName()}}
+{\footnotesize\ttfamily \label{class_asset_manager_aca7007a2e3cc8e2af1889224f37e9f1e} 
+std\+::string Asset\+Manager\+::\+Get\+Music\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current music track name (Path) 
+
+\begin{DoxyReturn}{Returns}
+std\+::string Current name
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79}{Add\+Music()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a4f3a1183fbf941ed774e1d63ea98df9c}\index{AssetManager@{AssetManager}!GetSoundEffect@{GetSoundEffect}}
+\index{GetSoundEffect@{GetSoundEffect}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetSoundEffect()}{GetSoundEffect()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a4f3a1183fbf941ed774e1d63ea98df9c} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} Asset\+Manager\+::\+Get\+Sound\+Effect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sound\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a sound effect by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sound\+Id} & The unique identifier for the sound effect \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mix\+\_\+\+Chunk\texorpdfstring{$\ast$}{*} Pointer to the requested sound effect
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a0e9f4c6614569d0d5c2c32cea8427ea1}{Add\+Sound\+Effect()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a0a9408d3736292bdac9fa462e050f345}\index{AssetManager@{AssetManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a0a9408d3736292bdac9fa462e050f345} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} Asset\+Manager\+::\+Get\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{texture\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a texture by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+Id} & The unique identifier for the texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Pointer to the requested texture
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_ad909ea7e8e389bfb69f1fc9878810555}{Add\+Texture()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268}\index{AssetManager@{AssetManager}!GetVideo@{GetVideo}}
+\index{GetVideo@{GetVideo}!AssetManager@{AssetManager}}
+\doxysubsubsection{\texorpdfstring{GetVideo()}{GetVideo()}}
+{\footnotesize\ttfamily \label{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268} 
+\mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{Asset\+Manager\+::\+Video\+Asset}} Asset\+Manager\+::\+Get\+Video (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{video\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a video asset by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em video\+Id} & The unique identifier for the video \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_asset_manager_1_1_video_asset}{Video\+Asset} Structure containing the video\textquotesingle{}s texture and FFmpeg contexts
+\end{DoxyReturn}
+Returns an empty \doxylink{struct_asset_manager_1_1_video_asset}{Video\+Asset} if the ID is not found.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_asset_manager_a350282d7781b028715188de3534ee612}{Add\+Video()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Asset\+Manager/Asset\+Manager.\+hpp\item 
+src/\+Asset\+Manager/\mbox{\hyperlink{_asset_manager_8cpp}{Asset\+Manager.\+cpp}}\end{DoxyCompactItemize}

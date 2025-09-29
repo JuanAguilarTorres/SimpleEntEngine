@@ -1,0 +1,40 @@
+\doxysection{src/\+Systems/\+Render3\+DSystem.hpp File Reference}
+\hypertarget{_render3_d_system_8hpp}{}\label{_render3_d_system_8hpp}\index{src/Systems/Render3DSystem.hpp@{src/Systems/Render3DSystem.hpp}}
+
+
+Defines the \doxylink{class_render3_d_system}{Render3\+DSystem} responsible for rendering 3D models. Wireframe logic created by Sara Echeverria, modified by Juan Torres. 3D Model \doxylink{struct_face}{Face} rendering by Juan Torres.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2\+\_\+gfx/\+SDL2\+\_\+gfx\+Primitives.\+h$>$}\newline
+{\ttfamily \#include $<$glm/vec3.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include "{}../\+ECS/\+ECS.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Utils/colors.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Utils/faces.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Asset\+Manager/\+Asset\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Object\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Components/\+Transform\+Component.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_render3_d_system}{Render3\+DSystem}}
+\begin{DoxyCompactList}\small\item\em Represents the system that handles 3D Rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{class_render3_d_system}{Render3\+DSystem} responsible for rendering 3D models. Wireframe logic created by Sara Echeverria, modified by Juan Torres. 3D Model \doxylink{struct_face}{Face} rendering by Juan Torres. 
+
+Reminder\+: When loading a 3D model, ensure it is triangulated, as there can be a maximum of three vertices per face (use CTRL+T in Blender to triangulate).
+
+\begin{DoxyAuthor}{Author}
+Juan Torres, Sara Echeverria 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}

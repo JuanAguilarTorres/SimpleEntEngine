@@ -1,0 +1,120 @@
+\doxysection{Event\+Manager Class Reference}
+\hypertarget{class_event_manager}{}\label{class_event_manager}\index{EventManager@{EventManager}}
+
+
+Manages event subscription and emission.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{Event\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_event_manager}{Event\+Manager}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_manager_a2e43e8b165b54f75e9c005cf5b04ade7}{\texorpdfstring{$\sim$}{\string~}\+Event\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_event_manager}{Event\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_event_manager_a16c536386f3b6f9b1a4317f062bcc41e}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Clears all event subscriptions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TEvent , typename TOwner $>$ }\\void \mbox{\hyperlink{class_event_manager_a1e9ae48740919505bc03e10d034a24a8}{Subscribe\+To\+Event}} (TOwner \texorpdfstring{$\ast$}{*}owner\+Instance, void(TOwner\+::\texorpdfstring{$\ast$}{*}callback\+Function)(TEvent \&))
+\begin{DoxyCompactList}\small\item\em Subscribes an owner instance to a specific event type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TEvent , typename ... TArgs$>$ }\\void \mbox{\hyperlink{class_event_manager_aebd9000d757904b0ba36c206579f9ada}{Emit\+Event}} (TArgs \&\&... args)
+\begin{DoxyCompactList}\small\item\em Emits an event, notifying all subscribers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages event subscription and emission. 
+
+The \doxylink{class_event_manager}{Event\+Manager} class is responsible for managing event listeners and notifying them when events are emitted. It supports subscribing to events and emitting events to notify subscribers. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_manager_a89099b22114f158b5c530edfea52371d}\index{EventManager@{EventManager}!EventManager@{EventManager}}
+\index{EventManager@{EventManager}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{EventManager()}{EventManager()}}
+{\footnotesize\ttfamily \label{class_event_manager_a89099b22114f158b5c530edfea52371d} 
+Event\+Manager\+::\+Event\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{class_event_manager}{Event\+Manager}. 
+
+Outputs a message indicating that the constructor has been executed. \Hypertarget{class_event_manager_a2e43e8b165b54f75e9c005cf5b04ade7}\index{EventManager@{EventManager}!````~EventManager@{\texorpdfstring{$\sim$}{\string~}EventManager}}
+\index{````~EventManager@{\texorpdfstring{$\sim$}{\string~}EventManager}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventManager()}{\string~EventManager()}}
+{\footnotesize\ttfamily \label{class_event_manager_a2e43e8b165b54f75e9c005cf5b04ade7} 
+Event\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor for the \doxylink{class_event_manager}{Event\+Manager}. 
+
+Outputs a message indicating that the destructor has been executed. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_manager_aebd9000d757904b0ba36c206579f9ada}\index{EventManager@{EventManager}!EmitEvent@{EmitEvent}}
+\index{EmitEvent@{EmitEvent}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{EmitEvent()}{EmitEvent()}}
+{\footnotesize\ttfamily \label{class_event_manager_aebd9000d757904b0ba36c206579f9ada} 
+template$<$typename TEvent , typename ... TArgs$>$ \\
+void Event\+Manager\+::\+Emit\+Event (\begin{DoxyParamCaption}\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Emits an event, notifying all subscribers. 
+
+Creates an event of type TEvent and invokes all subscribed callbacks for that event type.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TEvent} & The type of the event to emit. \\
+\hline
+{\em TArgs} & The types of the arguments used to construct the event. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & The arguments used to construct the event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_event_manager_a16c536386f3b6f9b1a4317f062bcc41e}\index{EventManager@{EventManager}!Reset@{Reset}}
+\index{Reset@{Reset}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily \label{class_event_manager_a16c536386f3b6f9b1a4317f062bcc41e} 
+void Event\+Manager\+::\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clears all event subscriptions. 
+
+Resets the \doxylink{class_event_manager}{Event\+Manager}, removing all subscribers. \Hypertarget{class_event_manager_a1e9ae48740919505bc03e10d034a24a8}\index{EventManager@{EventManager}!SubscribeToEvent@{SubscribeToEvent}}
+\index{SubscribeToEvent@{SubscribeToEvent}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{SubscribeToEvent()}{SubscribeToEvent()}}
+{\footnotesize\ttfamily \label{class_event_manager_a1e9ae48740919505bc03e10d034a24a8} 
+template$<$typename TEvent , typename TOwner $>$ \\
+void Event\+Manager\+::\+Subscribe\+To\+Event (\begin{DoxyParamCaption}\item[{TOwner \texorpdfstring{$\ast$}{*}}]{owner\+Instance}{, }\item[{void(TOwner\+::\texorpdfstring{$\ast$}{*}}]{callback\+Function~}{)(TEvent \&)}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Subscribes an owner instance to a specific event type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TEvent} & The type of the event to subscribe to. \\
+\hline
+{\em TOwner} & The type of the owner instance. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em owner\+Instance} & Pointer to the owner instance. \\
+\hline
+{\em callback\+Function} & The member function to be called when the event is emitted. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Event\+Manager/\mbox{\hyperlink{_event_manager_8hpp}{Event\+Manager.\+hpp}}\end{DoxyCompactItemize}

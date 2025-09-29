@@ -1,0 +1,82 @@
+\doxysection{Scene\+Loader.\+hpp}
+\hypertarget{_scene_loader_8hpp_source}{}\label{_scene_loader_8hpp_source}\index{src/SceneManager/SceneLoader.hpp@{src/SceneManager/SceneLoader.hpp}}
+\mbox{\hyperlink{_scene_loader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ SCENELOADER\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ SCENELOADER\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <tinyxml2/tinyxml2.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <sol/sol.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../AnimationManager/AnimationManager.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../AssetManager/AssetManager.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_controller_manager_8hpp}{../ControllerManager/ControllerManager.hpp}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene_loader}{SceneLoader}}\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ std::map<std::string,\ Entity>\ entityMap;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadVideos(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ sol::table\&\ videos}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadObjects(\textcolor{keyword}{const}\ sol::table\&\ objects}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadSprites(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ sol::table\&\ sprites}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadAnimations(\textcolor{keyword}{const}\ sol::table\&\ animations}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AnimationManager>\&\ animationManager);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadMusic(\textcolor{keyword}{const}\ sol::table\&\ music}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadSoundEffects(\textcolor{keyword}{const}\ sol::table\&\ sounds}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadFonts(\textcolor{keyword}{const}\ sol::table\&\ fonts,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ std::unique\_ptr<AssetManager>\&\ assetManager);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadKeys(\textcolor{keyword}{const}\ sol::table\&\ keys}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<ControllerManager>\&\ controllerManager);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadButtons(\textcolor{keyword}{const}\ sol::table\&\ buttons}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<ControllerManager>\&\ controllerManager);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadEntities(sol::state\&\ lua,\ \textcolor{keyword}{const}\ sol::table\&\ entities}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<Registry>\&\ registry);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadMap(\textcolor{keyword}{const}\ sol::table\ map,\ std::unique\_ptr<Registry>\&\ registry);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadLayer(std::unique\_ptr<Registry>\&\ registry,\ tinyxml2::XMLElement*\ layer,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tWidth,\ \textcolor{keywordtype}{int}\ tHeight,\ \textcolor{keywordtype}{int}\ mWidth,}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ tileSet,\ \textcolor{keywordtype}{int}\ columns);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadColliders(std::unique\_ptr<Registry>\&\ registry,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ tinyxml2::XMLElement*\ objectGroup);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{class_scene_loader_a3b259dbd31c787f0cd7a6b63bd3cd200}{SceneLoader}}();}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{class_scene_loader_afc074d4a248b09c0795754af0d90d43c}{\string~SceneLoader}}();}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_loader_a4109d01a39aa58595c09f894951095d4}{LoadScene}}(\textcolor{keyword}{const}\ std::string\&\ scenePath,\ sol::state\&\ lua}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AnimationManager>\&\ animationManager}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<AssetManager>\&\ assetManager}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<ControllerManager>\&\ controllerManager}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ ,\ std::unique\_ptr<Registry>\&\ registry,\ SDL\_Renderer*\ renderer);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_loader_a1022f656be0819ed481b247ed7ed4859}{ReplicateEntity}}(\textcolor{keyword}{const}\ std::string\&\ entityId,\ std::unique\_ptr<Registry>\&\ registry,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ \mbox{\hyperlink{class_scene_loader_a5d92cb7603372f7fc066257798085c81}{GetDynamicData}}(\textcolor{keyword}{const}\ std::string\&\ entityId);}
+\DoxyCodeLine{00207\ \};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCENELOADER\_HPP}}
+
+\end{DoxyCode}

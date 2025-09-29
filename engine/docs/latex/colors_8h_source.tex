@@ -1,0 +1,58 @@
+\doxysection{colors.\+h}
+\hypertarget{colors_8h_source}{}\label{colors_8h_source}\index{src/Utils/colors.h@{src/Utils/colors.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\&\ \mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(\textcolor{keyword}{const}\ T\&\ value,\ \textcolor{keyword}{const}\ T\&\ min,\ \textcolor{keyword}{const}\ T\&\ max)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{return}\ (value\ <\ min)\ ?\ min\ :\ ((value\ >\ max)\ ?\ max\ :\ value);}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_color}{Color}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_color_a39bb1f3f9a514ac1a581ca27fddebebc}{a}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{struct_color_abc8d49d37a243f83f860a55106579d36}{Color}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ red\ =\ 0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ green\ =\ 0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ blue\ =\ 0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ alpha\ =\ 255)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}}(\mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(red,\ static\_cast<unsigned\ char>(0),\ static\_cast<unsigned\ char>(255))),}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}}(\mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(green,\ static\_cast<unsigned\ char>(0),\ static\_cast<unsigned\ char>(255))),}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}}(\mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(blue,\ static\_cast<unsigned\ char>(0),\ static\_cast<unsigned\ char>(255))),}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_color_a39bb1f3f9a514ac1a581ca27fddebebc}{a}}(\mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(alpha,\ static\_cast<unsigned\ char>(0),\ static\_cast<unsigned\ char>(255)))\ \{\}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ \mbox{\hyperlink{struct_color_af120872d8445c917e04039f4921279d3}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_color}{Color}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_color_abc8d49d37a243f83f860a55106579d36}{Color}}(}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ std::min(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}})\ +\ other.\mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}},\ 255),}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ std::min(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}})\ +\ other.\mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}},\ 255),}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::min(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}})\ +\ other.\mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}},\ 255)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ \mbox{\hyperlink{struct_color_a1913ac35b2deeabf7f9bc449deae499e}{operator*}}(\textcolor{keywordtype}{float}\ factor)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_color_abc8d49d37a243f83f860a55106579d36}{Color}}(}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}}\ *\ factor),\ 0,\ 255),}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}}\ *\ factor),\ 0,\ 255),}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}}\ *\ factor),\ 0,\ 255)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{struct_color_a7540a81377bda75ff73af99fa3747540}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_color}{Color}}\&\ color)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}RGBA("{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(color.\mbox{\hyperlink{struct_color_ab9a9c7134511f9b116a6fcc81a303ba6}{r}})\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(color.\mbox{\hyperlink{struct_color_adc506c5063609cacdda2c007da3b7a5f}{g}})\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(color.\mbox{\hyperlink{struct_color_a9f00605f7024dcb79342e97fae52c1bd}{b}})\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(color.\mbox{\hyperlink{struct_color_a39bb1f3f9a514ac1a581ca27fddebebc}{a}})\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{struct_color}{Color}}\ \mbox{\hyperlink{struct_color_a810431bc7f5356f82ffdc3c9cf0eda66}{operator*}}(\textcolor{keywordtype}{float}\ factor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_color}{Color}}\&\ color)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ color\ *\ factor;}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \textcolor{comment}{//\ end\ of\ 3D\ group}}
+
+\end{DoxyCode}

@@ -1,0 +1,16 @@
+CC=g++
+STD=-std=c++17
+CFLAGS=-Wall -Wextra
+INC_PATH=-I"./libs" -I"C:\msys64\mingw64\include"
+SRC = $(wildcard src/*.cpp src/Game/*.cpp src/ECS/*.cpp src/AssetManager/*.cpp src/ControllerManager/*.cpp src/SceneManager/*.cpp src/AnimationManager/*.cpp)
+LFLAGS=-L"C:\msys64\mingw64\lib" -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf  -lSDL2_mixer -lSDL2_gfx -llua53  -lavcodec -lavformat -lavutil -lswscale -ltinyxml2
+EXE=game_engine.exe
+
+build:
+	$(CC) $(CFLAGS) $(STD) $(INC_PATH) $(SRC) -o $(EXE) $(LFLAGS)
+
+run:
+	.\$(EXE)
+
+clean:
+	del $(EXE)

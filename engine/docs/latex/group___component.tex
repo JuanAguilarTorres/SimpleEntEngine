@@ -1,0 +1,54 @@
+\doxysection{Component}
+\hypertarget{group___component}{}\label{group___component}\index{Component@{Component}}
+
+
+This module handles all components in the entity-\/component system.  
+
+
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{_animation_component_8hpp}{Animation\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Animation support for entities via component. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_box_collider_component_8hpp}{Box\+Collider\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Box collider component for entity collision detection. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_camera_follow_component_8hpp}{Camera\+Follow\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_camera_follow_component}{Camera\+Follow\+Component} used to make the camera follow an entity. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_circle_collider_component_8hpp}{Circle\+Collider\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_circle_collider_component}{Circle\+Collider\+Component} used for circular collision detection in the game engine. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_clickable_component_8hpp}{Clickable\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_clickable_component}{Clickable\+Component} used to detect and handle click events on entities in the game engine. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_object_component_8hpp}{Object\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_object_component}{Object\+Component} used to manage 3D Instances. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_property_component_8hpp}{Property\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_property_component}{Property\+Component} used to assign a tag or property to an entity in the game engine for identification or categorization purposes. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_rigid_body_component_8hpp}{Rigid\+Body\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_rigid_body_component}{Rigid\+Body\+Component} used to add physical movement to entities in the game engine through velocity management and simulation of rigid body dynamics. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_script_component_8hpp}{Script\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_script_component}{Script\+Component} used to attach scripting functionality to entities in the game engine, allowing custom behavior through Lua scripting functions for events and updates. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_sprite_component_8hpp}{Sprite\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_sprite_component}{Sprite\+Component} used for rendering textured entities in the game engine, managing their visual representation through a texture and source rectangle settings. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_text_component_8hpp}{Text\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_text_component}{Text\+Component} used to render text entities in the game engine, managing text content, font, color, and dimensions for display purposes. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_transform_component_8hpp}{Transform\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_transform_component}{Transform\+Component} used to manage an entity\textquotesingle{}s position, scale, rotation, and camera behavior in the game engine. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_video_component_8hpp}{Video\+Component.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Defines the \doxylink{struct_video_component}{Video\+Component} used to manage video playback properties for an entity in the game engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_i_component}{IComponent}}
+\begin{DoxyCompactList}\small\item\em Base class for all components. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_component}{Component$<$ TComponent $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for specific component types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___component_ga9e171c7763cf19fc9f0a3200aeebacb7}\label{group___component_ga9e171c7763cf19fc9f0a3200aeebacb7} 
+typedef std\+::bitset$<$ MAX\+\_\+\+COMPONENTS $>$ {\bfseries Signature}
+\begin{DoxyCompactList}\small\item\em Represents a bitset for tracking the presence of components in an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module handles all components in the entity-\/component system. 
+

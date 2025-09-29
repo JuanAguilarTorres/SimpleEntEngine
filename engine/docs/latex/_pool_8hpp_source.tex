@@ -1,0 +1,64 @@
+\doxysection{Pool.\+hpp}
+\hypertarget{_pool_8hpp_source}{}\label{_pool_8hpp_source}\index{src/Utils/Pool.hpp@{src/Utils/Pool.hpp}}
+\mbox{\hyperlink{_pool_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ POOL\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ POOL\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_pool}{IPool}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_pool}{\string~IPool}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TComponent>}
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pool}{Pool}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_pool}{IPool}}\ \{}
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<TComponent>\ data;\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_pool_a0e65a20ef974b5891b3219cecde58c03}{Pool}}(\textcolor{keywordtype}{int}\ size\ =\ 1000)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ data.resize(size);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_pool}{\string~Pool}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pool_a2d99b2026e2a2ebd370c4b8ec20e3fde}{IsEmpty}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.empty();}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_pool_a9de79f588ec7382732976822a3aa9502}{GetSize}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(data.size());}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pool_a0ebc69a33156ac04d9d9fe3e594d74d5}{Resize}}(\textcolor{keywordtype}{int}\ n)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ data.resize(n);}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pool_a09254b37289aa6ba0d32765d6e9f1b2b}{Clear}}()\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ data.clear();}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pool_a0d612d7224d292a461945b08011cb367}{Add}}(TComponent\ \textcolor{keywordtype}{object})\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ data.push\_back(\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pool_aa1553e4f949a6e5729d7f520ffc36fb1}{Set}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index,\ TComponent\ \textcolor{keywordtype}{object})\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ data[index]\ =\ object;}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ TComponent\&\ \mbox{\hyperlink{class_pool_ab3a9f39bca3baec93725767f6262e6f7}{Get}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}TComponent\&\textcolor{keyword}{>}(data[index]);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ TComponent\&\ \mbox{\hyperlink{class_pool_a2498a4e3fc6e901b8162ce22347f9a22}{operator[]\ }}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}TComponent\&\textcolor{keyword}{>}(data[index]);}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \textcolor{comment}{//\ end\ of\ ComponentPool\ group}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//POOL\_HPP}}
+
+\end{DoxyCode}

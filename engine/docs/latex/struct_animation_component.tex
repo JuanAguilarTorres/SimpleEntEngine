@@ -1,0 +1,94 @@
+\doxysection{Animation\+Component Struct Reference}
+\hypertarget{struct_animation_component}{}\label{struct_animation_component}\index{AnimationComponent@{AnimationComponent}}
+
+
+Represents the animation component for an entity.  
+
+
+
+
+{\ttfamily \#include $<$Animation\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_animation_component_a9dbe4e13af4b9aa24adb651460794957}{Animation\+Component}} (int \mbox{\hyperlink{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}{num\+Frames}}=1, int \mbox{\hyperlink{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}{frame\+Speed\+Rate}}=1, bool \mbox{\hyperlink{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}{is\+Loop}}=true)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{struct_animation_component}{Animation\+Component}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}{num\+Frames}}
+\item 
+int \mbox{\hyperlink{struct_animation_component_a307af1a2894a53cf6322d0c5429bb0fb}{current\+Frame}}
+\item 
+int \mbox{\hyperlink{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}{frame\+Speed\+Rate}}
+\item 
+bool \mbox{\hyperlink{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}{is\+Loop}}
+\item 
+int \mbox{\hyperlink{struct_animation_component_a9f02559b240414bc4678cbc389fe37ac}{start\+Time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the animation component for an entity. 
+
+This component is used to control the animation state of an entity, including the number of frames in the animation, the current frame, the speed at which frames change, and whether the animation loops. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_animation_component_a9dbe4e13af4b9aa24adb651460794957}\index{AnimationComponent@{AnimationComponent}!AnimationComponent@{AnimationComponent}}
+\index{AnimationComponent@{AnimationComponent}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{AnimationComponent()}{AnimationComponent()}}
+{\footnotesize\ttfamily \label{struct_animation_component_a9dbe4e13af4b9aa24adb651460794957} 
+Animation\+Component\+::\+Animation\+Component (\begin{DoxyParamCaption}\item[{int}]{num\+Frames}{ = {\ttfamily 1}, }\item[{int}]{frame\+Speed\+Rate}{ = {\ttfamily 1}, }\item[{bool}]{is\+Loop}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{struct_animation_component}{Animation\+Component}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Frames} & The total number of frames in the animation (default is 1). \\
+\hline
+{\em frame\+Speed\+Rate} & The speed rate for changing frames (default is 1). \\
+\hline
+{\em is\+Loop} & Indicates whether the animation should loop (default is true). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_animation_component_a307af1a2894a53cf6322d0c5429bb0fb}\index{AnimationComponent@{AnimationComponent}!currentFrame@{currentFrame}}
+\index{currentFrame@{currentFrame}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{currentFrame}{currentFrame}}
+{\footnotesize\ttfamily \label{struct_animation_component_a307af1a2894a53cf6322d0c5429bb0fb} 
+int Animation\+Component\+::current\+Frame}
+
+The current frame being displayed (1-\/based index). \Hypertarget{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}\index{AnimationComponent@{AnimationComponent}!frameSpeedRate@{frameSpeedRate}}
+\index{frameSpeedRate@{frameSpeedRate}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{frameSpeedRate}{frameSpeedRate}}
+{\footnotesize\ttfamily \label{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5} 
+int Animation\+Component\+::frame\+Speed\+Rate}
+
+The speed rate for changing frames, where higher values mean slower animations. \Hypertarget{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}\index{AnimationComponent@{AnimationComponent}!isLoop@{isLoop}}
+\index{isLoop@{isLoop}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{isLoop}{isLoop}}
+{\footnotesize\ttfamily \label{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36} 
+bool Animation\+Component\+::is\+Loop}
+
+Indicates whether the animation should loop. \Hypertarget{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}\index{AnimationComponent@{AnimationComponent}!numFrames@{numFrames}}
+\index{numFrames@{numFrames}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{numFrames}{numFrames}}
+{\footnotesize\ttfamily \label{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952} 
+int Animation\+Component\+::num\+Frames}
+
+The total number of frames in the animation. \Hypertarget{struct_animation_component_a9f02559b240414bc4678cbc389fe37ac}\index{AnimationComponent@{AnimationComponent}!startTime@{startTime}}
+\index{startTime@{startTime}!AnimationComponent@{AnimationComponent}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily \label{struct_animation_component_a9f02559b240414bc4678cbc389fe37ac} 
+int Animation\+Component\+::start\+Time}
+
+The start time for the animation, used to determine frame timing. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_animation_component_8hpp}{Animation\+Component.\+hpp}}\end{DoxyCompactItemize}

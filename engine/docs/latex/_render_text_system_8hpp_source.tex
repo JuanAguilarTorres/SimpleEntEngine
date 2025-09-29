@@ -1,0 +1,59 @@
+\doxysection{Render\+Text\+System.\+hpp}
+\hypertarget{_render_text_system_8hpp_source}{}\label{_render_text_system_8hpp_source}\index{src/Systems/RenderTextSystem.hpp@{src/Systems/RenderTextSystem.hpp}}
+\mbox{\hyperlink{_render_text_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ RENDERTEXTSYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ RENDERTEXTSYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../AssetManager/AssetManager.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_component_8hpp}{../Components/TextComponent.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_render_text_system}{RenderTextSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_render_text_system_a2ae7b1c0766f9ed916503c8b0e647d5c}{RenderTextSystem}}()\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TextComponent>}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_render_text_system_a2525ec527860e6cb69a91b4b4218d26a}{Update}}(SDL\_Renderer*\ renderer,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ assetManager)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ text\ =\ entity.GetComponent<\mbox{\hyperlink{struct_text_component}{TextComponent}}>();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ transform\ =\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ surface\ from\ the\ text}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Surface*\ surface\ =\ TTF\_RenderText\_Blended(}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assetManager-\/>GetFont(text.fontId),\ text.text.c\_str(),\ text.color);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ text.width\ =\ surface-\/>w;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ text.height\ =\ surface-\/>h;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ texture\ from\ the\ surface}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Texture*\ texture\ =\ SDL\_CreateTextureFromSurface(renderer,\ surface);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FreeSurface(surface);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ the\ destination\ rectangle\ for\ rendering}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Rect\ dstRect\ =\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.position.x),}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.position.y),}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text.width\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.scale.x),}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text.height\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.scale.y),}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render\ the\ text\ texture\ to\ the\ screen}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderCopy(renderer,\ texture,\ NULL,\ \&dstRect);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyTexture(texture);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RENDERTEXTSYSTEM\_HPP}}
+
+\end{DoxyCode}

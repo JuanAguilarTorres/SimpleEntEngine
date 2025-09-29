@@ -1,0 +1,57 @@
+\doxysection{UISystem.\+hpp}
+\hypertarget{_u_i_system_8hpp_source}{}\label{_u_i_system_8hpp_source}\index{src/Systems/UISystem.hpp@{src/Systems/UISystem.hpp}}
+\mbox{\hyperlink{_u_i_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ UISYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ UISYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_clickable_component_8hpp}{../Components/ClickableComponent.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script_component_8hpp}{../Components/ScriptComponent.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_component_8hpp}{../Components/TextComponent.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_event_manager_8hpp}{../EventManager/EventManager.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_click_event_8hpp}{../Events/ClickEvent.hpp}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_system}{UISystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_u_i_system_ac930744c42c305f09deacd176045392b}{UISystem}}()\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<ClickableComponent>}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TextComponent>}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_system_a48a6998f346dafe48df1a4a028947098}{SubscribeToClickEvent}}(std::unique\_ptr<EventManager>\&\ eventManager)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ eventManager-\/>SubscribeToEvent<\mbox{\hyperlink{class_click_event}{ClickEvent}},\ \mbox{\hyperlink{class_u_i_system}{UISystem}}>(\textcolor{keyword}{this},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_u_i_system_acb417d3dd7c5e3d27544dbb39eb41ac9}{UISystem::OnClickEvent}});}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_system_acb417d3dd7c5e3d27544dbb39eb41ac9}{OnClickEvent}}(\mbox{\hyperlink{class_click_event}{ClickEvent}}\&\ e)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ text\ =\ entity.GetComponent<\mbox{\hyperlink{struct_text_component}{TextComponent}}>();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ transform\ =\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (transform.position.x\ <\ e.\mbox{\hyperlink{class_click_event_a75bf039ac765af89dbd91ab57bf0fdc2}{posX}}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ e.\mbox{\hyperlink{class_click_event_a75bf039ac765af89dbd91ab57bf0fdc2}{posX}}\ <\ transform.position.x\ +\ text.\mbox{\hyperlink{struct_text_component_af6827a596eef0dcb4170fc4c118bac23}{width}}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ transform.position.y\ <\ e.\mbox{\hyperlink{class_click_event_aea5def127de393aebcb0d1e07e198736}{posY}}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ e.\mbox{\hyperlink{class_click_event_aea5def127de393aebcb0d1e07e198736}{posY}}\ <\ transform.position.y\ +\ text.\mbox{\hyperlink{struct_text_component_af40b90b566daa4dfb563be18677cf8d2}{height}})\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entity.HasComponent<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>())\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ script\ =\ entity.GetComponent<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (script.onClick\ !=\ sol::nil)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ script.onClick();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UISYSTEM\_HPP}}
+
+\end{DoxyCode}

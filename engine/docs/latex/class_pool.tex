@@ -1,0 +1,197 @@
+\doxysection{Pool\texorpdfstring{$<$}{<} TComponent \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_pool}{}\label{class_pool}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+
+
+Template class for storing and managing components of type TComponent.  
+
+
+
+
+{\ttfamily \#include $<$Pool.\+hpp$>$}
+
+Inheritance diagram for Pool\texorpdfstring{$<$}{<} TComponent \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pool}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pool_a0e65a20ef974b5891b3219cecde58c03}{Pool}} (int size=1000)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_pool}{Pool} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pool_a2d99b2026e2a2ebd370c4b8ec20e3fde}{Is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em Check if the pool is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_pool_a9de79f588ec7382732976822a3aa9502}{Get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the current size of the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pool_a0ebc69a33156ac04d9d9fe3e594d74d5}{Resize}} (int n)
+\begin{DoxyCompactList}\small\item\em Resize the pool to contain n elements. \end{DoxyCompactList}\item 
+\Hypertarget{class_pool_a09254b37289aa6ba0d32765d6e9f1b2b}\label{class_pool_a09254b37289aa6ba0d32765d6e9f1b2b} 
+void {\bfseries Clear} ()
+\begin{DoxyCompactList}\small\item\em Remove all elements from the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pool_a0d612d7224d292a461945b08011cb367}{Add}} (TComponent object)
+\begin{DoxyCompactList}\small\item\em Add a new component to the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pool_aa1553e4f949a6e5729d7f520ffc36fb1}{Set}} (unsigned int index, TComponent object)
+\begin{DoxyCompactList}\small\item\em Set the component at the specified index. \end{DoxyCompactList}\item 
+TComponent \& \mbox{\hyperlink{class_pool_ab3a9f39bca3baec93725767f6262e6f7}{Get}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em Get the component at the specified index. \end{DoxyCompactList}\item 
+TComponent \& \mbox{\hyperlink{class_pool_a2498a4e3fc6e901b8162ce22347f9a22}{operator\mbox{[}$\,$\mbox{]}}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em Array subscript operator for accessing components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_pool}{IPool}}}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename TComponent$>$\newline
+class Pool$<$ TComponent $>$}
+Template class for storing and managing components of type TComponent. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of component to be stored in the pool\\
+\hline
+\end{DoxyTemplParams}
+This class provides a type-\/safe container for storing and accessing components. It manages a dynamic array of components with methods for adding, accessing, and modifying elements. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pool_a0e65a20ef974b5891b3219cecde58c03}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!Pool@{Pool}}
+\index{Pool@{Pool}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{Pool()}{Pool()}}
+{\footnotesize\ttfamily \label{class_pool_a0e65a20ef974b5891b3219cecde58c03} 
+template$<$typename TComponent $>$ \\
+\mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\mbox{\hyperlink{class_pool}{\+::\+Pool}} (\begin{DoxyParamCaption}\item[{int}]{size}{ = {\ttfamily 1000}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_pool}{Pool} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Initial size of the pool (default\+: 1000) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pool_a0d612d7224d292a461945b08011cb367}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!Add@{Add}}
+\index{Add@{Add}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily \label{class_pool_a0d612d7224d292a461945b08011cb367} 
+template$<$typename TComponent $>$ \\
+void \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Add (\begin{DoxyParamCaption}\item[{TComponent}]{object}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a new component to the pool. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \doxylink{class_component}{Component} to add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_pool_ab3a9f39bca3baec93725767f6262e6f7}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!Get@{Get}}
+\index{Get@{Get}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_pool_ab3a9f39bca3baec93725767f6262e6f7} 
+template$<$typename TComponent $>$ \\
+TComponent \& \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Get (\begin{DoxyParamCaption}\item[{unsigned int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the component at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the component to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TComponent\& Reference to the component 
+\end{DoxyReturn}
+\Hypertarget{class_pool_a9de79f588ec7382732976822a3aa9502}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \label{class_pool_a9de79f588ec7382732976822a3aa9502} 
+template$<$typename TComponent $>$ \\
+int \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current size of the pool. 
+
+\begin{DoxyReturn}{Returns}
+int Number of elements in the pool 
+\end{DoxyReturn}
+\Hypertarget{class_pool_a2d99b2026e2a2ebd370c4b8ec20e3fde}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!IsEmpty@{IsEmpty}}
+\index{IsEmpty@{IsEmpty}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{IsEmpty()}{IsEmpty()}}
+{\footnotesize\ttfamily \label{class_pool_a2d99b2026e2a2ebd370c4b8ec20e3fde} 
+template$<$typename TComponent $>$ \\
+bool \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Is\+Empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the pool is empty. 
+
+\begin{DoxyReturn}{Returns}
+true if pool contains no elements 
+
+false if pool contains elements 
+\end{DoxyReturn}
+\Hypertarget{class_pool_a2498a4e3fc6e901b8162ce22347f9a22}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{class_pool_a2498a4e3fc6e901b8162ce22347f9a22} 
+template$<$typename TComponent $>$ \\
+TComponent \& \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{unsigned int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Array subscript operator for accessing components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the component to access \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TComponent\& Reference to the component 
+\end{DoxyReturn}
+\Hypertarget{class_pool_a0ebc69a33156ac04d9d9fe3e594d74d5}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!Resize@{Resize}}
+\index{Resize@{Resize}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{class_pool_a0ebc69a33156ac04d9d9fe3e594d74d5} 
+template$<$typename TComponent $>$ \\
+void \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Resize (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the pool to contain n elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & New size of the pool \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_pool_aa1553e4f949a6e5729d7f520ffc36fb1}\index{Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}!Set@{Set}}
+\index{Set@{Set}!Pool$<$ TComponent $>$@{Pool$<$ TComponent $>$}}
+\doxysubsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily \label{class_pool_aa1553e4f949a6e5729d7f520ffc36fb1} 
+template$<$typename TComponent $>$ \\
+void \mbox{\hyperlink{class_pool}{Pool}}$<$ TComponent $>$\+::\+Set (\begin{DoxyParamCaption}\item[{unsigned int}]{index}{, }\item[{TComponent}]{object}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the component at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index where to set the component \\
+\hline
+{\em object} & \doxylink{class_component}{Component} to set at the index \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Utils/\mbox{\hyperlink{_pool_8hpp}{Pool.\+hpp}}\end{DoxyCompactItemize}

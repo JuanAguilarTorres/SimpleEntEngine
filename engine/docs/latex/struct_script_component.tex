@@ -1,0 +1,78 @@
+\doxysection{Script\+Component Struct Reference}
+\hypertarget{struct_script_component}{}\label{struct_script_component}\index{ScriptComponent@{ScriptComponent}}
+
+
+Represents a component that allows attaching Lua script functions to an entity.  
+
+
+
+
+{\ttfamily \#include $<$Script\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_script_component_a102780206fd2f1cc0a9c508ddbfd74ca}{Script\+Component}} (sol\+::function \mbox{\hyperlink{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}{on\+Collision}}=sol\+::lua\+\_\+nil, sol\+::function \mbox{\hyperlink{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}{on\+Click}}=sol\+::lua\+\_\+nil, sol\+::function \mbox{\hyperlink{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}{update}}=sol\+::lua\+\_\+nil)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_script_component}{Script\+Component} with specified Lua functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sol\+::function \mbox{\hyperlink{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}{on\+Collision}}
+\item 
+sol\+::function \mbox{\hyperlink{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}{on\+Click}}
+\item 
+sol\+::function \mbox{\hyperlink{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}{update}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component that allows attaching Lua script functions to an entity. 
+
+This component provides scripting capabilities for an entity, enabling custom behavior through Lua functions for various events, such as collisions, clicks, and updates. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_script_component_a102780206fd2f1cc0a9c508ddbfd74ca}\index{ScriptComponent@{ScriptComponent}!ScriptComponent@{ScriptComponent}}
+\index{ScriptComponent@{ScriptComponent}!ScriptComponent@{ScriptComponent}}
+\doxysubsubsection{\texorpdfstring{ScriptComponent()}{ScriptComponent()}}
+{\footnotesize\ttfamily \label{struct_script_component_a102780206fd2f1cc0a9c508ddbfd74ca} 
+Script\+Component\+::\+Script\+Component (\begin{DoxyParamCaption}\item[{sol\+::function}]{on\+Collision}{ = {\ttfamily sol\+:\+:lua\+\_\+nil}, }\item[{sol\+::function}]{on\+Click}{ = {\ttfamily sol\+:\+:lua\+\_\+nil}, }\item[{sol\+::function}]{update}{ = {\ttfamily sol\+:\+:lua\+\_\+nil}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_script_component}{Script\+Component} with specified Lua functions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Collision} & The Lua function for handling collision events (default is nil). \\
+\hline
+{\em on\+Click} & The Lua function for handling click events (default is nil). \\
+\hline
+{\em update} & The Lua function for handling update cycles (default is nil). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}\index{ScriptComponent@{ScriptComponent}!onClick@{onClick}}
+\index{onClick@{onClick}!ScriptComponent@{ScriptComponent}}
+\doxysubsubsection{\texorpdfstring{onClick}{onClick}}
+{\footnotesize\ttfamily \label{struct_script_component_a784545648f6e4a0cdbb5902c0174c089} 
+sol\+::function Script\+Component\+::on\+Click}
+
+Lua function called when the entity is clicked. \Hypertarget{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}\index{ScriptComponent@{ScriptComponent}!onCollision@{onCollision}}
+\index{onCollision@{onCollision}!ScriptComponent@{ScriptComponent}}
+\doxysubsubsection{\texorpdfstring{onCollision}{onCollision}}
+{\footnotesize\ttfamily \label{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f} 
+sol\+::function Script\+Component\+::on\+Collision}
+
+Lua function called when the entity collides with another. \Hypertarget{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}\index{ScriptComponent@{ScriptComponent}!update@{update}}
+\index{update@{update}!ScriptComponent@{ScriptComponent}}
+\doxysubsubsection{\texorpdfstring{update}{update}}
+{\footnotesize\ttfamily \label{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8} 
+sol\+::function Script\+Component\+::update}
+
+Lua function called during the entity\textquotesingle{}s update cycle. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_script_component_8hpp}{Script\+Component.\+hpp}}\end{DoxyCompactItemize}

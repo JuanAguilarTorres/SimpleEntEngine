@@ -1,0 +1,104 @@
+\doxysection{Circle\+Collision\+System Class Reference}
+\hypertarget{class_circle_collision_system}{}\label{class_circle_collision_system}\index{CircleCollisionSystem@{CircleCollisionSystem}}
+
+
+Represents the system that manages collision detection and response between entities.  
+
+
+
+
+{\ttfamily \#include $<$Circle\+Collision\+System.\+hpp$>$}
+
+Inheritance diagram for Circle\+Collision\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_circle_collision_system}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_circle_collision_system_a9f24d0c9e8caa8b3ce340bd663a2e0d1}{Circle\+Collision\+System}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a Collision\+System. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_circle_collision_system_a3066a813291619fdb96cecbbea2e5ffb}{Update}} (sol\+::state \&lua)
+\begin{DoxyCompactList}\small\item\em Updates the collision system to check for collisions between entities. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_circle_collision_system_a93ba5f4e49c9e61a0e9a91ea8704612f}{Check\+Circular\+Collision}} (int a\+Radius, int b\+Radius, glm\+::vec2 a\+Pos, glm\+::vec2 b\+Pos)
+\begin{DoxyCompactList}\small\item\em Checks for circular collision between two entities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_system}{System}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_system_a36b3396cdb8fa107bd4515382fbb8847}{Add\+Entity\+To\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Adds an entity to the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_system_a05a2e9d96800e05c3d4c8d7ebfd9903b}{Remove\+Entity\+From\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the system. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{Get\+System\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Gets all entities associated with the system. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{group___component_ga9e171c7763cf19fc9f0a3200aeebacb7}{Signature}} \& \mbox{\hyperlink{class_system_af97298c27dfe2231ab21bdb1a0316dc4}{Get\+Component\+Signature}} () const
+\begin{DoxyCompactList}\small\item\em Gets the component signature for the system. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{Require\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Requires a component for the system to operate on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the system that manages collision detection and response between entities. 
+
+The Collision\+System checks for circular collisions between entities with \doxylink{struct_circle_collider_component}{Circle\+Collider\+Component} and triggers collision events if necessary. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_circle_collision_system_a9f24d0c9e8caa8b3ce340bd663a2e0d1}\index{CircleCollisionSystem@{CircleCollisionSystem}!CircleCollisionSystem@{CircleCollisionSystem}}
+\index{CircleCollisionSystem@{CircleCollisionSystem}!CircleCollisionSystem@{CircleCollisionSystem}}
+\doxysubsubsection{\texorpdfstring{CircleCollisionSystem()}{CircleCollisionSystem()}}
+{\footnotesize\ttfamily \label{class_circle_collision_system_a9f24d0c9e8caa8b3ce340bd663a2e0d1} 
+Circle\+Collision\+System\+::\+Circle\+Collision\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a Collision\+System. 
+
+This constructor specifies that entities using this system must have \doxylink{struct_circle_collider_component}{Circle\+Collider\+Component} and \doxylink{struct_transform_component}{Transform\+Component}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_circle_collision_system_a93ba5f4e49c9e61a0e9a91ea8704612f}\index{CircleCollisionSystem@{CircleCollisionSystem}!CheckCircularCollision@{CheckCircularCollision}}
+\index{CheckCircularCollision@{CheckCircularCollision}!CircleCollisionSystem@{CircleCollisionSystem}}
+\doxysubsubsection{\texorpdfstring{CheckCircularCollision()}{CheckCircularCollision()}}
+{\footnotesize\ttfamily \label{class_circle_collision_system_a93ba5f4e49c9e61a0e9a91ea8704612f} 
+bool Circle\+Collision\+System\+::\+Check\+Circular\+Collision (\begin{DoxyParamCaption}\item[{int}]{a\+Radius}{, }\item[{int}]{b\+Radius}{, }\item[{glm\+::vec2}]{a\+Pos}{, }\item[{glm\+::vec2}]{b\+Pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks for circular collision between two entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Radius} & The radius of the first entity\textquotesingle{}s collider. \\
+\hline
+{\em b\+Radius} & The radius of the second entity\textquotesingle{}s collider. \\
+\hline
+{\em a\+Pos} & The position of the first entity\textquotesingle{}s collider. \\
+\hline
+{\em b\+Pos} & The position of the second entity\textquotesingle{}s collider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a collision is detected, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_circle_collision_system_a3066a813291619fdb96cecbbea2e5ffb}\index{CircleCollisionSystem@{CircleCollisionSystem}!Update@{Update}}
+\index{Update@{Update}!CircleCollisionSystem@{CircleCollisionSystem}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_circle_collision_system_a3066a813291619fdb96cecbbea2e5ffb} 
+void Circle\+Collision\+System\+::\+Update (\begin{DoxyParamCaption}\item[{sol\+::state \&}]{lua}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the collision system to check for collisions between entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lua} & A reference to the Lua state used for scripting.\\
+\hline
+\end{DoxyParams}
+This function iterates through all entities in the system, checking for circular collisions between pairs of entities. If a collision is detected, it triggers the on\+Collision scripts associated with the entities involved. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Systems/\mbox{\hyperlink{_circle_collision_system_8hpp}{Circle\+Collision\+System.\+hpp}}\end{DoxyCompactItemize}

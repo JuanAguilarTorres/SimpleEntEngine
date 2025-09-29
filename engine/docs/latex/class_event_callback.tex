@@ -1,0 +1,71 @@
+\doxysection{Event\+Callback\texorpdfstring{$<$}{<} TOwner, TEvent \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_event_callback}{}\label{class_event_callback}\index{EventCallback$<$ TOwner, TEvent $>$@{EventCallback$<$ TOwner, TEvent $>$}}
+
+
+Template class for handling event callbacks.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Manager.\+hpp$>$}
+
+Inheritance diagram for Event\+Callback\texorpdfstring{$<$}{<} TOwner, TEvent \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_callback}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_callback_a0d88378ef373f7220b2a520594ded925}{Event\+Callback}} (TOwner \texorpdfstring{$\ast$}{*}owner\+Instance, Callback\+Function callback\+Function)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_event_callback}{Event\+Callback}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_event_callback}{IEvent\+Callback}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IEvent\+Callback} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_i_event_callback}{IEvent\+Callback} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_i_event_callback_a7f7d2dcfc7092cd3ef3a2928b4de547e}{Execute}} (\mbox{\hyperlink{class_event}{Event}} \&e)
+\begin{DoxyCompactList}\small\item\em Executes the callback for a given event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename TOwner, typename TEvent$>$\newline
+class Event\+Callback$<$ TOwner, TEvent $>$}
+Template class for handling event callbacks. 
+
+The \doxylink{class_event_callback}{Event\+Callback} class allows the binding of a member function of an owner class to an event, so that the member function will be called when the event occurs.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TOwner} & The type of the owner class. \\
+\hline
+{\em TEvent} & The type of the event. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_callback_a0d88378ef373f7220b2a520594ded925}\index{EventCallback$<$ TOwner, TEvent $>$@{EventCallback$<$ TOwner, TEvent $>$}!EventCallback@{EventCallback}}
+\index{EventCallback@{EventCallback}!EventCallback$<$ TOwner, TEvent $>$@{EventCallback$<$ TOwner, TEvent $>$}}
+\doxysubsubsection{\texorpdfstring{EventCallback()}{EventCallback()}}
+{\footnotesize\ttfamily \label{class_event_callback_a0d88378ef373f7220b2a520594ded925} 
+template$<$typename TOwner , typename TEvent $>$ \\
+\mbox{\hyperlink{class_event_callback}{Event\+Callback}}$<$ TOwner, TEvent $>$\mbox{\hyperlink{class_event_callback}{\+::\+Event\+Callback}} (\begin{DoxyParamCaption}\item[{TOwner \texorpdfstring{$\ast$}{*}}]{owner\+Instance}{, }\item[{Callback\+Function}]{callback\+Function}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{class_event_callback}{Event\+Callback}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em owner\+Instance} & Pointer to the owner class instance. \\
+\hline
+{\em callback\+Function} & The member function to call when the event occurs. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Event\+Manager/\mbox{\hyperlink{_event_manager_8hpp}{Event\+Manager.\+hpp}}\end{DoxyCompactItemize}

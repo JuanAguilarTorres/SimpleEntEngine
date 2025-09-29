@@ -1,0 +1,86 @@
+\doxysection{Entity Class Reference}
+\hypertarget{class_entity}{}\label{class_entity}\index{Entity@{Entity}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_ac98bd610e0299cc2aa0538fb2884ab69}{Entity}} (int id)
+\begin{DoxyCompactList}\small\item\em Constructs an entity with a specific ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_a478be4b3bc1cc77e5fd92a7dda6689a4}{Get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Gets the entity\textquotesingle{}s unique identifier. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_ab0a890ba55c9bc5830c021ace6ac3908}\label{class_entity_ab0a890ba55c9bc5830c021ace6ac3908} 
+void {\bfseries Kill} ()
+\begin{DoxyCompactList}\small\item\em Marks the entity for destruction. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_abeedd2b9ad7b200acca5ac2522607fad}\label{class_entity_abeedd2b9ad7b200acca5ac2522607fad} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\item 
+\Hypertarget{class_entity_ae2bb991352e76415d09f30aa69d6b9f4}\label{class_entity_ae2bb991352e76415d09f30aa69d6b9f4} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\item 
+\Hypertarget{class_entity_abd34ebda09449554a8be0aa19106c08e}\label{class_entity_abd34ebda09449554a8be0aa19106c08e} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\item 
+\Hypertarget{class_entity_ae1b49cec9466a32749a951c2ed864b7f}\label{class_entity_ae1b49cec9466a32749a951c2ed864b7f} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\item 
+{\footnotesize template$<$typename TComponent , typename... TArgs$>$ }\\void \mbox{\hyperlink{group___registry_ga125342c7309de6be6e518da6bffb7452}{Add\+Component}} (TArgs \&\&... args)
+\begin{DoxyCompactList}\small\item\em Adds a component to an entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gae0a4dce2a3d4a1d8025b6ae037a6624f}{Remove\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Removes a component from the entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\bool \mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{Has\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the entity has a specific component. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\TComponent \& \mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{Get\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a component from the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_registry}{Registry}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_entity_a80cc8ec12331e7aaec78d2b6cae9a6a7}{registry}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_entity_ac98bd610e0299cc2aa0538fb2884ab69}\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily \label{class_entity_ac98bd610e0299cc2aa0538fb2884ab69} 
+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an entity with a specific ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The entity\textquotesingle{}s ID. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_entity_a478be4b3bc1cc77e5fd92a7dda6689a4}\index{Entity@{Entity}!GetId@{GetId}}
+\index{GetId@{GetId}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{class_entity_a478be4b3bc1cc77e5fd92a7dda6689a4} 
+int Entity\+::\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the entity\textquotesingle{}s unique identifier. 
+
+\begin{DoxyReturn}{Returns}
+The entity ID. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_entity_a80cc8ec12331e7aaec78d2b6cae9a6a7}\index{Entity@{Entity}!registry@{registry}}
+\index{registry@{registry}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{registry}{registry}}
+{\footnotesize\ttfamily \label{class_entity_a80cc8ec12331e7aaec78d2b6cae9a6a7} 
+class \mbox{\hyperlink{class_registry}{Registry}}\texorpdfstring{$\ast$}{*} Entity\+::registry}
+
+Pointer to the registry managing the entity 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+ECS/\mbox{\hyperlink{_e_c_s_8hpp}{ECS.\+hpp}}\item 
+src/\+ECS/ECS.\+cpp\end{DoxyCompactItemize}

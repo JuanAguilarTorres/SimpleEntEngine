@@ -1,0 +1,90 @@
+\doxysection{Animation\+Manager Class Reference}
+\hypertarget{class_animation_manager}{}\label{class_animation_manager}\index{AnimationManager@{AnimationManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_animation_manager_a1a07273c87def56cab82a1795f29f2e4}{Animation\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the \doxylink{class_animation_manager}{Animation\+Manager}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_animation_manager_a3a8c725f2aa41692ed7ec4ef0957c365}{\texorpdfstring{$\sim$}{\string~}\+Animation\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_animation_manager}{Animation\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_animation_manager_ae18bf7387ecb30f0a98ba3c5756a6e6e}{Add\+Animation}} (const std\+::string \&animation\+Id, const std\+::string \&texture\+Id, int width, int height, int num\+Frames, int frame\+Speed\+Rate, bool is\+Loop)
+\begin{DoxyCompactList}\small\item\em Adds a new animation to the manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_animation_data}{Animation\+Data}} \mbox{\hyperlink{class_animation_manager_ac89afdda0e2690a4eb0459eea428b8cb}{Get\+Animation}} (const std\+::string \&animation\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves animation data by its ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_animation_manager_a1a07273c87def56cab82a1795f29f2e4}\index{AnimationManager@{AnimationManager}!AnimationManager@{AnimationManager}}
+\index{AnimationManager@{AnimationManager}!AnimationManager@{AnimationManager}}
+\doxysubsubsection{\texorpdfstring{AnimationManager()}{AnimationManager()}}
+{\footnotesize\ttfamily \label{class_animation_manager_a1a07273c87def56cab82a1795f29f2e4} 
+Animation\+Manager\+::\+Animation\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs the \doxylink{class_animation_manager}{Animation\+Manager}. 
+
+Initializes the animation manager, preparing it to handle animations. \Hypertarget{class_animation_manager_a3a8c725f2aa41692ed7ec4ef0957c365}\index{AnimationManager@{AnimationManager}!````~AnimationManager@{\texorpdfstring{$\sim$}{\string~}AnimationManager}}
+\index{````~AnimationManager@{\texorpdfstring{$\sim$}{\string~}AnimationManager}!AnimationManager@{AnimationManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AnimationManager()}{\string~AnimationManager()}}
+{\footnotesize\ttfamily \label{class_animation_manager_a3a8c725f2aa41692ed7ec4ef0957c365} 
+Animation\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Animation\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the \doxylink{class_animation_manager}{Animation\+Manager}. 
+
+Cleans up resources used by the animation manager. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_animation_manager_ae18bf7387ecb30f0a98ba3c5756a6e6e}\index{AnimationManager@{AnimationManager}!AddAnimation@{AddAnimation}}
+\index{AddAnimation@{AddAnimation}!AnimationManager@{AnimationManager}}
+\doxysubsubsection{\texorpdfstring{AddAnimation()}{AddAnimation()}}
+{\footnotesize\ttfamily \label{class_animation_manager_ae18bf7387ecb30f0a98ba3c5756a6e6e} 
+void Animation\+Manager\+::\+Add\+Animation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{animation\+Id}{, }\item[{const std\+::string \&}]{texture\+Id}{, }\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{int}]{num\+Frames}{, }\item[{int}]{frame\+Speed\+Rate}{, }\item[{bool}]{is\+Loop}{}\end{DoxyParamCaption})}
+
+
+
+Adds a new animation to the manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+Id} & The unique identifier for the animation. \\
+\hline
+{\em texture\+Id} & The ID of the texture associated with the animation. \\
+\hline
+{\em width} & The width of each frame in the animation. \\
+\hline
+{\em height} & The height of each frame in the animation. \\
+\hline
+{\em num\+Frames} & The total number of frames in the animation. \\
+\hline
+{\em frame\+Speed\+Rate} & The speed of frame transitions (frames per second). \\
+\hline
+{\em is\+Loop} & Whether the animation loops continuously. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_animation_manager_ac89afdda0e2690a4eb0459eea428b8cb}\index{AnimationManager@{AnimationManager}!GetAnimation@{GetAnimation}}
+\index{GetAnimation@{GetAnimation}!AnimationManager@{AnimationManager}}
+\doxysubsubsection{\texorpdfstring{GetAnimation()}{GetAnimation()}}
+{\footnotesize\ttfamily \label{class_animation_manager_ac89afdda0e2690a4eb0459eea428b8cb} 
+\mbox{\hyperlink{struct_animation_data}{Animation\+Data}} Animation\+Manager\+::\+Get\+Animation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{animation\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves animation data by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+Id} & The unique identifier of the animation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_animation_data}{Animation\+Data} The corresponding animation data. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Animation\+Manager/Animation\+Manager.\+hpp\item 
+src/\+Animation\+Manager/Animation\+Manager.\+cpp\end{DoxyCompactItemize}

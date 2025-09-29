@@ -1,0 +1,96 @@
+\doxysection{Transform\+Component Struct Reference}
+\hypertarget{struct_transform_component}{}\label{struct_transform_component}\index{TransformComponent@{TransformComponent}}
+
+
+Represents a component that defines the transformation properties of an entity.  
+
+
+
+
+{\ttfamily \#include $<$Transform\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_transform_component_a5f3d75902b2bf24cab70f0c20e1c2e57}{Transform\+Component}} (glm\+::vec2 \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}=glm\+::vec2(0.\+0, 0.\+0), glm\+::vec2 \mbox{\hyperlink{struct_transform_component_a34212063e4e646cc39bca33e40891472}{scale}}=glm\+::vec2(1.\+0, 1.\+0), double \mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}}=0.\+0, bool \mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{camera\+Free}}=false)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_transform_component}{Transform\+Component} with specified position, scale, rotation, and camera behavior. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_transform_component_a3f8f782163f507442db431de13a233fa}{previous\+Position}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_transform_component_a34212063e4e646cc39bca33e40891472}{scale}}
+\item 
+double \mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}}
+\item 
+bool \mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{camera\+Free}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component that defines the transformation properties of an entity. 
+
+This component manages an entity\textquotesingle{}s position, scale, rotation, and whether the camera should be free to move independently of the entity. It is essential for positioning and rendering entities in the game world. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_transform_component_a5f3d75902b2bf24cab70f0c20e1c2e57}\index{TransformComponent@{TransformComponent}!TransformComponent@{TransformComponent}}
+\index{TransformComponent@{TransformComponent}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{TransformComponent()}{TransformComponent()}}
+{\footnotesize\ttfamily \label{struct_transform_component_a5f3d75902b2bf24cab70f0c20e1c2e57} 
+Transform\+Component\+::\+Transform\+Component (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{position}{ = {\ttfamily glm\+:\+:vec2(0.0,~0.0)}, }\item[{glm\+::vec2}]{scale}{ = {\ttfamily glm\+:\+:vec2(1.0,~1.0)}, }\item[{double}]{rotation}{ = {\ttfamily 0.0}, }\item[{bool}]{camera\+Free}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_transform_component}{Transform\+Component} with specified position, scale, rotation, and camera behavior. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The initial position of the entity (default is glm\+::vec2(0.\+0, 0.\+0)). \\
+\hline
+{\em scale} & The initial scale of the entity (default is glm\+::vec2(1.\+0, 1.\+0)). \\
+\hline
+{\em rotation} & The initial rotation of the entity in degrees (default is 0.\+0). \\
+\hline
+{\em camera\+Free} & Whether the entity can move independently of the camera (default is false). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}\index{TransformComponent@{TransformComponent}!cameraFree@{cameraFree}}
+\index{cameraFree@{cameraFree}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{cameraFree}{cameraFree}}
+{\footnotesize\ttfamily \label{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c} 
+bool Transform\+Component\+::camera\+Free}
+
+Indicates if the entity can move freely, independent of the camera. \Hypertarget{struct_transform_component_a28bd72ac14736930eb3357a78037a555}\index{TransformComponent@{TransformComponent}!position@{position}}
+\index{position@{position}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{struct_transform_component_a28bd72ac14736930eb3357a78037a555} 
+glm\+::vec2 Transform\+Component\+::position}
+
+The position of the entity in 2D space. \Hypertarget{struct_transform_component_a3f8f782163f507442db431de13a233fa}\index{TransformComponent@{TransformComponent}!previousPosition@{previousPosition}}
+\index{previousPosition@{previousPosition}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{previousPosition}{previousPosition}}
+{\footnotesize\ttfamily \label{struct_transform_component_a3f8f782163f507442db431de13a233fa} 
+glm\+::vec2 Transform\+Component\+::previous\+Position}
+
+The last position of the entity in 2D space. \Hypertarget{struct_transform_component_a29681e7acef575a6992f697a10c12f77}\index{TransformComponent@{TransformComponent}!rotation@{rotation}}
+\index{rotation@{rotation}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily \label{struct_transform_component_a29681e7acef575a6992f697a10c12f77} 
+double Transform\+Component\+::rotation}
+
+The rotation angle of the entity in degrees. \Hypertarget{struct_transform_component_a34212063e4e646cc39bca33e40891472}\index{TransformComponent@{TransformComponent}!scale@{scale}}
+\index{scale@{scale}!TransformComponent@{TransformComponent}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \label{struct_transform_component_a34212063e4e646cc39bca33e40891472} 
+glm\+::vec2 Transform\+Component\+::scale}
+
+The scale factors for the entity in the x and y dimensions. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_transform_component_8hpp}{Transform\+Component.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\doxysection{Asset\+Manager.\+hpp}
+\hypertarget{_asset_manager_8hpp_source}{}\label{_asset_manager_8hpp_source}\index{src/AssetManager/AssetManager.hpp@{src/AssetManager/AssetManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ ASSETMANAGER\_HPP}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ ASSETMANAGER\_HPP}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <glm/vec3.hpp>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Video}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#include\ <libavcodec/avcodec.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \#include\ <libavformat/avformat.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \#include\ <libavutil/frame.h>}}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_asset_manager}{AssetManager}}\ \{}
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{VideoAsset}}\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ SDL\_Texture*\ texture;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ AVCodecContext*\ codecCtx;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ AVFormatContext*\ formatCtx;}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_asset_manager_1_1_material}{Material}}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Ns\ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Specular\ exponent}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ glm::vec3\ Ka\{\ 0.0f\ \};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ambient\ color}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ glm::vec3\ Kd\{\ 0.0f\ \};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Diffuse\ color}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ glm::vec3\ Ks\{\ 0.0f\ \};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Specular\ color}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ glm::vec3\ Ke\{\ 0.0f\ \};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Emission\ color}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Ni\ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optical\ density}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ d\ =\ 1.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dissolve\ (opacity)}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ illum\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Illumination\ model}}
+\DoxyCodeLine{00077\ \ \ \ \ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_asset_manager_1_1_face}{Face}}\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::array<int,\ 3>\ vertexIndices;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::string\ materialName;\ \textcolor{comment}{//\ Reference\ to\ the\ material\ used\ by\ this\ face}}
+\DoxyCodeLine{00082\ \ \ \ \ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{ObjAsset}}\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::vector<glm::vec3>\ Vertex;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::vector<Face>\ Faces;\ \textcolor{comment}{//\ Store\ faces\ with\ their\ material\ names}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ Material>\ Mtl;\ \textcolor{comment}{//\ Store\ materials\ by\ name}}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \ \ std::map<std::string,\ SDL\_Texture*>\ textures;}
+\DoxyCodeLine{00092\ \ \ \ \ std::map<std::string,\ TTF\_Font*>\ fonts;}
+\DoxyCodeLine{00093\ \ \ \ \ std::map<std::string,\ Mix\_Chunk*>\ soundEffects;}
+\DoxyCodeLine{00094\ \ \ \ \ Mix\_Chunk*\ musicTrack\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00095\ \ \ \ \ std::string\ musicName;}
+\DoxyCodeLine{00096\ \ \ \ \ std::map<std::string,\ VideoAsset>\ videos;}
+\DoxyCodeLine{00097\ \ \ \ \ AVFormatContext*\ formatCtx\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00098\ \ \ \ \ AVCodecContext*\ codecCtx\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00099\ \ \ \ \ std::map<std::string,\ ObjAsset>\ Objs;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{class_asset_manager_a750ae7b39b633fbb6594443aa3ca704b}{AssetManager}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{class_asset_manager_a9c89817cbf3516f1451c116e89f47d30}{\string~AssetManager}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_a069acc7f6b59d27b5d7cac6aed4e71f0}{ClearAssets}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_ad909ea7e8e389bfb69f1fc9878810555}{AddTexture}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ std::string\&\ textureId}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ ,\ \textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ SDL\_Texture*\ \mbox{\hyperlink{class_asset_manager_a0a9408d3736292bdac9fa462e050f345}{GetTexture}}(\textcolor{keyword}{const}\ std::string\&\ textureId);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_ae694ffbdab1886410889911610c2270e}{AddFont}}(\textcolor{keyword}{const}\ std::string\&\ fontId,\ \textcolor{keyword}{const}\ std::string\&\ filePath}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{int}\ fontSize);}
+\DoxyCodeLine{00162\ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ TTF\_Font*\ \mbox{\hyperlink{class_asset_manager_ac881286653fbb7dcf7b521ebdbb61e16}{GetFont}}(\textcolor{keyword}{const}\ std::string\&\ fontId);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_a0e9f4c6614569d0d5c2c32cea8427ea1}{AddSoundEffect}}(\textcolor{keyword}{const}\ std::string\&\ soundId,\ \textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00183\ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ Mix\_Chunk*\ \mbox{\hyperlink{class_asset_manager_a4f3a1183fbf941ed774e1d63ea98df9c}{GetSoundEffect}}(\textcolor{keyword}{const}\ std::string\&\ soundId);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_a5380d8e59cf7f7ce4137f3afcd687f79}{AddMusic}}(\textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00204\ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ Mix\_Chunk*\ \mbox{\hyperlink{class_asset_manager_a7d15c490deb5db696e0e7536d94ed25f}{GetMusic}}();}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00219\ \ \ \ \ std::string\ \mbox{\hyperlink{class_asset_manager_aca7007a2e3cc8e2af1889224f37e9f1e}{GetMusicName}}();}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_a350282d7781b028715188de3534ee612}{AddVideo}}(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ std::string\&\ videoId}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ ,\ \textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00235\ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{VideoAsset}}\ \mbox{\hyperlink{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268}{GetVideo}}(\textcolor{keyword}{const}\ std::string\&\ videoId);}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_asset_manager_ac3b39a75d5dc3eb658f0d24910c89771}{Add3dObject}}(\textcolor{keyword}{const}\ std::string\&\ objectId,\ \textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00259\ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \mbox{\hyperlink{struct_asset_manager_1_1_obj_asset}{ObjAsset}}\ \mbox{\hyperlink{class_asset_manager_ae13d9503a0e15c9609fda20eeec972dd}{Get3dObject}}(\textcolor{keyword}{const}\ std::string\&\ objectId);}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \};}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ASSETMANAGER\_HPP}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \textcolor{comment}{//\ end\ of\ AssetManagement\ group}}
+
+\end{DoxyCode}

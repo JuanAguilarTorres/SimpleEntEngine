@@ -1,0 +1,36 @@
+\doxysection{Event Management}
+\hypertarget{group___event_manager}{}\label{group___event_manager}\index{Event Management@{Event Management}}
+
+
+Manages all the events of the project.  
+
+
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{_event_8hpp}{Event.\+hpp}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_event}{Event} Class. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_click_event_8hpp}{Click\+Event.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Class \doxylink{class_event}{Event} for Click. \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{_collision_event_8hpp}{Collision\+Event.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Class \doxylink{class_event}{Event} for Collision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_i_event_callback}{IEvent\+Callback}}
+\begin{DoxyCompactList}\small\item\em Interface for event callback handling. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_event_callback}{Event\+Callback$<$ TOwner, TEvent $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for handling event callbacks. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_event_manager}{Event\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages event subscription and emission. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___event_manager_ga72776e49464a6e0e946d19e1fdb93469}\label{group___event_manager_ga72776e49464a6e0e946d19e1fdb93469} 
+typedef std\+::list$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_i_event_callback}{IEvent\+Callback}} $>$ $>$ {\bfseries Handler\+List}
+\begin{DoxyCompactList}\small\item\em Alias for a list of event handlers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages all the events of the project. 
+

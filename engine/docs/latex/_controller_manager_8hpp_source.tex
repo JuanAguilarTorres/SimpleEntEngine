@@ -1,0 +1,61 @@
+\doxysection{Controller\+Manager.\+hpp}
+\hypertarget{_controller_manager_8hpp_source}{}\label{_controller_manager_8hpp_source}\index{src/ControllerManager/ControllerManager.hpp@{src/ControllerManager/ControllerManager.hpp}}
+\mbox{\hyperlink{_controller_manager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ CONTROLLERMANAGER\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ CONTROLLERMANAGER\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_controller_manager}{ControllerManager}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ std::map<std::string,\ int>\ actionKeyName;\ }
+\DoxyCodeLine{00030\ \ \ \ \ std::map<int,\ bool>\ keyDown;\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::map<std::string,\ int>\ mouseButtonName;\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::map<int,\ bool>\ mouseButtonDown;\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ mousePosX;\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ mousePosY;\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_controller_manager_a9888279ea2d5aede348d39d5efe913cc}{ControllerManager}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_controller_manager_a2907bd660f1a870b6d50aa07fdf745d9}{\string~ControllerManager}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a53fcc8ef5ff8f6b44539af306edd11d7}{Clear}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Keyboard}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_afb76cab20e4079e7e55f06f51c34e8de}{AddActionKey}}(\textcolor{keyword}{const}\ std::string\&\ action,\ \textcolor{keywordtype}{int}\ keyCode);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_ae9dd42186315a9c4ac5345e720cd45d3}{KeyDown}}(\textcolor{keywordtype}{int}\ keyCode);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a307b3731844045f5eedcb7b61660bd22}{KeyUp}}(\textcolor{keywordtype}{int}\ keyCode);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_manager_a45eee2a4a63c3ad5060c2de6e7736f23}{IsActionActivated}}(\textcolor{keyword}{const}\ std::string\&\ action);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ Mouse}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a21205ba3ddc42c6af776744a1d44e468}{AddMouseButton}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ buttonCode);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a7c45f3722d7af86f965b3eda8cf9f42e}{MouseButtonDown}}(\textcolor{keywordtype}{int}\ buttonCode);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a5a47f6c869bcd435dc5eb7e68d6ae100}{MouseButtonUp}}(\textcolor{keywordtype}{int}\ buttonCode);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_manager_adada9a48cfbfed2ff647d72f186f5016}{IsMouseButtonDown}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_manager_a242fc93e82a562885f9dbd67b298cd90}{SetMousePosition}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00153\ \ \ \ \ std::tuple<int,\ int>\ \mbox{\hyperlink{class_controller_manager_ac6fd76205ef4622757f8f0cb77126596}{GetMousePosition}}();}
+\DoxyCodeLine{00154\ \};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTROLLERMANAGER\_HPP}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \textcolor{comment}{//\ end\ of\ group}}
+
+\end{DoxyCode}

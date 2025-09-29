@@ -1,0 +1,93 @@
+\doxysection{Sprite\+Component Struct Reference}
+\hypertarget{struct_sprite_component}{}\label{struct_sprite_component}\index{SpriteComponent@{SpriteComponent}}
+
+
+Represents a component that handles the rendering of an entity\textquotesingle{}s sprite.  
+
+
+
+
+{\ttfamily \#include $<$Sprite\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite_component_aacadddb8694264de5ef56667216b59cf}{Sprite\+Component}} (const std\+::string \&\mbox{\hyperlink{struct_sprite_component_a97360f64023d12b805147a080b7cb815}{texture\+Id}}="{}none"{}, int \mbox{\hyperlink{struct_sprite_component_adc5b11a14b6698556822757f6c4a5376}{width}}=0, int \mbox{\hyperlink{struct_sprite_component_a62ae7c4b06bd296958b8311c48e93138}{height}}=0, int src\+RectX=0, int src\+RectY=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_sprite_component}{Sprite\+Component} with a specified texture and dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_sprite_component_a97360f64023d12b805147a080b7cb815}{texture\+Id}}
+\item 
+int \mbox{\hyperlink{struct_sprite_component_adc5b11a14b6698556822757f6c4a5376}{width}}
+\item 
+int \mbox{\hyperlink{struct_sprite_component_a62ae7c4b06bd296958b8311c48e93138}{height}}
+\item 
+SDL\+\_\+\+Rect \mbox{\hyperlink{struct_sprite_component_acd23cc7dacc7291e2412b5bb2937feff}{src\+Rect}}
+\item 
+\Hypertarget{struct_sprite_component_a73b3367dc141c77b61b0b72908ed36f5}\label{struct_sprite_component_a73b3367dc141c77b61b0b72908ed36f5} 
+bool {\bfseries flip} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component that handles the rendering of an entity\textquotesingle{}s sprite. 
+
+This component manages the visual appearance of an entity by specifying a texture and its dimensions. It also provides source rectangle coordinates for selecting a portion of the texture to render. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_sprite_component_aacadddb8694264de5ef56667216b59cf}\index{SpriteComponent@{SpriteComponent}!SpriteComponent@{SpriteComponent}}
+\index{SpriteComponent@{SpriteComponent}!SpriteComponent@{SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{SpriteComponent()}{SpriteComponent()}}
+{\footnotesize\ttfamily \label{struct_sprite_component_aacadddb8694264de5ef56667216b59cf} 
+Sprite\+Component\+::\+Sprite\+Component (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{texture\+Id}{ = {\ttfamily "{}none"{}}, }\item[{int}]{width}{ = {\ttfamily 0}, }\item[{int}]{height}{ = {\ttfamily 0}, }\item[{int}]{src\+RectX}{ = {\ttfamily 0}, }\item[{int}]{src\+RectY}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_sprite_component}{Sprite\+Component} with a specified texture and dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+Id} & The ID of the texture (default is "{}none"{}). \\
+\hline
+{\em width} & The width of the sprite (default is 0). \\
+\hline
+{\em height} & The height of the sprite (default is 0). \\
+\hline
+{\em src\+RectX} & The x-\/coordinate of the source rectangle\textquotesingle{}s top-\/left corner (default is 0). \\
+\hline
+{\em src\+RectY} & The y-\/coordinate of the source rectangle\textquotesingle{}s top-\/left corner (default is 0). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_sprite_component_a62ae7c4b06bd296958b8311c48e93138}\index{SpriteComponent@{SpriteComponent}!height@{height}}
+\index{height@{height}!SpriteComponent@{SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{struct_sprite_component_a62ae7c4b06bd296958b8311c48e93138} 
+int Sprite\+Component\+::height}
+
+The height of the sprite in pixels. \Hypertarget{struct_sprite_component_acd23cc7dacc7291e2412b5bb2937feff}\index{SpriteComponent@{SpriteComponent}!srcRect@{srcRect}}
+\index{srcRect@{srcRect}!SpriteComponent@{SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{srcRect}{srcRect}}
+{\footnotesize\ttfamily \label{struct_sprite_component_acd23cc7dacc7291e2412b5bb2937feff} 
+SDL\+\_\+\+Rect Sprite\+Component\+::src\+Rect}
+
+The source rectangle specifying the texture area to render. \Hypertarget{struct_sprite_component_a97360f64023d12b805147a080b7cb815}\index{SpriteComponent@{SpriteComponent}!textureId@{textureId}}
+\index{textureId@{textureId}!SpriteComponent@{SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{textureId}{textureId}}
+{\footnotesize\ttfamily \label{struct_sprite_component_a97360f64023d12b805147a080b7cb815} 
+std\+::string Sprite\+Component\+::texture\+Id}
+
+The ID of the texture used for the sprite. \Hypertarget{struct_sprite_component_adc5b11a14b6698556822757f6c4a5376}\index{SpriteComponent@{SpriteComponent}!width@{width}}
+\index{width@{width}!SpriteComponent@{SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{struct_sprite_component_adc5b11a14b6698556822757f6c4a5376} 
+int Sprite\+Component\+::width}
+
+The width of the sprite in pixels. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_sprite_component_8hpp}{Sprite\+Component.\+hpp}}\end{DoxyCompactItemize}

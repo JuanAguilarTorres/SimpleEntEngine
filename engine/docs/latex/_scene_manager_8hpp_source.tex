@@ -1,0 +1,55 @@
+\doxysection{Scene\+Manager.\+hpp}
+\hypertarget{_scene_manager_8hpp_source}{}\label{_scene_manager_8hpp_source}\index{src/SceneManager/SceneManager.hpp@{src/SceneManager/SceneManager.hpp}}
+\mbox{\hyperlink{_scene_manager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ SCENEMANAGER\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SCENEMANAGER\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <sol/sol.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_scene_loader_8hpp}{SceneLoader.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene_manager}{SceneManager}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ std::map<std::string,\ std::string>\ scenes;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::unique\_ptr<SceneLoader>\ sceneLoader;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ nextScene;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ isSceneRunning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_scene_manager_a52085e6737c23b491c228e86781af808}{SceneManager}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}{\string~SceneManager}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a279391561db41cee4500e16e6f528011}{LoadSceneFromScript}}(\textcolor{keyword}{const}\ std::string\&\ path,\ sol::state\&\ lua);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a504bbba1f30f04ae26dd929b673019c7}{LoadScene}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::string\ \mbox{\hyperlink{class_scene_manager_a7b313acb80027734fe4df0fa990c8c01}{GetNextScene}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a20bad87a1ddbbc7cb3709f71417fb02c}{SetNextScene}}(\textcolor{keyword}{const}\ std::string\&\ nextScene);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_scene_manager_ac6869e693c2e383aed952bc159bc5b55}{IsSceneRunning}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a8e6dbe70e337c5481187a1ff6da72754}{StartScene}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_ab0e565e74fa096ccba64a682eb037152}{StopScene}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a63a6b16a9dd7651b3ed43ccba0585b23}{AddToScene}}(\textcolor{keyword}{const}\ std::string\&\ toAdd,\ std::unique\_ptr<Registry>\&\ registry,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ \mbox{\hyperlink{class_scene_manager_a1f6f47dd4b417d3b5566cef18c1d8ba5}{GetFromScene}}(\textcolor{keyword}{const}\ std::string\&\ toSeek);}
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCENEMANAGER\_HPP}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \textcolor{comment}{//\ end\ of\ group}}
+
+\end{DoxyCode}

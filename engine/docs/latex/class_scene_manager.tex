@@ -1,0 +1,185 @@
+\doxysection{Scene\+Manager Class Reference}
+\hypertarget{class_scene_manager}{}\label{class_scene_manager}\index{SceneManager@{SceneManager}}
+
+
+Manages scene lifecycle and transitions in the game engine.  
+
+
+
+
+{\ttfamily \#include $<$Scene\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_manager_a52085e6737c23b491c228e86781af808}{Scene\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Scene Manager object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}{\texorpdfstring{$\sim$}{\string~}\+Scene\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Scene Manager object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_manager_a279391561db41cee4500e16e6f528011}{Load\+Scene\+From\+Script}} (const std\+::string \&path, sol\+::state \&lua)
+\begin{DoxyCompactList}\small\item\em Loads scene definitions from a Lua script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_manager_a504bbba1f30f04ae26dd929b673019c7}{Load\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Loads the next scene using the \doxylink{class_scene_loader}{Scene\+Loader}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_scene_manager_a7b313acb80027734fe4df0fa990c8c01}{Get\+Next\+Scene}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the next scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_manager_a20bad87a1ddbbc7cb3709f71417fb02c}{Set\+Next\+Scene}} (const std\+::string \&next\+Scene)
+\begin{DoxyCompactList}\small\item\em Sets the next scene to be loaded. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_scene_manager_ac6869e693c2e383aed952bc159bc5b55}{Is\+Scene\+Running}} () const
+\begin{DoxyCompactList}\small\item\em Checks if a scene is currently running. \end{DoxyCompactList}\item 
+\Hypertarget{class_scene_manager_a8e6dbe70e337c5481187a1ff6da72754}\label{class_scene_manager_a8e6dbe70e337c5481187a1ff6da72754} 
+void {\bfseries Start\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Marks the current scene as running. \end{DoxyCompactList}\item 
+\Hypertarget{class_scene_manager_ab0e565e74fa096ccba64a682eb037152}\label{class_scene_manager_ab0e565e74fa096ccba64a682eb037152} 
+void {\bfseries Stop\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Marks the current scene as stopped. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_manager_a63a6b16a9dd7651b3ed43ccba0585b23}{Add\+To\+Scene}} (const std\+::string \&to\+Add, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&registry, float x, float y)
+\begin{DoxyCompactList}\small\item\em Adds a replicated entity to the current scene. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{class_scene_manager_a1f6f47dd4b417d3b5566cef18c1d8ba5}{Get\+From\+Scene}} (const std\+::string \&to\+Seek)
+\begin{DoxyCompactList}\small\item\em Retrieves an entity from the current scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages scene lifecycle and transitions in the game engine. 
+
+The \doxylink{class_scene_manager}{Scene\+Manager} class provides high-\/level scene management functionality, including scene loading, transitions, and state management. It works with Lua scripts to define and load scenes, and maintains the current scene state. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scene_manager_a52085e6737c23b491c228e86781af808}\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{SceneManager()}{SceneManager()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a52085e6737c23b491c228e86781af808} 
+Scene\+Manager\+::\+Scene\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Scene Manager object. 
+
+Initializes the \doxylink{class_scene_manager}{Scene\+Manager} and creates a new \doxylink{class_scene_loader}{Scene\+Loader} instance. \Hypertarget{class_scene_manager_a2bb376a85d29e85f47753e26c7539229}\index{SceneManager@{SceneManager}!````~SceneManager@{\texorpdfstring{$\sim$}{\string~}SceneManager}}
+\index{````~SceneManager@{\texorpdfstring{$\sim$}{\string~}SceneManager}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SceneManager()}{\string~SceneManager()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a2bb376a85d29e85f47753e26c7539229} 
+Scene\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Scene\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroy the Scene Manager object. 
+
+Cleans up the \doxylink{class_scene_loader}{Scene\+Loader} and releases resources. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_manager_a63a6b16a9dd7651b3ed43ccba0585b23}\index{SceneManager@{SceneManager}!AddToScene@{AddToScene}}
+\index{AddToScene@{AddToScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{AddToScene()}{AddToScene()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a63a6b16a9dd7651b3ed43ccba0585b23} 
+void Scene\+Manager\+::\+Add\+To\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{to\+Add}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&}]{registry}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Adds a replicated entity to the current scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Add} & Identifier of the entity to replicate \\
+\hline
+{\em registry} & \doxylink{class_entity}{Entity} registry instance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_scene_manager_a1f6f47dd4b417d3b5566cef18c1d8ba5}\index{SceneManager@{SceneManager}!GetFromScene@{GetFromScene}}
+\index{GetFromScene@{GetFromScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{GetFromScene()}{GetFromScene()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a1f6f47dd4b417d3b5566cef18c1d8ba5} 
+\mbox{\hyperlink{class_entity}{Entity}} Scene\+Manager\+::\+Get\+From\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{to\+Seek}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves an entity from the current scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Seek} & Identifier of the entity to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_entity}{Entity} The requested entity 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the entity is not found \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_scene_manager_a7b313acb80027734fe4df0fa990c8c01}\index{SceneManager@{SceneManager}!GetNextScene@{GetNextScene}}
+\index{GetNextScene@{GetNextScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{GetNextScene()}{GetNextScene()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a7b313acb80027734fe4df0fa990c8c01} 
+std\+::string Scene\+Manager\+::\+Get\+Next\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of the next scene. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string Name of the next scene to be loaded 
+\end{DoxyReturn}
+\Hypertarget{class_scene_manager_ac6869e693c2e383aed952bc159bc5b55}\index{SceneManager@{SceneManager}!IsSceneRunning@{IsSceneRunning}}
+\index{IsSceneRunning@{IsSceneRunning}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{IsSceneRunning()}{IsSceneRunning()}}
+{\footnotesize\ttfamily \label{class_scene_manager_ac6869e693c2e383aed952bc159bc5b55} 
+bool Scene\+Manager\+::\+Is\+Scene\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if a scene is currently running. 
+
+\begin{DoxyReturn}{Returns}
+true if a scene is running 
+
+false if no scene is running 
+\end{DoxyReturn}
+\Hypertarget{class_scene_manager_a504bbba1f30f04ae26dd929b673019c7}\index{SceneManager@{SceneManager}!LoadScene@{LoadScene}}
+\index{LoadScene@{LoadScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{LoadScene()}{LoadScene()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a504bbba1f30f04ae26dd929b673019c7} 
+void Scene\+Manager\+::\+Load\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads the next scene using the \doxylink{class_scene_loader}{Scene\+Loader}. 
+
+Gets the game instance and loads the scene specified by next\+Scene using the \doxylink{class_scene_loader}{Scene\+Loader}. \Hypertarget{class_scene_manager_a279391561db41cee4500e16e6f528011}\index{SceneManager@{SceneManager}!LoadSceneFromScript@{LoadSceneFromScript}}
+\index{LoadSceneFromScript@{LoadSceneFromScript}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{LoadSceneFromScript()}{LoadSceneFromScript()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a279391561db41cee4500e16e6f528011} 
+void Scene\+Manager\+::\+Load\+Scene\+From\+Script (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{, }\item[{sol\+::state \&}]{lua}{}\end{DoxyParamCaption})}
+
+
+
+Loads scene definitions from a Lua script. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the Lua script containing scene definitions \\
+\hline
+{\em lua} & Lua state instance\\
+\hline
+\end{DoxyParams}
+Parses the Lua script and populates the scenes map with scene names and their corresponding file paths. Sets the first scene as the next scene. \Hypertarget{class_scene_manager_a20bad87a1ddbbc7cb3709f71417fb02c}\index{SceneManager@{SceneManager}!SetNextScene@{SetNextScene}}
+\index{SetNextScene@{SetNextScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{SetNextScene()}{SetNextScene()}}
+{\footnotesize\ttfamily \label{class_scene_manager_a20bad87a1ddbbc7cb3709f71417fb02c} 
+void Scene\+Manager\+::\+Set\+Next\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{next\+Scene}{}\end{DoxyParamCaption})}
+
+
+
+Sets the next scene to be loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Scene} & Name of the scene to set as next \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Scene\+Manager/\mbox{\hyperlink{_scene_manager_8hpp}{Scene\+Manager.\+hpp}}\item 
+src/\+Scene\+Manager/Scene\+Manager.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,37 @@
+CC=g++
+STD=-std=c++17
+CFLAGS=-Wall -Wextra
+INC_PATH=-I./libs
+SRC=$(wildcard src/*.cpp src/Game/*.cpp src/ECS/*.cpp src/AssetManager/*.cpp src/ControllerManager/*.cpp src/SceneManager/*.cpp src/AnimationManager/*.cpp)
+LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lSDL2_gfx -llua5.3 -lavcodec -lavformat -lavutil -lswscale -ltinyxml2
+EXE=game_engine
+EXE_ASAN=game_engine_asan
+EXE_TSAN=game_engine_tsan
+EXE_UBSAN=game_engine_ubsan
+
+build:
+	$(CC) $(CFLAGS) $(STD) $(INC_PATH) $(SRC) -o $(EXE) $(LFLAGS)
+
+asan:
+	$(CC) $(CFLAGS) $(STD) $(INC_PATH) $(SRC) -o $(EXE_ASAN) $(LFLAGS) -fsanitize=address
+
+tsan:
+	$(CC) $(CFLAGS) $(STD) $(INC_PATH) $(SRC) -o $(EXE_TSAN) $(LFLAGS) -fsanitize=thread
+
+ubsan:
+	$(CC) $(CFLAGS) $(STD) $(INC_PATH) $(SRC) -o $(EXE_UBSAN) $(LFLAGS) -fsanitize=undefined
+
+run:
+	./$(EXE)
+
+run-asan:
+	./$(EXE_ASAN)
+
+run-tsan:
+	./$(EXE_TSAN)
+
+run-ubsan:
+	./$(EXE_UBSAN)
+
+clean:
+	rm -f $(EXE) $(EXE_ASAN) $(EXE_TSAN) $(EXE_UBSAN)

@@ -1,0 +1,26 @@
+\doxysection{Script\+Component.\+hpp}
+\hypertarget{_script_component_8hpp_source}{}\label{_script_component_8hpp_source}\index{src/Components/ScriptComponent.hpp@{src/Components/ScriptComponent.hpp}}
+\mbox{\hyperlink{_script_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ SCRIPTCOMPONENT\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SCRIPTCOMPONENT\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <sol/sol.hpp>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_script_component}{ScriptComponent}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ sol::function\ \mbox{\hyperlink{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}{onCollision}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ sol::function\ \mbox{\hyperlink{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}{onClick}};\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ sol::function\ \mbox{\hyperlink{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}{update}};\ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{struct_script_component_a102780206fd2f1cc0a9c508ddbfd74ca}{ScriptComponent}}(sol::function\ \mbox{\hyperlink{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}{onCollision}}\ =\ sol::lua\_nil,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ sol::function\ \mbox{\hyperlink{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}{onClick}}\ =\ sol::lua\_nil,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ sol::function\ \mbox{\hyperlink{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}{update}}\ =\ sol::lua\_nil)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>onCollision\ =\ \mbox{\hyperlink{struct_script_component_a5dca14ea72e7d23ac2fd1100e452971f}{onCollision}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ this-\/>onClick\ =\ \mbox{\hyperlink{struct_script_component_a784545648f6e4a0cdbb5902c0174c089}{onClick}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ this-\/>update\ =\ \mbox{\hyperlink{struct_script_component_a58f093616a61d9c23e4d5cf7d58a1cb8}{update}};}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCRIPTCOMPONENT\_HPP}}
+
+\end{DoxyCode}

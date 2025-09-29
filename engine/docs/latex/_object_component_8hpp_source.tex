@@ -1,0 +1,35 @@
+\doxysection{Object\+Component.\+hpp}
+\hypertarget{_object_component_8hpp_source}{}\label{_object_component_8hpp_source}\index{src/Components/ObjectComponent.hpp@{src/Components/ObjectComponent.hpp}}
+\mbox{\hyperlink{_object_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ OBJECTCOMPONENT\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ OBJECTCOMPONENT\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_object_component}{ObjectComponent}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_object_component_afdaee990dc5979694b2873aa00ad4051}{assetId}};\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_object_component_af33c6264f890211570bb60a57af78668}{xRot}};\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_object_component_afa92aa47a51ee0c08d01cf53419cad34}{yRot}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ shadow\ colors}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ sr;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ sg;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ sb;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{struct_object_component_aaee46c949a69898fc55bd06b8014bf6e}{ObjectComponent}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{struct_object_component_afdaee990dc5979694b2873aa00ad4051}{assetId}}\ =\ \textcolor{stringliteral}{"{}none"{}},\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_object_component_af33c6264f890211570bb60a57af78668}{xRot}}\ =\ 0,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_object_component_afa92aa47a51ee0c08d01cf53419cad34}{yRot}}\ =\ 0,\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sr\ =\ 0.2f,\ \textcolor{keywordtype}{float}\ sg\ =\ 0.2f,\ \textcolor{keywordtype}{float}\ sb\ =\ 0.2f)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this-\/>assetId\ =\ \mbox{\hyperlink{struct_object_component_afdaee990dc5979694b2873aa00ad4051}{assetId}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ this-\/>xRot\ =\ \mbox{\hyperlink{struct_object_component_af33c6264f890211570bb60a57af78668}{xRot}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>yRot\ =\ \mbox{\hyperlink{struct_object_component_afa92aa47a51ee0c08d01cf53419cad34}{yRot}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ this-\/>sr\ =\ sr;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ this-\/>sg\ =\ sg;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ this-\/>sb\ =\ sb;}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ OBJECTCOMPONENT\_HPP}}
+
+\end{DoxyCode}

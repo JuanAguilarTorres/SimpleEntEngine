@@ -1,0 +1,31 @@
+\doxysection{Transform\+Component.\+hpp}
+\hypertarget{_transform_component_8hpp_source}{}\label{_transform_component_8hpp_source}\index{src/Components/TransformComponent.hpp@{src/Components/TransformComponent.hpp}}
+\mbox{\hyperlink{_transform_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ TRANSFORMCOMPONENT\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ TRANSFORMCOMPONENT\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_transform_component}{TransformComponent}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}};\ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_transform_component_a3f8f782163f507442db431de13a233fa}{previousPosition}};\ \ }
+\DoxyCodeLine{00025\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_transform_component_a34212063e4e646cc39bca33e40891472}{scale}};\ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}};\ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{cameraFree}};\ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{struct_transform_component_a5f3d75902b2bf24cab70f0c20e1c2e57}{TransformComponent}}(glm::vec2\ \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}}\ =\ glm::vec2(0.0,\ 0.0),}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_transform_component_a34212063e4e646cc39bca33e40891472}{scale}}\ =\ glm::vec2(1.0,\ 1.0),}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}}\ =\ 0.0,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{cameraFree}}\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ this-\/>position\ =\ \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this-\/>previousPosition\ =\ \mbox{\hyperlink{struct_transform_component_a28bd72ac14736930eb3357a78037a555}{position}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ this-\/>scale\ =\ \mbox{\hyperlink{struct_transform_component_a34212063e4e646cc39bca33e40891472}{scale}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>rotation\ =\ \mbox{\hyperlink{struct_transform_component_a29681e7acef575a6992f697a10c12f77}{rotation}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ this-\/>cameraFree\ =\ \mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{cameraFree}};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRANSFORMCOMPONENT\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\doxysection{3D}
+\hypertarget{group__colors}{}\label{group__colors}\index{3D@{3D}}
+
+
+Works managing 3D Attributes.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_color}{Color}}
+\begin{DoxyCompactList}\small\item\em Represents a color in RGBA format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr const T \& \mbox{\hyperlink{group__colors_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}} (const T \&value, const T \&min, const T \&max)
+\begin{DoxyCompactList}\small\item\em Clamps a value between a minimum and maximum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Works managing 3D Attributes. 
+
+Various 3D Elements. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__colors_ga8bc0655311d8763bdb0c9cdd599d2085}\index{3D@{3D}!clamp@{clamp}}
+\index{clamp@{clamp}!3D@{3D}}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}}
+{\footnotesize\ttfamily \label{group__colors_ga8bc0655311d8763bdb0c9cdd599d2085} 
+template$<$typename T $>$ \\
+const T \& clamp (\begin{DoxyParamCaption}\item[{const T \&}]{value}{, }\item[{const T \&}]{min}{, }\item[{const T \&}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Clamps a value between a minimum and maximum. 
+
+This function ensures the given value does not exceed the specified range.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the value, typically numeric. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to be clamped. \\
+\hline
+{\em min} & The minimum allowable value. \\
+\hline
+{\em max} & The maximum allowable value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The clamped value, within the specified range. 
+\end{DoxyReturn}

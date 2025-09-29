@@ -1,0 +1,42 @@
+\doxysection{Box\+Collider\+Component.\+hpp}
+\hypertarget{_box_collider_component_8hpp_source}{}\label{_box_collider_component_8hpp_source}\index{src/Components/BoxColliderComponent.hpp@{src/Components/BoxColliderComponent.hpp}}
+\mbox{\hyperlink{_box_collider_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ BOXCOLLIDERCOMPONENT\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ BOXCOLLIDERCOMPONENT\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_box_collider_component}{BoxColliderComponent}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{struct_box_collider_component_a7a80e75b694204d881aea75ef022d4cd}{BoxColliderComponent}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}\ =\ 0,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}\ =\ 0,\ glm::vec2\ \mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}}\ =\ glm::vec2(0))}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}(\mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}),\ \mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}(\mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}),\ \mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}}(\mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}})\ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_box_collider_component_a340016bba9c121e1ce96a83d332d0601}{AddExclusion}}(\textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(\mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.begin(),\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end(),\ tag)\ ==\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end())\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.push\_back(tag);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_box_collider_component_a2ac130f496136670267a2b5677c9ce5f}{RemoveExclusion}}(\textcolor{keyword}{const}\ std::string\&\ tag)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find(\mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.begin(),\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end(),\ tag);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end())\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.erase(it);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_box_collider_component_a1d7c9d4780f5c651efecb46ef3fa7460}{IsExcluded}}(\textcolor{keyword}{const}\ std::string\&\ tag)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(\mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.begin(),\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end(),\ tag)\ !=\ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{excludeCollisionList}}.end();}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BOXCOLLIDERCOMPONENT\_HPP}}
+
+\end{DoxyCode}

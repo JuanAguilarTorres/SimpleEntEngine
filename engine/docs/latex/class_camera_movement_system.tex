@@ -1,0 +1,78 @@
+\doxysection{Camera\+Movement\+System Class Reference}
+\hypertarget{class_camera_movement_system}{}\label{class_camera_movement_system}\index{CameraMovementSystem@{CameraMovementSystem}}
+
+
+Represents the system that manages camera movement based on entity positions.  
+
+
+
+
+{\ttfamily \#include $<$Camera\+Movement\+System.\+hpp$>$}
+
+Inheritance diagram for Camera\+Movement\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_camera_movement_system}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_camera_movement_system_ae5c525852665a9ee6678d624844a7323}{Camera\+Movement\+System}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_camera_movement_system}{Camera\+Movement\+System}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_movement_system_ae5e4097c572c9fa3b6391a4673ee811f}{Update}} (SDL\+\_\+\+Rect \&camera)
+\begin{DoxyCompactList}\small\item\em Updates the camera position based on the entities it follows. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_system}{System}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_system_a36b3396cdb8fa107bd4515382fbb8847}{Add\+Entity\+To\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Adds an entity to the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_system_a05a2e9d96800e05c3d4c8d7ebfd9903b}{Remove\+Entity\+From\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the system. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{Get\+System\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Gets all entities associated with the system. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{group___component_ga9e171c7763cf19fc9f0a3200aeebacb7}{Signature}} \& \mbox{\hyperlink{class_system_af97298c27dfe2231ab21bdb1a0316dc4}{Get\+Component\+Signature}} () const
+\begin{DoxyCompactList}\small\item\em Gets the component signature for the system. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{Require\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Requires a component for the system to operate on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the system that manages camera movement based on entity positions. 
+
+The \doxylink{class_camera_movement_system}{Camera\+Movement\+System} updates the camera position to follow entities with a \doxylink{struct_camera_follow_component}{Camera\+Follow\+Component} and adjusts its position based on their \doxylink{struct_transform_component}{Transform\+Component}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_camera_movement_system_ae5c525852665a9ee6678d624844a7323}\index{CameraMovementSystem@{CameraMovementSystem}!CameraMovementSystem@{CameraMovementSystem}}
+\index{CameraMovementSystem@{CameraMovementSystem}!CameraMovementSystem@{CameraMovementSystem}}
+\doxysubsubsection{\texorpdfstring{CameraMovementSystem()}{CameraMovementSystem()}}
+{\footnotesize\ttfamily \label{class_camera_movement_system_ae5c525852665a9ee6678d624844a7323} 
+Camera\+Movement\+System\+::\+Camera\+Movement\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_camera_movement_system}{Camera\+Movement\+System}. 
+
+This constructor specifies that entities using this system must have both \doxylink{struct_camera_follow_component}{Camera\+Follow\+Component} and \doxylink{struct_transform_component}{Transform\+Component}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_camera_movement_system_ae5e4097c572c9fa3b6391a4673ee811f}\index{CameraMovementSystem@{CameraMovementSystem}!Update@{Update}}
+\index{Update@{Update}!CameraMovementSystem@{CameraMovementSystem}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_camera_movement_system_ae5e4097c572c9fa3b6391a4673ee811f} 
+void Camera\+Movement\+System\+::\+Update (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect \&}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the camera position based on the entities it follows. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & A reference to the SDL\+\_\+\+Rect representing the camera\textquotesingle{}s viewport.\\
+\hline
+\end{DoxyParams}
+This function adjusts the camera\textquotesingle{}s position based on the positions of entities with the \doxylink{struct_transform_component}{Transform\+Component}. It ensures the camera stays within the bounds of the game map. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Systems/\mbox{\hyperlink{_camera_movement_system_8hpp}{Camera\+Movement\+System.\+hpp}}\end{DoxyCompactItemize}

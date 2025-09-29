@@ -1,0 +1,60 @@
+\doxysection{Animation\+Manager.\+hpp}
+\hypertarget{_animation_manager_8hpp_source}{}\label{_animation_manager_8hpp_source}\index{src/AnimationManager/AnimationManager.hpp@{src/AnimationManager/AnimationManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ANIMATIONMANAGER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ANIMATIONMANAGER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_animation_data}{AnimationData}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ std::string\ textureId;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ numFrames;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ frameSpeedRate;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoop;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_animation_data_ad04c1c750fe0764ed0ea2bcaa6524d95}{AnimationData}}(}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ textureId\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ 0,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ 0,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numFrames\ =\ 1,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ frameSpeedRate\ =\ 1,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoop\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{00032\ \ \ \ \ )\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ this-\/>textureId\ =\ textureId;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ this-\/>width\ =\ width;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ this-\/>height\ =\ height;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>numFrames\ =\ numFrames;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ this-\/>frameSpeedRate\ =\ frameSpeedRate;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ this-\/>isLoop\ =\ isLoop;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animation_manager}{AnimationManager}}\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ std::map<std::string,\ AnimationData>\ animations;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_animation_manager_a1a07273c87def56cab82a1795f29f2e4}{AnimationManager}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_animation_manager_a3a8c725f2aa41692ed7ec4ef0957c365}{\string~AnimationManager}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animation_manager_ae18bf7387ecb30f0a98ba3c5756a6e6e}{AddAnimation}}(}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ animationId,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ textureId,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numFrames,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ frameSpeedRate,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoop}
+\DoxyCodeLine{00080\ \ \ \ \ );}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{struct_animation_data}{AnimationData}}\ \mbox{\hyperlink{class_animation_manager_ac89afdda0e2690a4eb0459eea428b8cb}{GetAnimation}}(\textcolor{keyword}{const}\ std::string\&\ animationId);}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ANIMATIONMANAGER\_HPP}}
+
+\end{DoxyCode}

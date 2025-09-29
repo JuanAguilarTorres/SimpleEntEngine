@@ -1,0 +1,121 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Main game engine class implementing the Singleton pattern.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_a6f3a33940524b6ba9d83f627ccb14bbf}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the game engine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start the game loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a9896347cdc3da739d0099fbd7645b796}{destroy}} ()
+\begin{DoxyCompactList}\small\item\em Clean up and shut down the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game}{Game}} \& \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the singleton instance of the \doxylink{class_game}{Game} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_ae5164c37c0dc74cfb56041174017bf57}\label{class_game_ae5164c37c0dc74cfb56041174017bf57} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries renderer} = nullptr
+\begin{DoxyCompactList}\small\item\em SDL renderer pointer used for drawing. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a1693428d5ef119e9e31adc438f49075f}\label{class_game_a1693428d5ef119e9e31adc438f49075f} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_animation_manager}{Animation\+Manager}} $>$ {\bfseries animation\+Manager}
+\begin{DoxyCompactList}\small\item\em Manager for handling game animations. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_ae3a5f7864602c8de404ab19e1b667543}\label{class_game_ae3a5f7864602c8de404ab19e1b667543} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ {\bfseries asset\+Manager}
+\begin{DoxyCompactList}\small\item\em Manager for handling game assets (textures, fonts, etc.) \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a12ed49dbe5d7b4140716679f9ba28f49}\label{class_game_a12ed49dbe5d7b4140716679f9ba28f49} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_manager}{Controller\+Manager}} $>$ {\bfseries controller\+Manager}
+\begin{DoxyCompactList}\small\item\em Manager for handling input controllers. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a07c4f2f1c8795ba30ac68a5d05c56d6e}\label{class_game_a07c4f2f1c8795ba30ac68a5d05c56d6e} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_event_manager}{Event\+Manager}} $>$ {\bfseries event\+Manager}
+\begin{DoxyCompactList}\small\item\em Manager for handling game events. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_ab9ec8204418df1ecb54b9522fc7fac0a}\label{class_game_ab9ec8204418df1ecb54b9522fc7fac0a} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ {\bfseries registry}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_registry}{Registry} for the \doxylink{class_entity}{Entity} \doxylink{class_component}{Component} \doxylink{class_system}{System}. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a7a5fecf4173a685208f485e95eeda913}\label{class_game_a7a5fecf4173a685208f485e95eeda913} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_scene_manager}{Scene\+Manager}} $>$ {\bfseries scene\+Manager}
+\begin{DoxyCompactList}\small\item\em Manager for handling different game scenes. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a62b0a47833567f7333f9e2ec95bf2d79}\label{class_game_a62b0a47833567f7333f9e2ec95bf2d79} 
+sol\+::state {\bfseries lua}
+\begin{DoxyCompactList}\small\item\em Lua state for scripting support. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a5cc348b64b628b0eadbbe11b7e3d716f}\label{class_game_a5cc348b64b628b0eadbbe11b7e3d716f} 
+int {\bfseries window\+Width} = 0
+\begin{DoxyCompactList}\small\item\em Width of the game window. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_aff5568dcc7298a46336e9fbc9af7339e}\label{class_game_aff5568dcc7298a46336e9fbc9af7339e} 
+int {\bfseries window\+Height} = 0
+\begin{DoxyCompactList}\small\item\em Height of the game window. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_ae09d2c084b4d20df42d7c794bc4a0ef2}\label{class_game_ae09d2c084b4d20df42d7c794bc4a0ef2} 
+int {\bfseries map\+Width} = 0
+\begin{DoxyCompactList}\small\item\em Width of the game map/level. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_aa95af8e37bcbf9c3de951f0a9ff29c0a}\label{class_game_aa95af8e37bcbf9c3de951f0a9ff29c0a} 
+int {\bfseries map\+Height} = 0
+\begin{DoxyCompactList}\small\item\em Height of the game map/level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main game engine class implementing the Singleton pattern. 
+
+The \doxylink{class_game}{Game} class serves as the core engine, managing the game loop, window creation, rendering, and various manager classes for assets, events, and scene handling. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_a9896347cdc3da739d0099fbd7645b796}\index{Game@{Game}!destroy@{destroy}}
+\index{destroy@{destroy}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily \label{class_game_a9896347cdc3da739d0099fbd7645b796} 
+void Game\+::destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clean up and shut down the game. 
+
+Releases all resources, destroys window and renderer, and quits SDL \Hypertarget{class_game_a689dc1143da4a51248eb9feeed5b2aba}\index{Game@{Game}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{class_game_a689dc1143da4a51248eb9feeed5b2aba} 
+\mbox{\hyperlink{class_game}{Game}} \& Game\+::\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the singleton instance of the \doxylink{class_game}{Game} class. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the \doxylink{class_game}{Game} instance 
+\end{DoxyReturn}
+\Hypertarget{class_game_a6f3a33940524b6ba9d83f627ccb14bbf}\index{Game@{Game}!init@{init}}
+\index{init@{init}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{class_game_a6f3a33940524b6ba9d83f627ccb14bbf} 
+void Game\+::init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize the game engine. 
+
+Sets up SDL, creates window and renderer, initializes all managers \Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
+void Game\+::run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Start the game loop. 
+
+Handles the main game loop including input processing, updates, and rendering 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\mbox{\hyperlink{_game_8hpp}{Game.\+hpp}}\item 
+src/\+Game/Game.\+cpp\end{DoxyCompactItemize}

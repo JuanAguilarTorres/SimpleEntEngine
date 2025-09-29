@@ -1,0 +1,6 @@
+.vs
+.vscode
+build
+game_engine.exe
+engine/game_engine.exe
+engine/game_engine

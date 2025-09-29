@@ -1,0 +1,99 @@
+\doxysection{Audio\+System Class Reference}
+\hypertarget{class_audio_system}{}\label{class_audio_system}\index{AudioSystem@{AudioSystem}}
+
+
+Represents the system that manages audio playback for the game.  
+
+
+
+
+{\ttfamily \#include $<$Audio\+System.\+hpp$>$}
+
+Inheritance diagram for Audio\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_audio_system}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_audio_system_ad17cde8deff07ef7d7d56be62df98739}{Audio\+System}} ()
+\begin{DoxyCompactList}\small\item\em currently playing music. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_system_afd976af9984f5a2d27a6bcb94479b527}{play\+Scene\+Music}} (const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&asset\+Manager)
+\begin{DoxyCompactList}\small\item\em Plays the background music for the current scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_system_a2539dad63f94c5933ec47329c6350bb4}{Play\+Sound\+Effect}} (const std\+::string \&sound\+Id, const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&asset\+Manager)
+\begin{DoxyCompactList}\small\item\em Plays a sound effect identified by the specified ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_system}{System}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_system_a36b3396cdb8fa107bd4515382fbb8847}{Add\+Entity\+To\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Adds an entity to the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_system_a05a2e9d96800e05c3d4c8d7ebfd9903b}{Remove\+Entity\+From\+System}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes an entity from the system. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{Get\+System\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Gets all entities associated with the system. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{group___component_ga9e171c7763cf19fc9f0a3200aeebacb7}{Signature}} \& \mbox{\hyperlink{class_system_af97298c27dfe2231ab21bdb1a0316dc4}{Get\+Component\+Signature}} () const
+\begin{DoxyCompactList}\small\item\em Gets the component signature for the system. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{Require\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Requires a component for the system to operate on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the system that manages audio playback for the game. 
+
+The \doxylink{class_audio_system}{Audio\+System} is responsible for playing background music and sound effects. It interacts with the \doxylink{class_asset_manager}{Asset\+Manager} to retrieve audio assets and plays them using SDL\+\_\+mixer. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_audio_system_ad17cde8deff07ef7d7d56be62df98739}\index{AudioSystem@{AudioSystem}!AudioSystem@{AudioSystem}}
+\index{AudioSystem@{AudioSystem}!AudioSystem@{AudioSystem}}
+\doxysubsubsection{\texorpdfstring{AudioSystem()}{AudioSystem()}}
+{\footnotesize\ttfamily \label{class_audio_system_ad17cde8deff07ef7d7d56be62df98739} 
+Audio\+System\+::\+Audio\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+currently playing music. 
+
+Constructs an \doxylink{class_audio_system}{Audio\+System}.
+
+This constructor initializes the audio system and prepares it for audio playback. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_audio_system_afd976af9984f5a2d27a6bcb94479b527}\index{AudioSystem@{AudioSystem}!playSceneMusic@{playSceneMusic}}
+\index{playSceneMusic@{playSceneMusic}!AudioSystem@{AudioSystem}}
+\doxysubsubsection{\texorpdfstring{playSceneMusic()}{playSceneMusic()}}
+{\footnotesize\ttfamily \label{class_audio_system_afd976af9984f5a2d27a6bcb94479b527} 
+void Audio\+System\+::play\+Scene\+Music (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&}]{asset\+Manager}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays the background music for the current scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em asset\+Manager} & A unique pointer to the \doxylink{class_asset_manager}{Asset\+Manager} used to retrieve the music asset.\\
+\hline
+\end{DoxyParams}
+If the music asset is not available, a log message will be generated. If playback fails, an error message will be logged. \Hypertarget{class_audio_system_a2539dad63f94c5933ec47329c6350bb4}\index{AudioSystem@{AudioSystem}!PlaySoundEffect@{PlaySoundEffect}}
+\index{PlaySoundEffect@{PlaySoundEffect}!AudioSystem@{AudioSystem}}
+\doxysubsubsection{\texorpdfstring{PlaySoundEffect()}{PlaySoundEffect()}}
+{\footnotesize\ttfamily \label{class_audio_system_a2539dad63f94c5933ec47329c6350bb4} 
+void Audio\+System\+::\+Play\+Sound\+Effect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sound\+Id}{, }\item[{const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&}]{asset\+Manager}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays a sound effect identified by the specified ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sound\+Id} & The ID of the sound effect to play. \\
+\hline
+{\em asset\+Manager} & A unique pointer to the \doxylink{class_asset_manager}{Asset\+Manager} used to retrieve the sound effect.\\
+\hline
+\end{DoxyParams}
+If the sound effect is not found, a log message will be generated. If playback fails, an error message will be logged. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Systems/\mbox{\hyperlink{_audio_system_8hpp}{Audio\+System.\+hpp}}\end{DoxyCompactItemize}

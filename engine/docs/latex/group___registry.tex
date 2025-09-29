@@ -1,0 +1,328 @@
+\doxysection{Registry}
+\hypertarget{group___registry}{}\label{group___registry}\index{Registry@{Registry}}
+
+
+Manages entities, components, and systems in the ECS architecture.  .  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_registry}{Registry}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{System\+::\+Require\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Requires a component for the system to operate on. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent , typename... TArgs$>$ }\\void \mbox{\hyperlink{group___registry_gaf83a9dbdfa3690c9fa030a45f815a4ed}{Registry\+::\+Add\+Component}} (\mbox{\hyperlink{class_entity}{Entity}} entity, TArgs \&\&... args)
+\begin{DoxyCompactList}\small\item\em Adds a component to the specified entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_ga983d52e579dde04607b487ed3dc800ee}{Registry\+::\+Remove\+Component}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Removes a component from the specified entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\bool \mbox{\hyperlink{group___registry_ga546f2f77b638e76348213fb05ab0c125}{Registry\+::\+Has\+Component}} (\mbox{\hyperlink{class_entity}{Entity}} entity) const
+\begin{DoxyCompactList}\small\item\em Checks if an entity has a specific component. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\TComponent \& \mbox{\hyperlink{group___registry_ga97595f0490bb3f6439f66d89ae31a4a7}{Registry\+::\+Get\+Component}} (\mbox{\hyperlink{class_entity}{Entity}} entity) const
+\begin{DoxyCompactList}\small\item\em Retrieves a component of the specified type from the entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TSystem , typename... TArgs$>$ }\\void \mbox{\hyperlink{group___registry_ga782e56e2f62766b38436ca408c6e2a9f}{Registry\+::\+Add\+System}} (TArgs \&\&... args)
+\begin{DoxyCompactList}\small\item\em Adds a system to the registry. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TSystem $>$ }\\void \mbox{\hyperlink{group___registry_ga8dba180c0abfb4fde4dc0e8e02b92c98}{Registry\+::\+Remove\+System}} ()
+\begin{DoxyCompactList}\small\item\em Removes a system from the registry. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TSystem $>$ }\\bool \mbox{\hyperlink{group___registry_gad391a4b83ef897f5a702c3b642af9b48}{Registry\+::\+Has\+System}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the registry has a specific system. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TSystem $>$ }\\TSystem \& \mbox{\hyperlink{group___registry_ga3fc393f847176146d1cb0a8c2b683874}{Registry\+::\+Get\+System}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a system from the registry. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent , typename... TArgs$>$ }\\void \mbox{\hyperlink{group___registry_ga125342c7309de6be6e518da6bffb7452}{Entity\+::\+Add\+Component}} (TArgs \&\&... args)
+\begin{DoxyCompactList}\small\item\em Adds a component to an entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\void \mbox{\hyperlink{group___registry_gae0a4dce2a3d4a1d8025b6ae037a6624f}{Entity\+::\+Remove\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Removes a component from the entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\bool \mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{Entity\+::\+Has\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the entity has a specific component. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TComponent $>$ }\\TComponent \& \mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{Entity\+::\+Get\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a component from the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages entities, components, and systems in the ECS architecture.  . 
+
+This module handles the main \doxylink{class_registry}{Registry} in the ECS architecture 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___registry_ga125342c7309de6be6e518da6bffb7452}\index{Registry@{Registry}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___registry_ga125342c7309de6be6e518da6bffb7452} 
+template$<$typename TComponent , typename ... TArgs$>$ \\
+void Entity\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})}
+
+
+
+Adds a component to an entity. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to add. \\
+\hline
+{\em TArgs} & Variadic arguments for the component\textquotesingle{}s constructor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Arguments used to construct the component. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___registry_gaf83a9dbdfa3690c9fa030a45f815a4ed}\index{Registry@{Registry}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___registry_gaf83a9dbdfa3690c9fa030a45f815a4ed} 
+template$<$typename TComponent , typename ... TArgs$>$ \\
+void Registry\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{, }\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})}
+
+
+
+Adds a component to the specified entity. 
+
+This method creates a new component of type TComponent for the given entity. If the component pool does not exist for this component type, it is created. The entity\textquotesingle{}s component signature is updated to reflect the addition.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to add. \\
+\hline
+{\em TArgs} & Variadic arguments for the component\textquotesingle{}s constructor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to which the component will be added. \\
+\hline
+{\em args} & Arguments used to construct the component. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___registry_ga782e56e2f62766b38436ca408c6e2a9f}\index{Registry@{Registry}!AddSystem@{AddSystem}}
+\index{AddSystem@{AddSystem}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{AddSystem()}{AddSystem()}}
+{\footnotesize\ttfamily \label{group___registry_ga782e56e2f62766b38436ca408c6e2a9f} 
+template$<$typename TSystem , typename ... TArgs$>$ \\
+void Registry\+::\+Add\+System (\begin{DoxyParamCaption}\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})}
+
+
+
+Adds a system to the registry. 
+
+Creates a new system of the specified type and adds it to the registry.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TSystem} & The type of the system to add. \\
+\hline
+{\em TArgs} & Variadic arguments for the system\textquotesingle{}s constructor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Arguments used to construct the system. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___registry_gac79960abe9d3005efc7ce39ebedc0776}\index{Registry@{Registry}!GetComponent@{GetComponent}}
+\index{GetComponent@{GetComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{GetComponent()}{GetComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___registry_gac79960abe9d3005efc7ce39ebedc0776} 
+template$<$typename TComponent $>$ \\
+TComponent \& Entity\+::\+Get\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves a component from the entity. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to retrieve. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A reference to the component of type TComponent. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_ga97595f0490bb3f6439f66d89ae31a4a7}\index{Registry@{Registry}!GetComponent@{GetComponent}}
+\index{GetComponent@{GetComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{GetComponent()}{GetComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___registry_ga97595f0490bb3f6439f66d89ae31a4a7} 
+template$<$typename TComponent $>$ \\
+TComponent \& Registry\+::\+Get\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves a component of the specified type from the entity. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to retrieve. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity from which to get the component. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the component of type TComponent. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_ga3fc393f847176146d1cb0a8c2b683874}\index{Registry@{Registry}!GetSystem@{GetSystem}}
+\index{GetSystem@{GetSystem}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{GetSystem()}{GetSystem()}}
+{\footnotesize\ttfamily \label{group___registry_ga3fc393f847176146d1cb0a8c2b683874} 
+template$<$typename TSystem $>$ \\
+TSystem \& Registry\+::\+Get\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves a system from the registry. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TSystem} & The type of the system to retrieve. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A reference to the system of type TSystem. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_ga21a5c382bca76fadf22668d51439f3a6}\index{Registry@{Registry}!HasComponent@{HasComponent}}
+\index{HasComponent@{HasComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{HasComponent()}{HasComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___registry_ga21a5c382bca76fadf22668d51439f3a6} 
+template$<$typename TComponent $>$ \\
+bool Entity\+::\+Has\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the entity has a specific component. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to check for. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+True if the entity has the component, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_ga546f2f77b638e76348213fb05ab0c125}\index{Registry@{Registry}!HasComponent@{HasComponent}}
+\index{HasComponent@{HasComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{HasComponent()}{HasComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___registry_ga546f2f77b638e76348213fb05ab0c125} 
+template$<$typename TComponent $>$ \\
+bool Registry\+::\+Has\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if an entity has a specific component. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to check for. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to check for the component. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the entity has the component, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_gad391a4b83ef897f5a702c3b642af9b48}\index{Registry@{Registry}!HasSystem@{HasSystem}}
+\index{HasSystem@{HasSystem}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{HasSystem()}{HasSystem()}}
+{\footnotesize\ttfamily \label{group___registry_gad391a4b83ef897f5a702c3b642af9b48} 
+template$<$typename TSystem $>$ \\
+bool Registry\+::\+Has\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the registry has a specific system. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TSystem} & The type of the system to check for. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+True if the registry has the system, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{group___registry_gae0a4dce2a3d4a1d8025b6ae037a6624f}\index{Registry@{Registry}!RemoveComponent@{RemoveComponent}}
+\index{RemoveComponent@{RemoveComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___registry_gae0a4dce2a3d4a1d8025b6ae037a6624f} 
+template$<$typename TComponent $>$ \\
+void Entity\+::\+Remove\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Removes a component from the entity. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to remove. \\
+\hline
+\end{DoxyTemplParams}
+\Hypertarget{group___registry_ga983d52e579dde04607b487ed3dc800ee}\index{Registry@{Registry}!RemoveComponent@{RemoveComponent}}
+\index{RemoveComponent@{RemoveComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___registry_ga983d52e579dde04607b487ed3dc800ee} 
+template$<$typename TComponent $>$ \\
+void Registry\+::\+Remove\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Removes a component from the specified entity. 
+
+This method updates the entity\textquotesingle{}s component signature to indicate that the specified component has been removed.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component to remove. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity from which the component will be removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___registry_ga8dba180c0abfb4fde4dc0e8e02b92c98}\index{Registry@{Registry}!RemoveSystem@{RemoveSystem}}
+\index{RemoveSystem@{RemoveSystem}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{RemoveSystem()}{RemoveSystem()}}
+{\footnotesize\ttfamily \label{group___registry_ga8dba180c0abfb4fde4dc0e8e02b92c98} 
+template$<$typename TSystem $>$ \\
+void Registry\+::\+Remove\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Removes a system from the registry. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TSystem} & The type of the system to remove. \\
+\hline
+\end{DoxyTemplParams}
+\Hypertarget{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}\index{Registry@{Registry}!RequireComponent@{RequireComponent}}
+\index{RequireComponent@{RequireComponent}!Registry@{Registry}}
+\doxysubsubsection{\texorpdfstring{RequireComponent()}{RequireComponent()}}
+{\footnotesize\ttfamily \label{group___registry_gac15b3d09b3f3c485af1364255f21dbd5} 
+template$<$typename TComponent $>$ \\
+void System\+::\+Require\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Requires a component for the system to operate on. 
+
+Specifies that the system requires a particular component.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The component type required.\\
+\hline
+\end{DoxyTemplParams}
+Adds the component type to the system\textquotesingle{}s signature, indicating that entities with this component will be added to the system.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em TComponent} & The type of the component required by the system. \\
+\hline
+\end{DoxyTemplParams}

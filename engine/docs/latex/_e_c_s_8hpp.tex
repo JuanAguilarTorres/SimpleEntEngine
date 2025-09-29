@@ -1,0 +1,52 @@
+\doxysection{src/\+ECS/\+ECS.hpp File Reference}
+\hypertarget{_e_c_s_8hpp}{}\label{_e_c_s_8hpp}\index{src/ECS/ECS.hpp@{src/ECS/ECS.hpp}}
+
+
+Entity–component–system, architectural pattern used in this game development.  
+
+
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$typeindex$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}../\+Utils/\+Pool.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_i_component}{IComponent}}
+\begin{DoxyCompactList}\small\item\em Base class for all components. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_component}{Component$<$ TComponent $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for specific component types. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_entity}{Entity}}
+\item 
+class \mbox{\hyperlink{class_system}{System}}
+\item 
+class \mbox{\hyperlink{class_registry}{Registry}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::bitset$<$ MAX\+\_\+\+COMPONENTS $>$ {\bfseries Signature}
+\begin{DoxyCompactList}\small\item\em Represents a bitset for tracking the presence of components in an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_e_c_s_8hpp_a4dbe45db6b096c339774f9d77206224c}\label{_e_c_s_8hpp_a4dbe45db6b096c339774f9d77206224c} 
+const unsigned int {\bfseries MAX\+\_\+\+COMPONENTS} = 64
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity–component–system, architectural pattern used in this game development. 
+
+\begin{DoxyAuthor}{Author}
+Juan Torres 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}

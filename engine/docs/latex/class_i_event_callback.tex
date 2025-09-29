@@ -1,0 +1,53 @@
+\doxysection{IEvent\+Callback Class Reference}
+\hypertarget{class_i_event_callback}{}\label{class_i_event_callback}\index{IEventCallback@{IEventCallback}}
+
+
+Interface for event callback handling.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Manager.\+hpp$>$}
+
+Inheritance diagram for IEvent\+Callback\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_event_callback}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i_event_callback_acddf3ef68be83a7624d7618ce5ea88ea}\label{class_i_event_callback_acddf3ef68be83a7624d7618ce5ea88ea} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IEvent\+Callback} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_i_event_callback}{IEvent\+Callback} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_i_event_callback_a7f7d2dcfc7092cd3ef3a2928b4de547e}{Execute}} (\mbox{\hyperlink{class_event}{Event}} \&e)
+\begin{DoxyCompactList}\small\item\em Executes the callback for a given event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for event callback handling. 
+
+Provides a base interface for classes that can handle events. Implementations of this interface should define the Call function to perform the callback. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_event_callback_a7f7d2dcfc7092cd3ef3a2928b4de547e}\index{IEventCallback@{IEventCallback}!Execute@{Execute}}
+\index{Execute@{Execute}!IEventCallback@{IEventCallback}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily \label{class_i_event_callback_a7f7d2dcfc7092cd3ef3a2928b4de547e} 
+void IEvent\+Callback\+::\+Execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} \&}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes the callback for a given event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The event to execute the callback for. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Event\+Manager/\mbox{\hyperlink{_event_manager_8hpp}{Event\+Manager.\+hpp}}\end{DoxyCompactItemize}

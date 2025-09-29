@@ -1,0 +1,80 @@
+\doxysection{Rigid\+Body\+Component Struct Reference}
+\hypertarget{struct_rigid_body_component}{}\label{struct_rigid_body_component}\index{RigidBodyComponent@{RigidBodyComponent}}
+
+
+Represents a component that adds velocity to an entity for simulating rigid body movement.  
+
+
+
+
+{\ttfamily \#include $<$Rigid\+Body\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_rigid_body_component_aaa2d429439b073a25184f54ed77d4377}{Rigid\+Body\+Component}} (bool is\+Dynamic=false, bool is\+Solid=false, float mass=1)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_rigid_body_component}{Rigid\+Body\+Component} with specified physical properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_rigid_body_component_a1ee1d929f4bbe0c15690c11a6cbbee78}\label{struct_rigid_body_component_a1ee1d929f4bbe0c15690c11a6cbbee78} 
+bool {\bfseries is\+Dynamic}
+\item 
+\Hypertarget{struct_rigid_body_component_a3d3c0abbac6f9939d97c264febdfe9c3}\label{struct_rigid_body_component_a3d3c0abbac6f9939d97c264febdfe9c3} 
+bool {\bfseries is\+Solid}
+\item 
+\Hypertarget{struct_rigid_body_component_aafc43eea2fd39ef45df0d195c79f3e92}\label{struct_rigid_body_component_aafc43eea2fd39ef45df0d195c79f3e92} 
+glm\+::vec2 {\bfseries sum\+Forces} = glm\+::vec2(0)
+\item 
+\Hypertarget{struct_rigid_body_component_a0296a76e1768d93db076838c5e879bff}\label{struct_rigid_body_component_a0296a76e1768d93db076838c5e879bff} 
+glm\+::vec2 {\bfseries acceleration} = glm\+::vec2(0)
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_rigid_body_component_a82aff71832ac9f8a492f5c577ed2387a}{velocity}} = glm\+::vec2(0)
+\item 
+\Hypertarget{struct_rigid_body_component_ad851f6b9da30b6c68be05b5d371880b9}\label{struct_rigid_body_component_ad851f6b9da30b6c68be05b5d371880b9} 
+float {\bfseries mass}
+\item 
+\Hypertarget{struct_rigid_body_component_a86630b4a7359aab6ac5f31ec0ed74e14}\label{struct_rigid_body_component_a86630b4a7359aab6ac5f31ec0ed74e14} 
+float {\bfseries inv\+Mass}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a component that adds velocity to an entity for simulating rigid body movement. 
+
+This component is used to manage the velocity of an entity, enabling it to move in the game world. The velocity can be updated to simulate physical forces or movement over time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_rigid_body_component_aaa2d429439b073a25184f54ed77d4377}\index{RigidBodyComponent@{RigidBodyComponent}!RigidBodyComponent@{RigidBodyComponent}}
+\index{RigidBodyComponent@{RigidBodyComponent}!RigidBodyComponent@{RigidBodyComponent}}
+\doxysubsubsection{\texorpdfstring{RigidBodyComponent()}{RigidBodyComponent()}}
+{\footnotesize\ttfamily \label{struct_rigid_body_component_aaa2d429439b073a25184f54ed77d4377} 
+Rigid\+Body\+Component\+::\+Rigid\+Body\+Component (\begin{DoxyParamCaption}\item[{bool}]{is\+Dynamic}{ = {\ttfamily false}, }\item[{bool}]{is\+Solid}{ = {\ttfamily false}, }\item[{float}]{mass}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_rigid_body_component}{Rigid\+Body\+Component} with specified physical properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Dynamic} & Indicates whether the rigid body is dynamic (can move). Default is {\ttfamily false}. \\
+\hline
+{\em is\+Solid} & Indicates whether the rigid body is solid (interacts with other objects). Default is {\ttfamily false}. \\
+\hline
+{\em mass} & The mass of the rigid body. Must be greater than 0. Default is {\ttfamily 1}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_rigid_body_component_a82aff71832ac9f8a492f5c577ed2387a}\index{RigidBodyComponent@{RigidBodyComponent}!velocity@{velocity}}
+\index{velocity@{velocity}!RigidBodyComponent@{RigidBodyComponent}}
+\doxysubsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily \label{struct_rigid_body_component_a82aff71832ac9f8a492f5c577ed2387a} 
+glm\+::vec2 Rigid\+Body\+Component\+::velocity = glm\+::vec2(0)}
+
+The velocity vector representing the entity\textquotesingle{}s speed and direction. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_rigid_body_component_8hpp}{Rigid\+Body\+Component.\+hpp}}\end{DoxyCompactItemize}

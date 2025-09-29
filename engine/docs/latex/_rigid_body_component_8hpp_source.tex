@@ -1,0 +1,33 @@
+\doxysection{Rigid\+Body\+Component.\+hpp}
+\hypertarget{_rigid_body_component_8hpp_source}{}\label{_rigid_body_component_8hpp_source}\index{src/Components/RigidBodyComponent.hpp@{src/Components/RigidBodyComponent.hpp}}
+\mbox{\hyperlink{_rigid_body_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ RIGIDBODYCOMPONENT\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ RIGIDBODYCOMPONENT\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_rigid_body_component}{RigidBodyComponent}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDynamic;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ isSolid;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ glm::vec2\ sumForces\ =\ glm::vec2(0);}
+\DoxyCodeLine{00027\ \ \ \ \ glm::vec2\ acceleration\ =\ glm::vec2(0);}
+\DoxyCodeLine{00028\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_rigid_body_component_a82aff71832ac9f8a492f5c577ed2387a}{velocity}}\ =\ glm::vec2(0);\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ mass;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ invMass;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{struct_rigid_body_component_aaa2d429439b073a25184f54ed77d4377}{RigidBodyComponent}}(\textcolor{keywordtype}{bool}\ isDynamic\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ isSolid\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mass\ =\ 1)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this-\/>isDynamic\ =\ isDynamic;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ this-\/>isSolid\ =\ isSolid;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>mass\ =\ mass;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ this-\/>invMass\ =\ 1\ /\ mass;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RIGIDBODYCOMPONENT\_HPP}}
+
+\end{DoxyCode}

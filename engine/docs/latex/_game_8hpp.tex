@@ -1,0 +1,41 @@
+\doxysection{src/\+Game/\+Game.hpp File Reference}
+\hypertarget{_game_8hpp}{}\label{_game_8hpp}\index{src/Game/Game.hpp@{src/Game/Game.hpp}}
+
+
+\doxylink{class_game}{Game} Flow Controller.  
+
+
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$sol/sol.\+hpp$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include "{}../\+Animation\+Manager/\+Animation\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Asset\+Manager/\+Asset\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Controller\+Manager/\+Controller\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Event\+Manager/\+Event\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+ECS/\+ECS.\+hpp"{}}\newline
+{\ttfamily \#include "{}../\+Scene\+Manager/\+Scene\+Manager.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_game}{Game}}
+\begin{DoxyCompactList}\small\item\em Main game engine class implementing the Singleton pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int {\bfseries FPS} = 60
+\begin{DoxyCompactList}\small\item\em Target frames per second for the game. \end{DoxyCompactList}\item 
+const int {\bfseries MSPer\+Frame} = 1000 / \mbox{\hyperlink{group___main_flow_gac5090a6568797128b0a5545228bb8b75}{FPS}}
+\begin{DoxyCompactList}\small\item\em Milliseconds per frame based on target FPS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_game}{Game} Flow Controller. 
+
+\begin{DoxyAuthor}{Author}
+Juan Torres 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}

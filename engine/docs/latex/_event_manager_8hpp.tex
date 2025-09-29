@@ -1,0 +1,39 @@
+\doxysection{src/\+Event\+Manager/\+Event\+Manager.hpp File Reference}
+\hypertarget{_event_manager_8hpp}{}\label{_event_manager_8hpp}\index{src/EventManager/EventManager.hpp@{src/EventManager/EventManager.hpp}}
+
+
+Manager Class for Events.  
+
+
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$typeindex$>$}\newline
+{\ttfamily \#include "{}Event.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_i_event_callback}{IEvent\+Callback}}
+\begin{DoxyCompactList}\small\item\em Interface for event callback handling. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_event_callback}{Event\+Callback$<$ TOwner, TEvent $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for handling event callbacks. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_event_manager}{Event\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages event subscription and emission. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::list$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_i_event_callback}{IEvent\+Callback}} $>$ $>$ {\bfseries Handler\+List}
+\begin{DoxyCompactList}\small\item\em Alias for a list of event handlers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manager Class for Events. 
+
+\begin{DoxyAuthor}{Author}
+Juan Torres 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}

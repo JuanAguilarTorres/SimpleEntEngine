@@ -1,0 +1,143 @@
+\doxysection{Box\+Collider\+Component Struct Reference}
+\hypertarget{struct_box_collider_component}{}\label{struct_box_collider_component}\index{BoxColliderComponent@{BoxColliderComponent}}
+
+
+Represents the box collider component for an entity.  
+
+
+
+
+{\ttfamily \#include $<$Box\+Collider\+Component.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_box_collider_component_a7a80e75b694204d881aea75ef022d4cd}{Box\+Collider\+Component}} (int \mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}=0, int \mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}=0, glm\+::vec2 \mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}}=glm\+::vec2(0))
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_box_collider_component}{Box\+Collider\+Component}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_box_collider_component_a340016bba9c121e1ce96a83d332d0601}{Add\+Exclusion}} (const std\+::string \&tag)
+\begin{DoxyCompactList}\small\item\em Adds a tag to the exclusion list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_box_collider_component_a2ac130f496136670267a2b5677c9ce5f}{Remove\+Exclusion}} (const std\+::string \&tag)
+\begin{DoxyCompactList}\small\item\em Removes a tag from the exclusion list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_box_collider_component_a1d7c9d4780f5c651efecb46ef3fa7460}{Is\+Excluded}} (const std\+::string \&tag) const
+\begin{DoxyCompactList}\small\item\em Checks if a tag is in the exclusion list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}{width}}
+\item 
+int \mbox{\hyperlink{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}{height}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}{offset}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}{exclude\+Collision\+List}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the box collider component for an entity. 
+
+This component is used to define the dimensions and offset of a rectangular collider attached to an entity. It is useful for collision detection and bounding box calculations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_box_collider_component_a7a80e75b694204d881aea75ef022d4cd}\index{BoxColliderComponent@{BoxColliderComponent}!BoxColliderComponent@{BoxColliderComponent}}
+\index{BoxColliderComponent@{BoxColliderComponent}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{BoxColliderComponent()}{BoxColliderComponent()}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a7a80e75b694204d881aea75ef022d4cd} 
+Box\+Collider\+Component\+::\+Box\+Collider\+Component (\begin{DoxyParamCaption}\item[{int}]{width}{ = {\ttfamily 0}, }\item[{int}]{height}{ = {\ttfamily 0}, }\item[{glm\+::vec2}]{offset}{ = {\ttfamily glm\+:\+:vec2(0)}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_box_collider_component}{Box\+Collider\+Component}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the collider box (default is 0). \\
+\hline
+{\em height} & The height of the collider box (default is 0). \\
+\hline
+{\em offset} & The offset of the collider box from the entity\textquotesingle{}s position (default is (0, 0)). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_box_collider_component_a340016bba9c121e1ce96a83d332d0601}\index{BoxColliderComponent@{BoxColliderComponent}!AddExclusion@{AddExclusion}}
+\index{AddExclusion@{AddExclusion}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{AddExclusion()}{AddExclusion()}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a340016bba9c121e1ce96a83d332d0601} 
+void Box\+Collider\+Component\+::\+Add\+Exclusion (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a tag to the exclusion list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & The tag to exclude. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{struct_box_collider_component_a1d7c9d4780f5c651efecb46ef3fa7460}\index{BoxColliderComponent@{BoxColliderComponent}!IsExcluded@{IsExcluded}}
+\index{IsExcluded@{IsExcluded}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{IsExcluded()}{IsExcluded()}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a1d7c9d4780f5c651efecb46ef3fa7460} 
+bool Box\+Collider\+Component\+::\+Is\+Excluded (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a tag is in the exclusion list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & The tag to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the tag is excluded; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{struct_box_collider_component_a2ac130f496136670267a2b5677c9ce5f}\index{BoxColliderComponent@{BoxColliderComponent}!RemoveExclusion@{RemoveExclusion}}
+\index{RemoveExclusion@{RemoveExclusion}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{RemoveExclusion()}{RemoveExclusion()}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a2ac130f496136670267a2b5677c9ce5f} 
+void Box\+Collider\+Component\+::\+Remove\+Exclusion (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{tag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a tag from the exclusion list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & The tag to remove. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a}\index{BoxColliderComponent@{BoxColliderComponent}!excludeCollisionList@{excludeCollisionList}}
+\index{excludeCollisionList@{excludeCollisionList}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{excludeCollisionList}{excludeCollisionList}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_ace77ba6c295e8df4beb4506e3515b68a} 
+std\+::vector$<$std\+::string$>$ Box\+Collider\+Component\+::exclude\+Collision\+List}
+
+List of tags to exclude from collision. \Hypertarget{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce}\index{BoxColliderComponent@{BoxColliderComponent}!height@{height}}
+\index{height@{height}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a24a99a2380daab060d6157ddcc3f86ce} 
+int Box\+Collider\+Component\+::height}
+
+The height of the collider box. \Hypertarget{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d}\index{BoxColliderComponent@{BoxColliderComponent}!offset@{offset}}
+\index{offset@{offset}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_ad99c13be56f1aabef2b0e72445f1a12d} 
+glm\+::vec2 Box\+Collider\+Component\+::offset}
+
+The offset of the collider box from the entity\textquotesingle{}s position. \Hypertarget{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b}\index{BoxColliderComponent@{BoxColliderComponent}!width@{width}}
+\index{width@{width}!BoxColliderComponent@{BoxColliderComponent}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{struct_box_collider_component_a798c36df33e8882b753d012c8cd2e04b} 
+int Box\+Collider\+Component\+::width}
+
+The width of the collider box. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Components/\mbox{\hyperlink{_box_collider_component_8hpp}{Box\+Collider\+Component.\+hpp}}\end{DoxyCompactItemize}

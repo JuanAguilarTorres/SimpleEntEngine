@@ -1,0 +1,29 @@
+\doxysection{Animation\+Component.\+hpp}
+\hypertarget{_animation_component_8hpp_source}{}\label{_animation_component_8hpp_source}\index{src/Components/AnimationComponent.hpp@{src/Components/AnimationComponent.hpp}}
+\mbox{\hyperlink{_animation_component_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ ANIMATIONCOMPONENT\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ ANIMATIONCOMPONENT\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_animation_component}{AnimationComponent}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}{numFrames}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_a307af1a2894a53cf6322d0c5429bb0fb}{currentFrame}};\ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}{frameSpeedRate}};\ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}{isLoop}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_a9f02559b240414bc4678cbc389fe37ac}{startTime}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{struct_animation_component_a9dbe4e13af4b9aa24adb651460794957}{AnimationComponent}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}{numFrames}}\ =\ 1,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}{frameSpeedRate}}\ =\ 1}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}{isLoop}}\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>numFrames\ =\ \mbox{\hyperlink{struct_animation_component_a394dfc0c2357a82810b49dbae9c2b952}{numFrames}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ this-\/>currentFrame\ =\ 1;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ this-\/>frameSpeedRate\ =\ \mbox{\hyperlink{struct_animation_component_aef8a8dcea961c0db6601e43a3a7d31c5}{frameSpeedRate}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ this-\/>isLoop\ =\ \mbox{\hyperlink{struct_animation_component_a9fb3175c7a43b6cf55c0a5a78d594b36}{isLoop}};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ this-\/>startTime\ =\ SDL\_GetTicks();}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ANIMATIONCOMPONENT\_HPP}}
+
+\end{DoxyCode}

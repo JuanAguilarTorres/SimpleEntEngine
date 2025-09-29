@@ -1,0 +1,208 @@
+\doxysection{Video\+System.\+hpp}
+\hypertarget{_video_system_8hpp_source}{}\label{_video_system_8hpp_source}\index{src/Systems/VideoSystem.hpp@{src/Systems/VideoSystem.hpp}}
+\mbox{\hyperlink{_video_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ VIDEOSYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ VIDEOSYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../AssetManager/AssetManager.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_video_component_8hpp}{../Components/VideoComponent.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \textcolor{comment}{//\ Video}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <libavcodec/avcodec.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <libavformat/avformat.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <libavutil/frame.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <libswscale/swscale.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <libavutil/imgutils.h>}}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_video_system}{VideoSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ deltaTime;\ }
+\DoxyCodeLine{00037\ \ \ \ \ AVFrame*\ lastDecodedFrame;\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{struct\ }VideoStream\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ AVFormatContext*\ formatCtx\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ AVCodecContext*\ codecCtx\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ AVFrame*\ frame\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ AVPacket*\ packet\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ videoStreamIndex\ =\ -\/1;\ }
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_video_system_adf80b8e4c5b431220daac8cd0f22ec4b}{VideoSystem}}()\ :\ lastDecodedFrame(nullptr)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<VideoComponent>}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ lastDecodedFrame\ =\ av\_frame\_alloc();}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{class_video_system_a2f4882d18e046cc1198470a8359c9caa}{\string~VideoSystem}}()\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lastDecodedFrame)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&lastDecodedFrame);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_video_system_a9bb09d2d4347697565eafc2d4021df28}{setDeltaTime}}(\textcolor{keywordtype}{double}\ dt)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ this-\/>deltaTime\ =\ dt;}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_video_system_afb3ff700d6fde9d870b7a9fd15e65ce5}{Update}}(SDL\_Renderer*\ renderer,\ SDL\_Rect\&\ camera,\ \textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ \mbox{\hyperlink{class_asset_manager}{AssetManager}})\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ videoComponent\ =\ entity.GetComponent<\mbox{\hyperlink{struct_video_component}{VideoComponent}}>();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ video\ asset\ from\ the\ AssetManager.}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ videoAsset\ =\ \mbox{\hyperlink{class_asset_manager}{AssetManager}}-\/>\mbox{\hyperlink{class_asset_manager_a0d3df1ba9f246f75c2b2733df2a1d268}{GetVideo}}(videoComponent.videoId);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ PlayVideo(videoAsset,\ renderer,\ entity.GetComponent<\mbox{\hyperlink{struct_video_component}{VideoComponent}}>(),\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>(),\ camera);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ PlayVideo(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_manager_1_1_video_asset}{AssetManager::VideoAsset}}\&\ videoAsset,\ SDL\_Renderer*\ renderer,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_video_component}{VideoComponent}}\&\ videoComponent,\ \mbox{\hyperlink{struct_transform_component}{TransformComponent}}\&\ transformComponent,\ SDL\_Rect\&\ camera)\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!videoAsset.formatCtx\ ||\ !videoAsset.codecCtx)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Invalid\ video\ asset.}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ AVPacket*\ packet\ =\ av\_packet\_alloc();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ AVFrame*\ frame\ =\ av\_frame\_alloc();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ AVFrame*\ yuvFrame\ =\ av\_frame\_alloc();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ video\ stream\ index.}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ videoStreamIndex\ =\ -\/1;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ videoAsset.formatCtx-\/>nb\_streams;\ i++)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (videoAsset.formatCtx-\/>streams[i]-\/>codecpar-\/>codec\_type\ ==\ AVMEDIA\_TYPE\_VIDEO)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoStreamIndex\ =\ i;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (videoStreamIndex\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[VIDEOSYSTEM]\ Could\ not\ find\ video\ stream."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ av\_packet\_free(\&packet);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&frame);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&yuvFrame);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ buffer\ for\ YUV\ frame.}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ uint8\_t*\ yuvBuffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numBytes\ =\ av\_image\_alloc(}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ yuvFrame-\/>data,\ yuvFrame-\/>linesize,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ videoAsset.codecCtx-\/>width,\ videoAsset.codecCtx-\/>height,}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ AV\_PIX\_FMT\_YUV420P,\ 32);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (numBytes\ <\ 0)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[VIDEOSYSTEM]\ Could\ not\ allocate\ frame\ buffer."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ av\_packet\_free(\&packet);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&frame);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&yuvFrame);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ yuvBuffer\ =\ yuvFrame-\/>data[0];}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Warm-\/up\ phase:\ Decode\ and\ discard\ frames\ for\ the\ first\ 5\ frames.}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (videoComponent.\mbox{\hyperlink{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e}{warmupCount}}\ <\ 5)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[VIDEOSYSTEM]\ Warm-\/up\ phase."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (videoComponent.\mbox{\hyperlink{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e}{warmupCount}}\ <\ 5)\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (av\_read\_frame(videoAsset.formatCtx,\ packet)\ >=\ 0)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet-\/>stream\_index\ ==\ videoStreamIndex)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (avcodec\_send\_packet(videoAsset.codecCtx,\ packet)\ ==\ 0)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avcodec\_receive\_frame(videoAsset.codecCtx,\ frame);\ \textcolor{comment}{//\ Discard\ the\ frame.}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_packet\_unref(packet);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoComponent.\mbox{\hyperlink{struct_video_component_a956beedcf9caed33e4ba7c30127c0f3e}{warmupCount}}++;\ \textcolor{comment}{//\ Increment\ the\ warm-\/up\ frame\ count}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Timing\ control\ using\ deltaTime.}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ frameDuration\ =\ 1.0\ /\ av\_q2d(}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ videoAsset.formatCtx-\/>streams[videoStreamIndex]-\/>avg\_frame\_rate);\ \textcolor{comment}{//\ Frame\ duration\ in\ seconds.}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ accumulatedTime\ =\ 0.0;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ accumulatedTime\ +=\ deltaTime;}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Decode\ only\ if\ enough\ time\ has\ passed.}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (accumulatedTime\ >=\ frameDuration)\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ accumulatedTime\ -\/=\ frameDuration;\ \textcolor{comment}{//\ Reset\ time.}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ frame\ from\ video.}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (av\_read\_frame(videoAsset.formatCtx,\ packet)\ >=\ 0)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet-\/>stream\_index\ ==\ videoStreamIndex)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (avcodec\_send\_packet(videoAsset.codecCtx,\ packet)\ ==\ 0)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (avcodec\_receive\_frame(videoAsset.codecCtx,\ frame)\ ==\ 0)\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Free\ the\ old\ frame\ and\ allocate\ a\ new\ one}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&lastDecodedFrame);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastDecodedFrame\ =\ av\_frame\_clone(frame);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ frame\ to\ YUV\ for\ SDL.}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }SwsContext*\ swsCtx\ =\ sws\_getContext(}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoAsset.codecCtx-\/>width,\ videoAsset.codecCtx-\/>height,\ videoAsset.codecCtx-\/>pix\_fmt,}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoAsset.codecCtx-\/>width,\ videoAsset.codecCtx-\/>height,\ AV\_PIX\_FMT\_YUV420P,}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SWS\_BILINEAR,\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!swsCtx)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[VIDEOSYSTEM]\ Could\ not\ initialize\ sws\ context."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_freep(\&yuvBuffer);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_packet\_free(\&packet);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&frame);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_frame\_free(\&yuvFrame);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sws\_scale(}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ swsCtx,\ frame-\/>data,\ frame-\/>linesize,\ 0,\ videoAsset.codecCtx-\/>height,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yuvFrame-\/>data,\ yuvFrame-\/>linesize);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_UpdateYUVTexture(}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoAsset.texture,\ NULL,}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yuvFrame-\/>data[0],\ yuvFrame-\/>linesize[0],}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yuvFrame-\/>data[1],\ yuvFrame-\/>linesize[1],}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yuvFrame-\/>data[2],\ yuvFrame-\/>linesize[2]}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sws\_freeContext(swsCtx);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_packet\_unref(packet);\ \textcolor{comment}{//\ Free\ packet.}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ End\ of\ video,\ rewind.}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ av\_seek\_frame(videoAsset.formatCtx,\ videoStreamIndex,\ 0,\ AVSEEK\_FLAG\_BACKWARD);}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avcodec\_flush\_buffers(videoAsset.codecCtx);\ \ \textcolor{comment}{//\ Clear\ and\ reset.}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render\ even\ if\ no\ new\ frames\ (for\ synchronization).}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (transformComponent.\mbox{\hyperlink{struct_transform_component_a3590f346a0da6d3f24c03e1ab38c6b9c}{cameraFree}})\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Rect\ dstRect\ =\ \{\ videoComponent.\mbox{\hyperlink{struct_video_component_a7025fc5578ee23b9264643c9a117b11a}{posX}},\ videoComponent.\mbox{\hyperlink{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04}{posY}},}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoComponent.\mbox{\hyperlink{struct_video_component_a567a95182de48701771c005b945fccb4}{width}},\ videoComponent.\mbox{\hyperlink{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95}{height}}\ \};\ \textcolor{comment}{//\ Get\ position\ and\ dimensions.}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderCopy(renderer,\ videoAsset.texture,\ NULL,\ \&dstRect);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Rect\ dstRect\ =\ \{\ videoComponent.\mbox{\hyperlink{struct_video_component_a7025fc5578ee23b9264643c9a117b11a}{posX}}\ -\/\ camera.x,\ videoComponent.\mbox{\hyperlink{struct_video_component_a8bbc91b3eadbad465fa4d63c21a71b04}{posY}}\ -\/\ camera.y,}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ videoComponent.\mbox{\hyperlink{struct_video_component_a567a95182de48701771c005b945fccb4}{width}},\ videoComponent.\mbox{\hyperlink{struct_video_component_a275a913e03a2febd1bbd6ac636a80e95}{height}}\ \};\ \textcolor{comment}{//\ Get\ position\ and\ dimensions.}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderCopy(renderer,\ videoAsset.texture,\ NULL,\ \&dstRect);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Free\ resources.}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ av\_freep(\&yuvBuffer);}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ av\_packet\_free(\&packet);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ av\_frame\_free(\&frame);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ av\_frame\_free(\&yuvFrame);}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \};}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VIDEOSYSTEM\_HPP}}
+
+\end{DoxyCode}

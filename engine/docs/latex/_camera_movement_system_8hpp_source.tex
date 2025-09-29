@@ -1,0 +1,40 @@
+\doxysection{Camera\+Movement\+System.\+hpp}
+\hypertarget{_camera_movement_system_8hpp_source}{}\label{_camera_movement_system_8hpp_source}\index{src/Systems/CameraMovementSystem.hpp@{src/Systems/CameraMovementSystem.hpp}}
+\mbox{\hyperlink{_camera_movement_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ CAMERAMOVEMENTSYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CAMERAMOVEMENTSYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_camera_follow_component_8hpp}{../Components/CameraFollowComponent.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_8hpp}{../Game/Game.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_movement_system}{CameraMovementSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_camera_movement_system_ae5c525852665a9ee6678d624844a7323}{CameraMovementSystem}}()\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<CameraFollowComponent>}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_movement_system_ae5e4097c572c9fa3b6391a4673ee811f}{Update}}(SDL\_Rect\&\ camera)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ entity\ :\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}())\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ transform\ =\ entity.GetComponent<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Center\ the\ camera\ on\ the\ entity's\ new\ position}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ camera.x\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.position.x)\ -\/\ (camera.w\ /\ 2);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ camera.y\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(transform.position.y)\ -\/\ (camera.h\ /\ 2);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clamp\ camera\ position\ to\ prevent\ it\ from\ going\ out\ of\ bounds}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ camera.x\ =\ std::max(0,\ std::min(camera.x,\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_ae09d2c084b4d20df42d7c794bc4a0ef2}{mapWidth}}\ -\/\ camera.w));}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ camera.y\ =\ std::max(0,\ std::min(camera.y,\ \mbox{\hyperlink{class_game_a689dc1143da4a51248eb9feeed5b2aba}{Game::GetInstance}}().\mbox{\hyperlink{class_game_aa95af8e37bcbf9c3de951f0a9ff29c0a}{mapHeight}}\ -\/\ camera.h));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CAMERAMOVEMENTSYSTEM\_HPP}}
+
+\end{DoxyCode}

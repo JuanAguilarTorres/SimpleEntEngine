@@ -1,0 +1,110 @@
+\doxysection{Scene\+Loader Class Reference}
+\hypertarget{class_scene_loader}{}\label{class_scene_loader}\index{SceneLoader@{SceneLoader}}
+
+
+Manages loading and initialization of game scenes from Lua scripts.  
+
+
+
+
+{\ttfamily \#include $<$Scene\+Loader.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_scene_loader_a3b259dbd31c787f0cd7a6b63bd3cd200}\label{class_scene_loader_a3b259dbd31c787f0cd7a6b63bd3cd200} 
+{\bfseries Scene\+Loader} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Scene Loader object. \end{DoxyCompactList}\item 
+\Hypertarget{class_scene_loader_afc074d4a248b09c0795754af0d90d43c}\label{class_scene_loader_afc074d4a248b09c0795754af0d90d43c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Scene\+Loader} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Scene Loader object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_loader_a4109d01a39aa58595c09f894951095d4}{Load\+Scene}} (const std\+::string \&scene\+Path, sol\+::state \&lua, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_animation_manager}{Animation\+Manager}} $>$ \&animation\+Manager, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&asset\+Manager, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_manager}{Controller\+Manager}} $>$ \&controller\+Manager, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&registry, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Loads and initializes a complete scene from a Lua script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_loader_a1022f656be0819ed481b247ed7ed4859}{Replicate\+Entity}} (const std\+::string \&entity\+Id, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&registry, float x, float y)
+\begin{DoxyCompactList}\small\item\em Creates a copy of an existing entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{class_scene_loader_a5d92cb7603372f7fc066257798085c81}{Get\+Dynamic\+Data}} (const std\+::string \&entity\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves an entity by its identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages loading and initialization of game scenes from Lua scripts. 
+
+The \doxylink{class_scene_loader}{Scene\+Loader} class is responsible for parsing scene files written in Lua and creating the corresponding game objects, assets, and configurations. It handles loading of various assets including videos, sprites, music, sound effects, and fonts, as well as setting up input controls and entities. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_loader_a5d92cb7603372f7fc066257798085c81}\index{SceneLoader@{SceneLoader}!GetDynamicData@{GetDynamicData}}
+\index{GetDynamicData@{GetDynamicData}!SceneLoader@{SceneLoader}}
+\doxysubsubsection{\texorpdfstring{GetDynamicData()}{GetDynamicData()}}
+{\footnotesize\ttfamily \label{class_scene_loader_a5d92cb7603372f7fc066257798085c81} 
+\mbox{\hyperlink{class_entity}{Entity}} Scene\+Loader\+::\+Get\+Dynamic\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entity\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves an entity by its identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Id} & The identifier of the entity to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_entity}{Entity} The requested entity 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the entity is not found \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_scene_loader_a4109d01a39aa58595c09f894951095d4}\index{SceneLoader@{SceneLoader}!LoadScene@{LoadScene}}
+\index{LoadScene@{LoadScene}!SceneLoader@{SceneLoader}}
+\doxysubsubsection{\texorpdfstring{LoadScene()}{LoadScene()}}
+{\footnotesize\ttfamily \label{class_scene_loader_a4109d01a39aa58595c09f894951095d4} 
+void Scene\+Loader\+::\+Load\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{scene\+Path}{, }\item[{sol\+::state \&}]{lua}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_animation_manager}{Animation\+Manager}} $>$ \&}]{animation\+Manager}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_asset_manager}{Asset\+Manager}} $>$ \&}]{asset\+Manager}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_manager}{Controller\+Manager}} $>$ \&}]{controller\+Manager}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&}]{registry}{, }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+
+
+
+Loads and initializes a complete scene from a Lua script. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Path} & Path to the Lua scene file \\
+\hline
+{\em lua} & Lua state instance \\
+\hline
+{\em asset\+Manager} & Asset management system instance \\
+\hline
+{\em controller\+Manager} & Input controller management system instance \\
+\hline
+{\em registry} & \doxylink{class_entity}{Entity} registry instance \\
+\hline
+{\em renderer} & SDL renderer instance\\
+\hline
+\end{DoxyParams}
+This method orchestrates the complete scene loading process, including\+:
+\begin{DoxyItemize}
+\item Loading all required assets (videos, sprites, music, sound effects, fonts)
+\item Setting up input controls
+\item Creating and configuring entities 
+\end{DoxyItemize}\Hypertarget{class_scene_loader_a1022f656be0819ed481b247ed7ed4859}\index{SceneLoader@{SceneLoader}!ReplicateEntity@{ReplicateEntity}}
+\index{ReplicateEntity@{ReplicateEntity}!SceneLoader@{SceneLoader}}
+\doxysubsubsection{\texorpdfstring{ReplicateEntity()}{ReplicateEntity()}}
+{\footnotesize\ttfamily \label{class_scene_loader_a1022f656be0819ed481b247ed7ed4859} 
+void Scene\+Loader\+::\+Replicate\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{entity\+Id}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_registry}{Registry}} $>$ \&}]{registry}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Creates a copy of an existing entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Id} & Identifier of the entity to replicate \\
+\hline
+{\em registry} & \doxylink{class_entity}{Entity} registry instance\\
+\hline
+\end{DoxyParams}
+Creates a new entity with the same components and properties as the original entity identified by entity\+Id. The new entity is marked as a replica in its \doxylink{struct_property_component}{Property\+Component}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Scene\+Manager/\mbox{\hyperlink{_scene_loader_8hpp}{Scene\+Loader.\+hpp}}\item 
+src/\+Scene\+Manager/Scene\+Loader.\+cpp\end{DoxyCompactItemize}

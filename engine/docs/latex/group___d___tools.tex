@@ -1,0 +1,88 @@
+\doxysection{3D\+\_\+\+Tools}
+\hypertarget{group___d___tools}{}\label{group___d___tools}\index{3D\_Tools@{3D\_Tools}}
+
+
+Works managing 3D Attributes.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_color}{Color}}
+\begin{DoxyCompactList}\small\item\em Represents a color in RGBA format. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_face}{Face}}
+\begin{DoxyCompactList}\small\item\em Represents a triangular face in a 3D model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr const T \& \mbox{\hyperlink{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}{clamp}} (const T \&value, const T \&min, const T \&max)
+\begin{DoxyCompactList}\small\item\em Clamps a value between a minimum and maximum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ int, 3 $>$ \mbox{\hyperlink{group___d___tools_ga62d1c026c6d5a647c5aab0a8a218effc}{Face\+::vertex\+Indices}}
+\begin{DoxyCompactList}\small\item\em The indices of the vertices that make up the face. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Works managing 3D Attributes. 
+
+Contains structures and functions for 3D geometry.
+
+Copyright (C), 2022-\/2023, Sara Echeverria (bl33h) \begin{DoxyAuthor}{Author}
+Sara Echeverria @\+File\+Name\+: \doxylink{colors_8h_source}{colors.\+h}  
+\end{DoxyAuthor}
+
+
+Various 3D Elements Tools.
+
+Copyright (C), 2022-\/2023, Sara Echeverria (bl33h) \begin{DoxyAuthor}{Author}
+Sara Echeverria @\+File\+Name\+: \doxylink{faces_8h_source}{faces.\+h}   
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085}\index{3D\_Tools@{3D\_Tools}!clamp@{clamp}}
+\index{clamp@{clamp}!3D\_Tools@{3D\_Tools}}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}}
+{\footnotesize\ttfamily \label{group___d___tools_ga8bc0655311d8763bdb0c9cdd599d2085} 
+template$<$typename T $>$ \\
+const T \& clamp (\begin{DoxyParamCaption}\item[{const T \&}]{value}{, }\item[{const T \&}]{min}{, }\item[{const T \&}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Clamps a value between a minimum and maximum. 
+
+This function ensures the given value does not exceed the specified range.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the value, typically numeric. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to be clamped. \\
+\hline
+{\em min} & The minimum allowable value. \\
+\hline
+{\em max} & The maximum allowable value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The clamped value, within the specified range. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{group___d___tools_ga62d1c026c6d5a647c5aab0a8a218effc}\index{3D\_Tools@{3D\_Tools}!vertexIndices@{vertexIndices}}
+\index{vertexIndices@{vertexIndices}!3D\_Tools@{3D\_Tools}}
+\doxysubsubsection{\texorpdfstring{vertexIndices}{vertexIndices}}
+{\footnotesize\ttfamily \label{group___d___tools_ga62d1c026c6d5a647c5aab0a8a218effc} 
+std\+::array$<$int, 3$>$ Face\+::vertex\+Indices}
+
+
+
+The indices of the vertices that make up the face. 
+
+This array contains three integers, each representing the index of a vertex in the vertex list of the 3D model. These three vertices define a triangular face. 

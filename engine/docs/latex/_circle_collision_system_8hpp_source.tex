@@ -1,0 +1,90 @@
+\doxysection{Circle\+Collision\+System.\+hpp}
+\hypertarget{_circle_collision_system_8hpp_source}{}\label{_circle_collision_system_8hpp_source}\index{src/Systems/CircleCollisionSystem.hpp@{src/Systems/CircleCollisionSystem.hpp}}
+\mbox{\hyperlink{_circle_collision_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ CIRCLECOLLISIONSYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CIRCLECOLLISIONSYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <sol/sol.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_circle_collider_component_8hpp}{../Components/CircleColliderComponent.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script_component_8hpp}{../Components/ScriptComponent.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_component_8hpp}{../Components/TransformComponent.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_event_manager_8hpp}{../EventManager/EventManager.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collision_event_8hpp}{../Events/CollisionEvent.hpp}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_circle_collision_system}{CircleCollisionSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_circle_collision_system_a9f24d0c9e8caa8b3ce340bd663a2e0d1}{CircleCollisionSystem}}()\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<CircleColliderComponent>}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___registry_gac15b3d09b3f3c485af1364255f21dbd5}{RequireComponent<TransformComponent>}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_circle_collision_system_a3066a813291619fdb96cecbbea2e5ffb}{Update}}(sol::state\&\ lua)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ entities\ =\ \mbox{\hyperlink{class_system_aec0388b6db4900c4d4a9e1dea0f09205}{GetSystemEntities}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ entities.begin();\ i\ !=\ entities.end();\ i++)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ a\ =\ *i;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ aCollider\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_circle_collider_component}{CircleColliderComponent}}>();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ aTransform\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ j\ =\ i;\ j\ !=\ entities.end();\ j++)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ b\ =\ *j;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ b)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ Skip\ self-\/collision}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bCollider\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_circle_collider_component}{CircleColliderComponent}}>();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bTransform\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_transform_component}{TransformComponent}}>();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ aCenterPos\ =\ glm::vec2(}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aTransform.position.x\ -\/\ (aCollider.width\ /\ 2)\ *\ aTransform.scale.x,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aTransform.position.y\ -\/\ (aCollider.height\ /\ 2)\ *\ aTransform.scale.y}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ bCenterPos\ =\ glm::vec2(}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.x\ -\/\ (bCollider.width\ /\ 2)\ *\ bTransform.scale.x,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bTransform.position.y\ -\/\ (bCollider.height\ /\ 2)\ *\ bTransform.scale.y}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ aRadius\ =\ aCollider.radius\ *\ aTransform.scale.x;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bRadius\ =\ bCollider.\mbox{\hyperlink{struct_circle_collider_component_a12a63f8eb12b071bfece0bb9bd38683a}{radius}}\ *\ bTransform.scale.x;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ collision\ =\ \mbox{\hyperlink{class_circle_collision_system_a93ba5f4e49c9e61a0e9a91ea8704612f}{CheckCircularCollision}}(aRadius,\ bRadius,\ aCenterPos,\ bCenterPos);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (collision)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Trigger\ onCollision\ script\ for\ entity\ a}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>())\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ script\ =\ a.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (script.onCollision\ !=\ sol::nil)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lua[\textcolor{stringliteral}{"{}this"{}}]\ =\ a;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ script.onCollision(b);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Trigger\ onCollision\ script\ for\ entity\ b}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b.\mbox{\hyperlink{group___registry_ga21a5c382bca76fadf22668d51439f3a6}{HasComponent}}<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>())\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ script\ =\ b.\mbox{\hyperlink{group___registry_gac79960abe9d3005efc7ce39ebedc0776}{GetComponent}}<\mbox{\hyperlink{struct_script_component}{ScriptComponent}}>();}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (script.onCollision\ !=\ sol::nil)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lua[\textcolor{stringliteral}{"{}this"{}}]\ =\ b;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ script.onCollision(a);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_circle_collision_system_a93ba5f4e49c9e61a0e9a91ea8704612f}{CheckCircularCollision}}(\textcolor{keywordtype}{int}\ aRadius,\ \textcolor{keywordtype}{int}\ bRadius,\ glm::vec2\ aPos,\ glm::vec2\ bPos)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ glm::vec2\ dif\ =\ aPos\ -\/\ bPos;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ length\ =\ glm::sqrt((dif.x\ *\ dif.x)\ +\ (dif.y\ *\ dif.y));}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (aRadius\ +\ bRadius)\ >=\ length;}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CIRCLECOLLISIONSYSTEM\_HPP}}
+
+\end{DoxyCode}

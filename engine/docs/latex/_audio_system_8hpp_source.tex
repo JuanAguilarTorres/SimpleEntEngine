@@ -1,0 +1,62 @@
+\doxysection{Audio\+System.\+hpp}
+\hypertarget{_audio_system_8hpp_source}{}\label{_audio_system_8hpp_source}\index{src/Systems/AudioSystem.hpp@{src/Systems/AudioSystem.hpp}}
+\mbox{\hyperlink{_audio_system_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ AUDIOSYSTEM\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ AUDIOSYSTEM\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../AssetManager/AssetManager.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_e_c_s_8hpp}{../ECS/ECS.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_audio_system}{AudioSystem}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_system}{System}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ currentMusic\ =\ \textcolor{stringliteral}{"{}none"{}};\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_audio_system_ad17cde8deff07ef7d7d56be62df98739}{AudioSystem}}()\ \{\}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_system_afd976af9984f5a2d27a6bcb94479b527}{playSceneMusic}}(\textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ assetManager)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ Mix\_Chunk*\ music\ =\ assetManager-\/>GetMusic();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (music\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Log(\textcolor{stringliteral}{"{}[AUDIOSYSTEM]\ La\ escena\ no\ tiene\ Audio"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ new\ music\ is\ the\ same\ as\ the\ currently\ playing\ music.}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (assetManager-\/>GetMusicName()\ ==\ currentMusic)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Log(\textcolor{stringliteral}{"{}[AUDIOSYSTEM]\ The\ requested\ music\ is\ already\ playing."{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ currentMusic\ =\ assetManager-\/>GetMusicName();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Mix\_PlayChannel(-\/1,\ music,\ -\/1)\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Log(\textcolor{stringliteral}{"{}[AUDIOSYSTEM]\ Falla\ en\ reproducir\ Audio:\ \%s"{}},\ Mix\_GetError());}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_system_a2539dad63f94c5933ec47329c6350bb4}{PlaySoundEffect}}(\textcolor{keyword}{const}\ std::string\&\ soundId,\ \textcolor{keyword}{const}\ std::unique\_ptr<AssetManager>\&\ assetManager)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ Mix\_Chunk*\ soundEffect\ =\ assetManager-\/>GetSoundEffect(soundId);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (soundEffect\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Log(\textcolor{stringliteral}{"{}[AUDIOSYSTEM]\ El\ efecto\ de\ sonido\ con\ ID\ '\%s'\ no\ existe"{}},\ soundId.c\_str());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Mix\_PlayChannel(-\/1,\ soundEffect,\ 0)\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SDL\_Log("{}[AUDIOSYSTEM]\ Saltando\ efecto\ de\ sonido:\ \%s"{},\ Mix\_GetError());}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AUDIOSYSTEM\_HPP}}
+
+\end{DoxyCode}
