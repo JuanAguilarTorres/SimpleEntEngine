@@ -1,40 +1,44 @@
 scene = {
+	-- Videos Table
 	videos = {
 	},
 
+	-- Objects Table
 	objects = {
 	},
 
+	-- Sfx Table
 	sfx = {
 	},
 
+	-- Music Table
 	music = {
 	},
 
-	 --Tabla de imagenes y sprites
+	-- Images / Sprites Table
 	sprites = {
 	},
 
-	-- Tabla con la info de las animaciones
+	-- Animations Table
 	animations = {
 	}, 
 
-	-- Tabla de fuentes
+	-- Fonts Table
 	fonts = {
 	},
 
-	-- Tabla de acciones y teclas
+	-- Keys Table
 	keys = {
 	}, 
 
-	-- Tabla de acciones y botones del rat�n
+	-- Buttons Table
 	buttons = {},
 
-	--Tabla de mapas
+	-- Maps Table
 	maps = {
 	},
 
-	-- Tabla de entidades
+	-- Entities Table
 	entities = {
 	}
 }

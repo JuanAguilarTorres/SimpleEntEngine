@@ -95,7 +95,7 @@ Included in the source files, theres a `Makefile` file that works for both Linux
 
 This project is licensed under the **Zlib license**.
 
-- [Licenses](./resources/markdown/licenses.md)  
+- [Licenses](./resources/markdown/Licenses.md)  
 Please contact me if there are any issues regarding credit or the licenses used in this project.
 
 ## Contributing
