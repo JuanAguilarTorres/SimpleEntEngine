@@ -47,7 +47,7 @@ public:
         Mix_Chunk* music = assetManager->GetMusic();
 
         if (music == nullptr) {
-            SDL_Log("[AUDIOSYSTEM] La escena no tiene Audio");
+            SDL_Log("[AUDIOSYSTEM] The scene has no audio");
             return;
         }
 
@@ -60,7 +60,7 @@ public:
         currentMusic = assetManager->GetMusicName();
 
         if (Mix_PlayChannel(-1, music, -1) == -1) {
-            SDL_Log("[AUDIOSYSTEM] Falla en reproducir Audio: %s", Mix_GetError());
+            SDL_Log("[AUDIOSYSTEM] Audio playback failure: %s", Mix_GetError());
         }
         return;
     }
@@ -78,12 +78,12 @@ public:
         Mix_Chunk* soundEffect = assetManager->GetSoundEffect(soundId);
 
         if (soundEffect == nullptr) {
-            SDL_Log("[AUDIOSYSTEM] El efecto de sonido con ID '%s' no existe", soundId.c_str());
+            SDL_Log("[AUDIOSYSTEM] The sound effect with ID '%s' does not exist", soundId.c_str());
             return;
         }
 
         if (Mix_PlayChannel(-1, soundEffect, 0) == -1) {
-            // SDL_Log("[AUDIOSYSTEM] Saltando efecto de sonido: %s", Mix_GetError());
+            // SDL_Log("[AUDIOSYSTEM] Skipping sound effect: %s", Mix_GetError());
         }
     }
 };
